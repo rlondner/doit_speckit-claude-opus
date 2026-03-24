@@ -5,19 +5,19 @@
 
 ## Summary
 
-Build the "do it" goal tracking web app with a two-column layout (active/completed goals), modal-based goal creation, checkbox completion, deletion with confirmation, and urgency highlighting for goals nearing their end date. Uses Next.js 16 App Router with PostgreSQL for persistence, shadcn/ui components, Tailwind `@theme` for pastel color theming, date-fns for date calculations, and an OpenAPI spec exposed via Swagger UI.
+Build a two-column goal tracking web app called "do it" using Next.js 16 App Router with PostgreSQL persistence via API routes, shadcn/ui components, Tailwind CSS @theme for pastel theming, and date-fns for date formatting. Expose all API endpoints through an OpenAPI spec with a Swagger UI page.
 
 ## Technical Context
 
 **Language/Version**: TypeScript ^5, Node.js (Next.js runtime)
 **Primary Dependencies**: Next.js ^16.2.0, React ^19.2.4, Tailwind CSS ^4, shadcn/ui, date-fns, postgres (pg driver), swagger-ui-react
-**Storage**: PostgreSQL (single `goals` table)
+**Storage**: PostgreSQL via Next.js API routes (source of truth), localStorage (client-side cache)
 **Testing**: None — constitution prohibits tests
-**Target Platform**: Modern web browsers (desktop-first, responsive to 320px)
-**Project Type**: Web application (Next.js App Router, fullstack)
-**Performance Goals**: Sub-200ms page load for up to 50 goals; instant UI feedback on interactions
-**Constraints**: Single-user (no auth); PostgreSQL must be available locally or via connection string
-**Scale/Scope**: Single page application, ~50 goals max, 1 database table
+**Target Platform**: Web (modern browsers, min 768px width for initial release)
+**Project Type**: Web application (Next.js App Router)
+**Performance Goals**: Sub-second page load, instant optimistic UI updates
+**Constraints**: Single user per browser, no authentication, no mobile-first layout (min 768px)
+**Scale/Scope**: Single page app, ~50 goals max expected
 
 ## Constitution Check
 
@@ -26,20 +26,20 @@ Build the "do it" goal tracking web app with a two-column layout (active/complet
 | Principle | Status | Notes |
 |-----------|--------|-------|
 | I. Clean Code | PASS | Single-responsibility components, descriptive naming, ESLint enforced |
-| II. Simple UX | PASS | Two-column layout with clear primary action (Add Goal button), empty/loading/error states planned |
-| III. Responsive Design | PASS | Mobile-first Tailwind classes, columns stack on small screens, 44px touch targets |
-| IV. Minimal Dependencies | PASS w/ JUSTIFICATION | shadcn/ui, date-fns, pg, swagger-ui-react added — all explicitly requested by user and serve functions not achievable with core stack |
-| V. No Testing | PASS | Zero test files, frameworks, or test dependencies |
+| II. Simple UX | PASS | Two-column layout with single primary action (Add Goal), empty/loading/error states planned |
+| III. Responsive Design | VIOLATION — JUSTIFIED | Spec explicitly scopes to min 768px; responsive breakpoints will be added but mobile-first is limited by spec assumption |
+| IV. Minimal Dependencies | PASS WITH JUSTIFICATION | shadcn/ui (composable, tree-shakeable, not a runtime dep — copies components into project), date-fns (modular date formatting, native Date API insufficient for "X days left" formatting), postgres/pg (required for PostgreSQL persistence), swagger-ui-react (required for OpenAPI UI exposure) |
+| V. No Testing | PASS | No test files, frameworks, or dependencies |
 
-**Dependency Justifications (Principle IV)**:
+### Post-Phase 1 Re-check
 
-| Dependency | Justification |
-|------------|--------------|
-| shadcn/ui | User-requested UI component library; provides accessible Dialog, Button, Checkbox, Input primitives — not achievable with plain Tailwind alone without reimplementing accessibility |
-| date-fns | User-requested date formatting library; `differenceInCalendarDays` and `format` for days-remaining calculations — native `Date` lacks ergonomic day-difference APIs |
-| pg (node-postgres) | User-requested PostgreSQL storage; required to connect to postgres from Next.js API routes |
-| swagger-ui-react | User-requested OpenAPI/Swagger UI; renders interactive API documentation — no built-in Next.js equivalent |
-| next-swagger-doc | Generates OpenAPI JSON from Next.js route metadata — lightweight bridge for Swagger UI |
+| Principle | Status | Notes |
+|-----------|--------|-------|
+| I. Clean Code | PASS | Components follow single responsibility; lib/ separates concerns cleanly |
+| II. Simple UX | PASS | Empty states, loading states designed; single primary action per view |
+| III. Responsive Design | VIOLATION — JUSTIFIED | Same as above; 768px+ breakpoints included |
+| IV. Minimal Dependencies | PASS | All dependencies justified in research.md; no extras added |
+| V. No Testing | PASS | No test artifacts in any design document |
 
 ## Project Structure
 
@@ -52,47 +52,44 @@ specs/001-initial-page-setup/
 ├── data-model.md        # Phase 1 output
 ├── quickstart.md        # Phase 1 output
 ├── contracts/           # Phase 1 output (OpenAPI spec)
-└── tasks.md             # Phase 2 output (/speckit.tasks command)
+└── tasks.md             # Phase 2 output (not created by /speckit.plan)
 ```
 
 ### Source Code (repository root)
 
 ```text
 app/
-├── globals.css              # Tailwind @theme with pastel color tokens
-├── layout.tsx               # Root layout with fonts and metadata
-├── page.tsx                 # Main page — server component, fetches goals
+├── page.tsx                    # Main two-column goal tracker page
+├── layout.tsx                  # Root layout with "do it" branding
+├── globals.css                 # Tailwind @theme with pastel color tokens
 ├── api/
 │   ├── goals/
-│   │   └── route.ts         # GET (list all), POST (create goal)
+│   │   └── route.ts            # GET (list), POST (create)
 │   ├── goals/[id]/
-│   │   └── route.ts         # PATCH (complete goal), DELETE (delete goal)
-│   └── docs/
-│       └── route.ts         # GET — serves OpenAPI JSON
+│   │   └── route.ts            # PATCH (update), DELETE
+│   └── openapi.json/
+│       └── route.ts            # Serves OpenAPI spec
 ├── swagger/
-│   └── page.tsx             # Swagger UI page ("use client")
+│   └── page.tsx                # Swagger UI page (client component)
 components/
-├── ui/                      # shadcn/ui primitives (Button, Dialog, Checkbox, Input, Card)
-├── goal-card.tsx            # Single goal display with checkbox + delete
-├── goal-column.tsx          # Column wrapper (active or completed)
-├── add-goal-dialog.tsx      # Modal form for new goal creation
-└── delete-confirm-dialog.tsx # Confirmation dialog for goal deletion
+├── ui/                         # shadcn/ui components (Button, Dialog, Checkbox, Card, etc.)
+├── goal-card.tsx               # Individual goal display with checkbox and delete
+├── goal-list.tsx               # Column of goal cards (active or completed)
+├── add-goal-modal.tsx          # Modal form for adding new goals
+└── delete-confirm-dialog.tsx   # Confirmation dialog for goal deletion
 lib/
-├── db.ts                    # PostgreSQL connection pool (pg)
-├── goals.ts                 # Goal data access functions (CRUD)
-├── types.ts                 # Goal TypeScript interfaces
-└── dates.ts                 # date-fns helpers (daysRemaining, urgency status)
+├── db.ts                       # PostgreSQL connection pool
+├── goals.ts                    # Goal CRUD operations (DB queries)
+├── cache.ts                    # localStorage cache helpers
+└── types.ts                    # Goal type definitions
 public/
-└── openapi.yaml             # OpenAPI specification (also served dynamically)
+└── openapi.json                # OpenAPI 3.0 specification file
 ```
 
-**Structure Decision**: Next.js App Router convention — `app/` for routes and API, `components/` for shared UI, `lib/` for utilities and data access. No separate backend/frontend split since Next.js handles both. No `tests/` directory per constitution.
+**Structure Decision**: Next.js App Router convention with `app/` for routes, `components/` for UI, and `lib/` for shared logic. No separate backend — Next.js API routes serve as the API layer.
 
 ## Complexity Tracking
 
 | Violation | Why Needed | Simpler Alternative Rejected Because |
 |-----------|------------|-------------------------------------|
-| shadcn/ui dependency | User-mandated; accessible modal, checkbox, and button primitives | Building from scratch would reimplement ARIA patterns poorly |
-| date-fns dependency | User-mandated; ergonomic date math | Native Date arithmetic is error-prone for calendar day differences |
-| pg dependency | User-mandated postgres storage | localStorage was spec default but user explicitly overrode |
-| swagger-ui-react | User-mandated API docs UI | No built-in Next.js OpenAPI viewer |
+| Responsive Design (min 768px) | Spec explicitly scopes to desktop-first with min 768px assumption | Full mobile-first approach conflicts with stated scope; breakpoints for 768px+ and 1280px will still be included |

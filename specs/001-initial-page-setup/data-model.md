@@ -61,7 +61,7 @@ CREATE INDEX idx_goals_end_date ON goals (end_date) WHERE status = 'active';
 - Goals are created as `active`
 - Active goals can be moved to `completed` via checkbox
 - Goals in either state can be permanently deleted (hard delete from DB)
-- No transition from `completed` back to `active` (not in spec)
+- Completed goals can be moved back to `active` by unchecking the checkbox (FR-016), which clears `completed_at`
 
 ## Computed Fields (Application Layer)
 
