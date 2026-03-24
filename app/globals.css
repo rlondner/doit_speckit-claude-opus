@@ -45,6 +45,18 @@
     --radius-2xl: calc(var(--radius) * 1.8);
     --radius-3xl: calc(var(--radius) * 2.2);
     --radius-4xl: calc(var(--radius) * 2.6);
+
+    /* Pastel color tokens */
+    --color-pastel-pink: #f8b4c8;
+    --color-pastel-lavender: #c4b7eb;
+    --color-pastel-mint: #b8e6d0;
+    --color-pastel-peach: #f8c9a0;
+    --color-pastel-sky: #a8d4f0;
+    --color-pastel-cream: #fef9f0;
+
+    /* Responsive breakpoints */
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1280px;
 }
 
 :root {
