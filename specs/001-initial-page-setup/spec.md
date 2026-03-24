@@ -5,6 +5,16 @@
 **Status**: Draft
 **Input**: User description: "initial page setup - This application should be a goal tracking web app called do it. There should be two columns. a left one where current goals are shown along with how many days left the user has to achieve the goal and a right one where completed goals are. Each goal can be checked using a checkbox and then either moved to the completed column or permanently deleted. To add new goals, a user can click on a button to open a new goal form in a modal title and end date fields. Goals reaching their end date within 3 days are highlighted. Let's use a modern light theme with fun pastel colors"
 
+## Clarifications
+
+### Session 2026-03-24
+
+- Q: Should persistence use localStorage, PostgreSQL, or both? → A: Both — localStorage as cache, PostgreSQL via Next.js API routes as source of truth.
+- Q: How should active goals be sorted in the left column? → A: By end date ascending (soonest deadline first).
+- Q: How should overdue goals display their time status? → A: Display "X days overdue" with specific count (e.g., "2 days overdue").
+- Q: Can a user move a completed goal back to active? → A: Yes, unchecking the checkbox in the completed column moves it back to active.
+- Q: How should completed goals be sorted in the right column? → A: By completion date descending (most recently completed first).
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - View Current and Completed Goals (Priority: P1)
@@ -21,7 +31,8 @@ A user opens the "do it" app and sees a two-column layout. The left column displ
 2. **Given** the user has completed goals, **When** they open the app, **Then** they see each completed goal listed in the right column.
 3. **Given** the user has no goals, **When** they open the app, **Then** they see empty states in both columns with a prompt to add their first goal.
 4. **Given** an active goal has an end date within 3 days, **When** the user views the left column, **Then** that goal is visually highlighted to indicate urgency.
-5. **Given** an active goal's end date has already passed, **When** the user views the left column, **Then** that goal is visually highlighted as overdue.
+5. **Given** an active goal's end date has already passed, **When** the user views the left column, **Then** that goal is visually highlighted as overdue and displays "X days overdue".
+6. **Given** the user has multiple active goals, **When** they view the left column, **Then** goals are sorted by end date ascending (soonest deadline first).
 
 ---
 
@@ -55,6 +66,8 @@ A user has achieved one of their active goals and wants to mark it as complete. 
 
 1. **Given** the user has an active goal, **When** they check the goal's checkbox, **Then** the goal moves from the active column to the completed column.
 2. **Given** the user completes a goal, **When** the goal appears in the completed column, **Then** it displays with a visual indication that it is complete.
+3. **Given** the user has a completed goal, **When** they uncheck the goal's checkbox in the completed column, **Then** the goal moves back to the active column.
+4. **Given** the user has multiple completed goals, **When** they view the completed column, **Then** goals are sorted by completion date descending (most recently completed first).
 
 ---
 
@@ -88,20 +101,23 @@ A user wants to permanently remove a goal they no longer want to track. They can
 - **FR-001**: System MUST display a two-column layout with active goals on the left and completed goals on the right.
 - **FR-002**: Each active goal MUST display the goal title and the number of days remaining until its end date.
 - **FR-003**: Active goals with end dates within 3 days (inclusive) MUST be visually highlighted to indicate urgency.
-- **FR-004**: Active goals that are past their end date MUST be visually highlighted as overdue.
+- **FR-004**: Active goals that are past their end date MUST be visually highlighted as overdue and display "X days overdue" with the specific count.
 - **FR-005**: System MUST provide an "Add Goal" button that opens a modal form.
 - **FR-006**: The new goal modal form MUST include a title field and an end date field, both required.
 - **FR-007**: The modal form MUST validate that the title is not empty and the end date is not in the past before allowing submission.
 - **FR-008**: Each active goal MUST have a checkbox that, when checked, moves the goal to the completed column.
 - **FR-009**: Users MUST be able to permanently delete a goal from either column, with a confirmation step.
-- **FR-010**: System MUST persist goals so they are available when the user returns to the app.
+- **FR-010**: System MUST persist goals using PostgreSQL as the source of truth via Next.js API routes, with localStorage as a client-side cache.
+- **FR-014**: Active goals MUST be sorted by end date ascending (soonest deadline first).
+- **FR-015**: Completed goals MUST be sorted by completion date descending (most recently completed first).
+- **FR-016**: Users MUST be able to uncheck a completed goal's checkbox to move it back to the active column.
 - **FR-011**: System MUST display empty state messaging when there are no active or completed goals.
 - **FR-012**: The app MUST use a modern light theme with pastel colors throughout the interface.
 - **FR-013**: The app MUST be titled "do it" with consistent branding on the page.
 
 ### Key Entities
 
-- **Goal**: Represents a user's objective. Key attributes: title, end date, status (active or completed), creation date.
+- **Goal**: Represents a user's objective. Key attributes: id, title, end date, status (active or completed), creation date, completion date (nullable — set when goal is completed, cleared when moved back to active).
 
 ## Success Criteria *(mandatory)*
 
@@ -117,7 +133,7 @@ A user wants to permanently remove a goal they no longer want to track. They can
 ## Assumptions
 
 - Users access the app through a modern web browser with a screen width of at least 768px (responsive/mobile layout is out of scope for this initial setup).
-- Goal data is persisted using browser local storage for this initial version; server-side storage is out of scope.
+- Goal data is persisted using PostgreSQL via Next.js API routes as the source of truth, with localStorage as a client-side cache for optimistic UI updates.
 - There is a single user per browser instance; multi-user or authentication features are not included.
 - The "days remaining" calculation uses calendar days, not business days.
 - The pastel color theme applies globally; users cannot customize the theme in this version.
