@@ -1,0 +1,340 @@
+╭─── Claude Code v2.1.81 ──────────────────────────────────────────────────────╮
+│                                                    │ Tips for getting        │
+│                Welcome back Raphael!               │ started                 │
+│                                                    │ Run /init to create a … │
+│                       ▐▛███▜▌                      │ ─────────────────────── │
+│                      ▝▜█████▛▘                     │ Recent activity         │
+│                        ▘▘ ▝▝                       │ No recent activity      │
+│  Sonnet 4.6 · Claude Pro · contact@milissai.com's  │                         │
+│  Organization                                      │                         │
+│       ~\Documents\GitHub\doit_speckit-claude       │                         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+❯ /speckit.constitution Declare principles for clean code, simple UX,           
+responsive design, and minimal dependencies, absolutely no testing, no unit     
+tests, no integration tests, no end to end tests. This must supersede any other 
+ guidance. The project must use the Nex.js, React, and Tailwind versions as per 
+ the package.json file                                                          
+
+  Read 3 files (ctrl+o to expand)
+
+● Now let me read the dependent templates for consistency checks.
+
+  Searched for 1 pattern, read 4 files (ctrl+o to expand)
+
+● Now I have everything I need. Let me write the constitution.
+
+● Write(.specify\memory\constitution.md)
+  ⎿  Added 165 lines, removed 35 lines
+        1 -# [PROJECT_NAME] Constitution                                 
+        2 -<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -
+          -->                                                            
+        1 +<!--
+        2 +  Sync Impact Report
+        3 +  ==================
+        4 +  Version change: N/A (new) → 1.0.0
+        5 +  Modified principles: N/A (initial ratification)
+        6 +  Added sections:
+        7 +    - Principle I: Clean Code
+        8 +    - Principle II: Simple UX
+        9 +    - Principle III: Responsive Design
+       10 +    - Principle IV: Minimal Dependencies
+       11 +    - Principle V: No Testing (NON-NEGOTIABLE)
+       12 +    - Technology Stack (Section 2)
+       13 +    - Development Workflow (Section 3)
+       14 +  Removed sections: None
+       15 +  Templates requiring updates:
+       16 +    - .specify/templates/plan-template.md ⚠ pending
+       17 +      (Testing field in Technical Context should default to "N
+          +one —
+       18 +      constitution prohibits tests"; test directory references
+          + in
+       19 +      Project Structure should be removed when generating plan
+          +s)
+       20 +    - .specify/templates/spec-template.md ⚠ pending
+       21 +      (Section title "User Scenarios & Testing" references tes
+          +ting;
+       22 +      "Independent Test" fields reference testing — downstream
+       23 +      commands must omit test-related acceptance criteria)
+       24 +    - .specify/templates/tasks-template.md ⚠ pending
+       25 +      (Test task examples and "Tests for User Story" subsectio
+          +ns
+       26 +      must be omitted when generating tasks; "Verify tests fai
+          +l
+       27 +      before implementing" note must be removed)
+       28 +  Follow-up TODOs: None
+       29 +-->
+       30 
+       31 +# Gemini Constitution
+       32 +
+       33  ## Core Principles
+       34 
+        6 -### [PRINCIPLE_1_NAME]                                        
+        7 -<!-- Example: I. Library-First -->                            
+        8 -[PRINCIPLE_1_DESCRIPTION]                                     
+        9 -<!-- Example: Every feature starts as a standalone library; Li
+          -braries must be self-contained, independently testable, docume
+          -nted; Clear purpose required - no organizational-only librarie
+          -s -->                                                         
+       35 +### I. Clean Code
+       36 
+       11 -### [PRINCIPLE_2_NAME]                                        
+       12 -<!-- Example: II. CLI Interface -->                           
+       13 -[PRINCIPLE_2_DESCRIPTION]                                     
+       14 -<!-- Example: Every library exposes functionality via CLI; Tex
+          -t in/out protocol: stdin/args → stdout, errors → stderr; Suppo
+          -rt JSON + human-readable formats -->                          
+       37 +All code MUST be readable, well-structured, and self-documenti
+          +ng.
+       38 +Specific rules:
+       39 
+       16 -### [PRINCIPLE_3_NAME]                                        
+       17 -<!-- Example: III. Test-First (NON-NEGOTIABLE) -->            
+       18 -[PRINCIPLE_3_DESCRIPTION]                                     
+       19 -<!-- Example: TDD mandatory: Tests written → User approved → T
+          -ests fail → Then implement; Red-Green-Refactor cycle strictly 
+          -enforced -->                                                  
+       40 +- Functions MUST do one thing and do it well.
+       41 +- Names MUST be descriptive and unambiguous — no abbreviations
+       42 +  unless universally understood (e.g., `id`, `url`).
+       43 +- Files MUST have a single, clear responsibility.
+       44 +- Dead code, commented-out code, and unused imports MUST be
+       45 +  removed immediately.
+       46 +- Duplication MUST be eliminated only when three or more
+       47 +  instances exist; premature abstraction is prohibited.
+       48 +- Code MUST pass ESLint with the project's configured rules
+       49 +  before being considered complete.
+       50 
+       21 -### [PRINCIPLE_4_NAME]                                        
+       22 -<!-- Example: IV. Integration Testing -->                     
+       23 -[PRINCIPLE_4_DESCRIPTION]                                     
+       24 -<!-- Example: Focus areas requiring integration tests: New lib
+          -rary contract tests, Contract changes, Inter-service communica
+          -tion, Shared schemas -->                                      
+       51 +### II. Simple UX
+       52 
+       26 -### [PRINCIPLE_5_NAME]                                        
+       27 -<!-- Example: V. Observability, VI. Versioning & Breaking Chan
+          -ges, VII. Simplicity -->                                      
+       28 -[PRINCIPLE_5_DESCRIPTION]                                     
+       29 -<!-- Example: Text I/O ensures debuggability; Structured loggi
+          -ng required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, Y
+          -AGNI principles -->                                           
+       53 +Every user-facing feature MUST prioritize clarity and ease of
+          +use
+       54 +over feature richness.
+       55 
+       31 -## [SECTION_2_NAME]                                           
+       32 -<!-- Example: Additional Constraints, Security Requirements, P
+          -erformance Standards, etc. -->                                
+       56 +- Interfaces MUST be intuitive enough that no documentation is
+       57 +  needed for core workflows.
+       58 +- Each screen or component MUST have a single primary action t
+          +hat
+       59 +  is visually dominant.
+       60 +- Loading states, empty states, and error states MUST be handl
+          +ed
+       61 +  explicitly in every user-facing component.
+       62 +- Navigation MUST be shallow — no more than two levels deep fr
+          +om
+       63 +  any entry point.
+       64 +- Visual noise MUST be minimized: whitespace is preferred over
+       65 +  borders, dividers, and decorations.
+       66 
+       34 -[SECTION_2_CONTENT]                                           
+       35 -<!-- Example: Technology stack requirements, compliance standa
+          -rds, deployment policies, etc. -->                            
+       67 +### III. Responsive Design
+       68 
+       37 -## [SECTION_3_NAME]                                           
+       38 -<!-- Example: Development Workflow, Review Process, Quality Ga
+          -tes, etc. -->                                                 
+       69 +All pages and components MUST render correctly across mobile,
+       70 +tablet, and desktop viewports.
+       71 
+       40 -[SECTION_3_CONTENT]                                           
+       41 -<!-- Example: Code review requirements, testing gates, deploym
+          -ent approval process, etc. -->                                
+       72 +- Layouts MUST use Tailwind CSS utility classes with a
+       73 +  mobile-first approach (`sm:`, `md:`, `lg:` breakpoints).
+       74 +- Touch targets MUST be at least 44x44 CSS pixels on mobile.
+       75 +- Typography MUST scale fluidly — no fixed pixel font sizes fo
+          +r
+       76 +  body text.
+       77 +- Images and media MUST be responsive and never overflow their
+       78 +  containers.
+       79 +- Every page MUST be visually verified at 320px, 768px, and
+       80 +  1280px widths before being considered complete.
+       81 
+       82 +### IV. Minimal Dependencies
+       83 +
+       84 +The project MUST keep its dependency footprint as small as
+       85 +possible.
+       86 +
+       87 +- New `npm` packages MUST NOT be added without explicit
+       88 +  justification that the functionality cannot be achieved with
+       89 +  Next.js, React, or Tailwind CSS built-in capabilities.
+       90 +- The core stack is fixed: **Next.js ^16.2.0**, **React ^19.2.
+          +4**,
+       91 +  **Tailwind CSS ^4**, and **TypeScript ^5**. These are the on
+          +ly
+       92 +  runtime and styling dependencies permitted by default.
+       93 +- Utility libraries (e.g., lodash, moment) are prohibited when
+       94 +  native JavaScript or existing framework APIs suffice.
+       95 +- Every dependency MUST be reviewed for bundle size impact bef
+          +ore
+       96 +  adoption.
+       97 +- DevDependencies for linting and type-checking are permitted
+          +but
+       98 +  MUST be kept to the minimum necessary set.
+       99 +
+      100 +### V. No Testing (NON-NEGOTIABLE)
+      101 +
+      102 +**This principle supersedes all other guidance, templates, and
+      103 +tooling defaults.**
+      104 +
+      105 +- The project MUST NOT contain unit tests, integration tests,
+      106 +  end-to-end tests, contract tests, or any other form of
+      107 +  automated test.
+      108 +- No test runner, test framework, or test utility (e.g., Jest,
+      109 +  Vitest, Playwright, Cypress, Testing Library) MUST be instal
+          +led
+      110 +  as a dependency.
+      111 +- No `tests/`, `__tests__/`, `*.test.*`, or `*.spec.*` files o
+          +r
+      112 +  directories MUST exist in the repository.
+      113 +- Task generation and planning tools MUST omit all test-relate
+          +d
+      114 +  tasks, phases, and checkpoints.
+      115 +- Code review and quality assurance rely on ESLint, TypeScript
+      116 +  type-checking, and manual verification only.
+      117 +
+      118 +## Technology Stack
+      119 +
+      120 +The following technology versions are mandated by this
+      121 +constitution and MUST NOT be changed without a constitutional
+      122 +amendment:
+      123 +
+      124 +| Technology   | Version   | Purpose              |
+      125 +|--------------|-----------|----------------------|
+      126 +| Next.js      | ^16.2.0   | Application framework|
+      127 +| React        | ^19.2.4   | UI library           |
+      128 +| React DOM    | ^19.2.4   | DOM rendering        |
+      129 +| Tailwind CSS | ^4        | Styling              |
+      130 +| TypeScript   | ^5        | Type safety          |
+      131 +| ESLint       | ^9        | Code quality         |
+      132 +
+      133 +Additional constraints:
+      134 +
+      135 +- The Next.js App Router MUST be used (no Pages Router).
+      136 +- Server Components MUST be the default; Client Components
+      137 +  (`"use client"`) are permitted only when browser APIs or
+      138 +  interactivity require them.
+      139 +- Tailwind MUST be the sole styling mechanism — no CSS modules
+          +,
+      140 +  styled-components, or inline style objects unless Tailwind
+      141 +  cannot express the requirement.
+      142 +
+      143 +## Development Workflow
+      144 +
+      145 +Quality gates and workflow rules for all contributors:
+      146 +
+      147 +1. **Lint before commit**: All code MUST pass `eslint` with ze
+          +ro
+      148 +   errors before being committed.
+      149 +2. **Type-check before commit**: `tsc --noEmit` MUST pass with
+      150 +   zero errors.
+      151 +3. **Manual verification**: Every user-facing change MUST be
+      152 +   manually verified at mobile (320px), tablet (768px), and
+      153 +   desktop (1280px) viewports.
+      154 +4. **Dependency review**: Any new dependency addition MUST be
+      155 +   justified in the commit message or PR description.
+      156 +5. **No test artifacts**: Commits MUST NOT introduce test file
+          +s,
+      157 +   test configurations, or test dependencies. If a template or
+      158 +   tool generates test artifacts, they MUST be removed before
+      159 +   committing.
+      160 +
+      161  ## Governance
+       44 -<!-- Example: Constitution supersedes all other practices; Ame
+          -ndments require documentation, approval, migration plan -->   
+      162 
+       46 -[GOVERNANCE_RULES]                                            
+       47 -<!-- Example: All PRs/reviews must verify compliance; Complexi
+          -ty must be justified; Use [GUIDANCE_FILE] for runtime developm
+          -ent guidance -->                                              
+      163 +This constitution is the supreme governing document for the
+      164 +Gemini project. All development practices, tooling defaults,
+      165 +and template outputs MUST comply with its principles.
+      166 
+       49 -**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICAT
+          -ION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]             
+       50 -<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Ame
+          -nded: 2025-07-16 -->                                          
+      167 +- **Supremacy**: Where any template, tool, or external guidanc
+          +e
+      168 +  conflicts with this constitution, the constitution prevails.
+      169 +- **Amendments**: Changes require updating this document,
+      170 +  incrementing the version per semantic versioning, recording
+          +the
+      171 +  amendment date, and propagating changes to all dependent
+      172 +  templates.
+      173 +- **Versioning policy**: MAJOR for principle removals or
+      174 +  redefinitions; MINOR for new principles or material expansio
+          +ns;
+      175 +  PATCH for clarifications and wording fixes.
+      176 +- **Compliance review**: All PRs and code reviews MUST verify
+      177 +  adherence to constitutional principles. Non-compliance MUST
+          +be
+      178 +  flagged and resolved before merge.
+      179 +
+      180 +**Version**: 1.0.0 | **Ratified**: 2026-03-24 | **Last Amended
+          +**: 2026-03-24
+
+● Constitution written. Now let me save a memory about the no-testing policy
+  since it's a strong user preference that supersedes defaults.
+
+  Searched for 1 pattern, read 1 file, wrote 3 memories (ctrl+o to expand)
+
+● Constitution created at .specify/memory/constitution.md.
+
+  Version: 1.0.0 (initial ratification — MAJOR bump for new document)
+
+  Five principles declared:
+
+  ┌─────┬──────────────────────┬────────────────────────────────────────────┐
+  │  #  │      Principle       │                  Key Rule                  │
+  ├─────┼──────────────────────┼────────────────────────────────────────────┤
+  │ I   │ Clean Code           │ Single-responsibility, descriptive names,  │
+  │     │                      │ no dead code, ESLint compliance            │
+  ├─────┼──────────────────────┼────────────────────────────────────────────┤
+  │ II  │ Simple UX            │ Intuitive interfaces, single primary       │
+  │     │                      │ action per screen, shallow navigation      │
+  ├─────┼──────────────────────┼────────────────────────────────────────────┤
+  │ III │ Responsive Design    │ Mobile-first Tailwind, 320/768/1280px      │
+  │     │                      │ verification, fluid typography             │
+  ├─────┼──────────────────────┼────────────────────────────────────────────┤
+  │ IV  │ Minimal Dependencies │ Fixed stack (Next.js 16, React 19,         │
+  │     │                      │ Tailwind 4, TS 5), no unnecessary packages │
+  ├─────┼──────────────────────┼────────────────────────────────────────────┤
+  │ V   │ No Testing           │ Zero tests of any kind — supersedes all    │
+  │     │ (NON-NEGOTIABLE)     │ templates and tooling defaults             │
+  └─────┴──────────────────────┴────────────────────────────────────────────┘
+
+  Templates flagged for downstream adjustment (noted in Sync Impact Report at
+  top of constitution):
+  - plan-template.md — Testing field and test directory references
+  - spec-template.md — "User Scenarios & Testing" header, "Independent Test"
+  fields
+  - tasks-template.md — Test task examples, test phases, "verify tests fail"
+  notes
+
+  These templates are not modified directly (they're reusable scaffolds), but
+  the commands that consume them (/speckit.plan, /speckit.tasks,
+  /speckit.specify) will respect the constitution and omit test artifacts at
+  generation time.
+
+  Suggested commit message:
+  docs: ratify project constitution v1.0.0 (5 principles, no-testing mandate)
+
+✻ Churned for 1m 32s
