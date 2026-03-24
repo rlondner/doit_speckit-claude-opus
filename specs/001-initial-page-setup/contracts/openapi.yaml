@@ -1,0 +1,177 @@
+openapi: 3.1.0
+info:
+  title: Do It - Goal Tracker API
+  description: REST API for the "do it" goal tracking application
+  version: 1.0.0
+
+servers:
+  - url: /api
+    description: Next.js API routes
+
+paths:
+  /goals:
+    get:
+      summary: List all goals
+      description: Returns all goals grouped by status, with computed urgency for active goals
+      operationId: listGoals
+      parameters:
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum: [active, completed]
+          description: Filter by goal status
+      responses:
+        "200":
+          description: List of goals
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [goals]
+                properties:
+                  goals:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/GoalWithUrgency"
+
+    post:
+      summary: Create a new goal
+      description: Creates an active goal with the given title and end date
+      operationId: createGoal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateGoalInput"
+      responses:
+        "201":
+          description: Goal created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Goal"
+        "400":
+          description: Validation error (empty title or past end date)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /goals/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+        description: Goal UUID
+
+    patch:
+      summary: Update a goal
+      description: Mark an active goal as completed
+      operationId: updateGoal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status]
+              properties:
+                status:
+                  type: string
+                  enum: [completed]
+      responses:
+        "200":
+          description: Goal updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Goal"
+        "404":
+          description: Goal not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      summary: Delete a goal permanently
+      description: Permanently removes a goal from the database
+      operationId: deleteGoal
+      responses:
+        "204":
+          description: Goal deleted successfully
+        "404":
+          description: Goal not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  schemas:
+    Goal:
+      type: object
+      required: [id, title, endDate, status, createdAt]
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+          minLength: 1
+          maxLength: 255
+        endDate:
+          type: string
+          format: date
+          description: Target completion date (YYYY-MM-DD)
+        status:
+          type: string
+          enum: [active, completed]
+        createdAt:
+          type: string
+          format: date-time
+        completedAt:
+          type: string
+          format: date-time
+          nullable: true
+
+    GoalWithUrgency:
+      allOf:
+        - $ref: "#/components/schemas/Goal"
+        - type: object
+          required: [daysRemaining, urgency]
+          properties:
+            daysRemaining:
+              type: integer
+              description: Calendar days until end date (negative if overdue)
+            urgency:
+              type: string
+              enum: [normal, urgent, overdue]
+              description: "normal: >3 days, urgent: 0-3 days, overdue: past end date"
+
+    CreateGoalInput:
+      type: object
+      required: [title, endDate]
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 255
+        endDate:
+          type: string
+          format: date
+          description: Must not be in the past
+
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+          description: Human-readable error message
