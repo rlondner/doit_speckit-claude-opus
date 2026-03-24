@@ -79,7 +79,9 @@ components/
 └── delete-confirm-dialog.tsx   # Confirmation dialog for goal deletion
 lib/
 ├── db.ts                       # PostgreSQL connection pool
+├── schema.sql                  # SQL schema with goals table and indexes
 ├── goals.ts                    # Goal CRUD operations (DB queries)
+├── dates.ts                    # Date helpers (daysRemaining, urgency)
 ├── cache.ts                    # localStorage cache helpers
 └── types.ts                    # Goal type definitions
 public/

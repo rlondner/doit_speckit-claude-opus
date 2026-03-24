@@ -41,7 +41,7 @@ CREATE INDEX idx_goals_end_date ON goals (end_date) WHERE status = 'active';
 |------|--------|-------------|
 | Title must not be empty | FR-006 | DB CHECK + client-side form validation |
 | End date must not be in the past (on creation) | FR-007 | API route validation (not DB — allows existing goals to age) |
-| Status transitions: `active` → `completed` only | FR-008 | API route logic |
+| Status transitions: `active` ↔ `completed` (bidirectional) | FR-008, FR-016 | API route logic |
 | Title max 255 characters | Edge case (long titles) | DB VARCHAR + client-side |
 
 ## State Transitions

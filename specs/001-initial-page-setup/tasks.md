@@ -24,6 +24,8 @@
 - [ ] T003 [P] Configure Tailwind CSS v4 pastel theme with @theme directive in app/globals.css (pastel-pink, pastel-lavender, pastel-mint, pastel-peach, pastel-sky, pastel-cream tokens)
 - [ ] T004 [P] Create root layout with "do it" branding in app/layout.tsx
 - [ ] T005 [P] Create .env.local.example with DATABASE_URL template for PostgreSQL connection
+- [ ] T005a [P] Configure ESLint with Next.js recommended rules and verify `eslint --max-warnings 0` passes on empty project
+- [ ] T005b [P] Configure Tailwind responsive breakpoints (md:768px, lg:1280px) and verify base layout scales correctly in app/globals.css and app/layout.tsx
 
 ---
 
@@ -118,6 +120,7 @@
 - [ ] T027 [P] Create Swagger UI page (client component) loading spec from /api/openapi.json in app/swagger/page.tsx
 - [ ] T028 Handle edge cases: long title truncation/wrapping in GoalCard, independent column scrolling in GoalList, "0 days left" display for today's date in components/goal-card.tsx and components/goal-list.tsx
 - [ ] T029 Run quickstart.md validation — verify full setup flow works end-to-end
+- [ ] T030 Manual viewport verification — check all pages at 768px and 1280px widths per constitution Development Workflow §3 (320px excluded per spec scope assumption)
 
 ---
 
