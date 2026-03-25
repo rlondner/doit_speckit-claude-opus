@@ -1,0 +1,1129 @@
+ ▐▛███▜▌   Claude Code v2.1.83
+▝▜█████▛▘  Sonnet 4.6 · Claude Pro
+  ▘▘ ▝▝    ~\Documents\GitHub\doit_speckit-claude
+
+❯ /login                                                                        
+  ⎿  Login successful
+
+❯ /speckit.specify ui-enhancement - enhance the look and feel of the UI by      
+using Google Stitch DESIGN.md and mockups available in the ./design/orange      
+folder                                                                          
+
+● I'll start by checking for extension hooks and reading the necessary files in
+  parallel.
+
+  Searched for 5 patterns (ctrl+o to expand)
+
+● No extension hooks file found. Let me read the init options, spec template,
+  design files, and mockup screenshots in parallel.
+
+  Read 7 files (ctrl+o to expand)
+
+● Now let me look at the current app UI to understand what exists today.
+
+● Explore(Explore current app UI components)
+  ⎿  Done (14 tool uses · 33.0k tokens · 27s)
+  (ctrl+o to expand)
+
+● Now let me create the feature branch.
+
+● Bash(powershell -File .specify/scripts/powershell/create-new-feature.ps1
+      "ui-enhancement - enhance the look and feel of the UI by using Google
+      Stitch DESIGN.md and m…)
+  ⎿  {
+       "BRANCH_NAME": "002-ui-enhancement",
+       "SPEC_FILE": "C:\\Users\\rlond\\Documents\\GitHub\\doit_speckit-clau
+     … +4 lines (ctrl+o to expand)
+
+● Branch 002-ui-enhancement created. Now let me write the specification.
+
+  Read 1 file (ctrl+o to expand)
+
+● Write(specs\002-ui-enhancement\spec.md)
+  ⎿  Error writing file
+
+  Read 1 file (ctrl+o to expand)
+
+● Write(specs\002-ui-enhancement\spec.md)
+  ⎿  Added 61 lines, removed 80 lines
+        1 -# Feature Specification: [FEATURE NAME]                       
+        1 +# Feature Specification: UI Enhancement with Orange Design Sys
+          +tem
+        2 
+        3 -**Feature Branch**: `[###-feature-name]`                      
+        4 -**Created**: [DATE]                                           
+        5 -**Status**: Draft                                             
+        6 -**Input**: User description: "$ARGUMENTS"                     
+        3 +**Feature Branch**: `002-ui-enhancement`
+        4 +**Created**: 2026-03-25
+        5 +**Status**: Draft
+        6 +**Input**: User description: "ui-enhancement - enhance the loo
+          +k and feel of the UI by using Google Stitch DESIGN.md and mock
+          +ups available in the ./design/orange folder"
+        7 
+        8  ## User Scenarios & Testing *(mandatory)*
+        9 
+       10 -<!--                                                          
+       11 -  IMPORTANT: User stories should be PRIORITIZED as user journe
+          -ys ordered by importance.                                     
+       12 -  Each user story/journey must be INDEPENDENTLY TESTABLE - mea
+          -ning if you implement just ONE of them,                       
+       13 -  you should still have a viable MVP (Minimum Viable Product) 
+          -that delivers value.                                          
+       14 -                                                              
+       15 -  Assign priorities (P1, P2, P3, etc.) to each story, where P1
+          - is the most critical.                                        
+       16 -  Think of each story as a standalone slice of functionality t
+          -hat can be:                                                   
+       17 -  - Developed independently                                   
+       18 -  - Tested independently                                      
+       19 -  - Deployed independently                                    
+       20 -  - Demonstrated to users independently                       
+       21 --->                                                           
+       10 +### User Story 1 - Refreshed Dashboard Experience (Priority: P
+          +1)
+       11 
+       23 -### User Story 1 - [Brief Title] (Priority: P1)               
+       12 +As a user, I want to see a visually polished dashboard that fo
+          +llows the "Radiant Catalyst" orange design system so that the
+          +goal-tracking experience feels modern, warm, and motivating ra
+          +ther than generic.
+       13 
+       25 -[Describe this user journey in plain language]                
+       14 +**Why this priority**: The dashboard is the primary screen use
+          +rs interact with every session. Updating its visual language t
+          +o the orange design system establishes the new brand identity
+          +and delivers the most visible impact.
+       15 
+       27 -**Why this priority**: [Explain the value and why it has this 
+          -priority level]                                               
+       16 +**Independent Test**: Can be fully tested by opening the dashb
+          +oard and verifying that the layout, colors, typography, and co
+          +mponent styling match the orange design mockup (do_it_dashboar
+          +d). Delivers a cohesive, premium visual experience on the main
+          + screen.
+       17 
+       29 -**Independent Test**: [Describe how this can be tested indepen
+          -dently - e.g., "Can be fully tested by [specific action] and d
+          -elivers [specific value]"]                                    
+       30 -                                                              
+       18  **Acceptance Scenarios**:
+       19 
+       33 -1. **Given** [initial state], **When** [action], **Then** [exp
+          -ected outcome]                                                
+       34 -2. **Given** [initial state], **When** [action], **Then** [exp
+          -ected outcome]                                                
+       20 +1. **Given** a user navigates to the dashboard, **When** the p
+          +age loads, **Then** the header displays the "Do It" brand in t
+          +he coral-orange accent color with navigation links styled per
+          +the design mockup
+       21 +2. **Given** a user views the dashboard, **When** they see the
+          + greeting section, **Then** it uses Plus Jakarta Sans for head
+          +lines and Inter for body text, with the warm orange background
+          + palette
+       22 +3. **Given** a user views active goals, **When** goals are dis
+          +played, **Then** each goal card uses rounded corners, the oran
+          +ge design color tokens, hover interactions (translate-x shift)
+          +, and urgency badges with appropriate color coding
+       23 +4. **Given** a user views the dashboard, **When** they look at
+          + the "Add New Goal" button, **Then** it appears as a pill-shap
+          +ed button with the coral-orange gradient, white text, and a ti
+          +nted shadow
+       24 +5. **Given** a user views the sidebar, **When** the "Recently
+          +Completed" section is visible, **Then** completed goals show w
+          +ith coral-orange check icons, strikethrough text, and the side
+          +bar uses the light grey-blue background with a rounded contain
+          +er
+       25 
+       26  ---
+       27 
+       38 -### User Story 2 - [Brief Title] (Priority: P2)               
+       28 +### User Story 2 - Redesigned Add New Goal Modal (Priority: P2
+          +)
+       29 
+       40 -[Describe this user journey in plain language]                
+       30 +As a user, I want the "Add New Goal" modal to feature a vibran
+          +t orange gradient header, refined input fields, and focus area
+          + chips so that creating a new goal feels inspiring and visuall
+          +y distinct from the standard form experience.
+       31 
+       42 -**Why this priority**: [Explain the value and why it has this 
+          -priority level]                                               
+       32 +**Why this priority**: Goal creation is the core action in the
+          + app. A polished modal with the orange gradient header ("Ignit
+          +e a New Path"), improved input styling, and focus area selecti
+          +on elevates the experience for the most frequent user action.
+       33 
+       44 -**Independent Test**: [Describe how this can be tested indepen
+          -dently]                                                       
+       34 +**Independent Test**: Can be fully tested by clicking "Add New
+          + Goal" and verifying the modal matches the add_new_goal_modal_
+          +orange mockup -- gradient header, styled inputs, focus area ch
+          +ips, and pill-shaped CTA button.
+       35 
+       36  **Acceptance Scenarios**:
+       37 
+       48 -1. **Given** [initial state], **When** [action], **Then** [exp
+          -ected outcome]                                                
+       38 +1. **Given** a user clicks "Add New Goal", **When** the modal
+          +opens, **Then** it displays a warm orange gradient header with
+          + the title "Ignite a New Path" and a descriptive subtitle in w
+          +hite text
+       39 +2. **Given** the modal is open, **When** the user views the fo
+          +rm fields, **Then** the "Goal Title" input uses a borderless s
+          +tyle with a warm surface background, rounded corners, and tran
+          +sitions to a focused state with a primary color ring
+       40 +3. **Given** the modal is open, **When** the user views the fo
+          +rm, **Then** "End Date" and "Focus Area" fields are displayed
+          +in a two-column layout, with Focus Area offering pill-shaped s
+          +electable chips (e.g., "Professional", "Personal")
+       41 +4. **Given** the modal is open, **When** the user looks at the
+          + action buttons, **Then** "Cancel" is a ghost-style text butto
+          +n and "Create Goal" is a pill-shaped button with the orange gr
+          +adient and tinted shadow
+       42 +5. **Given** the modal is open, **When** a backdrop blur overl
+          +ay is visible behind the modal, **Then** the background is dim
+          +med with a glassmorphism effect (blurred, semi-transparent ove
+          +rlay)
+       43 
+       44  ---
+       45 
+       52 -### User Story 3 - [Brief Title] (Priority: P3)               
+       46 +### User Story 3 - Consistent Typography and Color Token Syste
+          +m (Priority: P3)
+       47 
+       54 -[Describe this user journey in plain language]                
+       48 +As a user, I want all text and UI elements to use a consistent
+          +, warm color palette and editorial typography so that the enti
+          +re application feels cohesive and professionally designed.
+       49 
+       56 -**Why this priority**: [Explain the value and why it has this 
+          -priority level]                                               
+       50 +**Why this priority**: Consistent design tokens across all scr
+          +eens prevent visual fragmentation. This ensures the new orange
+          + design language applies uniformly, not just to individual com
+          +ponents.
+       51 
+       58 -**Independent Test**: [Describe how this can be tested indepen
+          -dently]                                                       
+       52 +**Independent Test**: Can be fully tested by navigating throug
+          +h all pages and verifying that typography (Plus Jakarta Sans f
+          +or headlines, Inter for body), color tokens (warm orange palet
+          +te), and spacing follow the DESIGN.md guidelines consistently.
+       53 
+       54  **Acceptance Scenarios**:
+       55 
+       62 -1. **Given** [initial state], **When** [action], **Then** [exp
+          -ected outcome]                                                
+       56 +1. **Given** any page in the application, **When** rendered, *
+          +*Then** all headline text uses Plus Jakarta Sans with tight tr
+          +acking and all body/label text uses Inter with generous line-h
+          +eight
+       57 +2. **Given** any page in the application, **When** rendered, *
+          +*Then** text colors use warm dark tones for primary text and m
+          +uted variants for secondary text -- never pure black
+       58 +3. **Given** any interactive element, **When** rendered, **The
+          +n** pill-shaped (fully rounded) styling is used for all button
+          +s and chips, following the "Pill Standard" from the design sys
+          +tem
+       59 +4. **Given** any card or container, **When** rendered, **Then*
+          +* boundaries are defined through background color shifts (surf
+          +ace hierarchy) rather than visible borders, following the "No-
+          +Line Rule"
+       60 
+       61  ---
+       62 
+       66 -[Add more user stories as needed, each with an assigned priori
+          -ty]                                                           
+       67 -                                                              
+       63  ### Edge Cases
+       64 
+       70 -<!--                                                          
+       71 -  ACTION REQUIRED: The content in this section represents plac
+          -eholders.                                                     
+       72 -  Fill them out with the right edge cases.                    
+       73 --->                                                           
+       65 +- What happens when the user has no active goals? The dashboar
+          +d should still render the greeting, empty state messaging, and
+          + the "Add New Goal" button in the new design language
+       66 +- How does the UI appear on mobile viewports? The two-column d
+          +ashboard layout should collapse to a single column, and the mo
+          +dal should adapt to smaller screens while maintaining the oran
+          +ge design aesthetic
+       67 +- What happens with very long goal titles? Text should truncat
+          +e with ellipsis rather than breaking the card layout
+       68 +- How do urgency states (overdue, due soon, normal) visually d
+          +iffer? Each state should use distinct color treatments from th
+          +e design token palette while remaining accessible
+       69 
+       75 -- What happens when [boundary condition]?                     
+       76 -- How does system handle [error scenario]?                    
+       77 -                                                              
+       70  ## Requirements *(mandatory)*
+       71 
+       80 -<!--                                                          
+       81 -  ACTION REQUIRED: The content in this section represents plac
+          -eholders.                                                     
+       82 -  Fill them out with the right functional requirements.       
+       83 --->                                                           
+       84 -                                                              
+       72  ### Functional Requirements
+       73 
+       87 -- **FR-001**: System MUST [specific capability, e.g., "allow u
+          -sers to create accounts"]                                     
+       88 -- **FR-002**: System MUST [specific capability, e.g., "validat
+          -e email addresses"]                                           
+       89 -- **FR-003**: Users MUST be able to [key interaction, e.g., "r
+          -eset their password"]                                         
+       90 -- **FR-004**: System MUST [data requirement, e.g., "persist us
+          -er preferences"]                                              
+       91 -- **FR-005**: System MUST [behavior, e.g., "log all security e
+          -vents"]                                                       
+       74 +- **FR-001**: System MUST apply the warm orange/coral color pa
+          +lette across all dashboard components, replacing the current p
+          +astel color scheme
+       75 +- **FR-002**: System MUST use Plus Jakarta Sans as the headlin
+          +e/display font and Inter as the body/label font throughout the
+          + application
+       76 +- **FR-003**: System MUST render all primary action buttons as
+          + pill-shaped elements with the coral-orange gradient and tinte
+          +d shadows
+       77 +- **FR-004**: System MUST display the "Add New Goal" modal wit
+          +h an orange gradient header, glassmorphism backdrop, borderles
+          +s input fields, focus area chip selectors, and pill-shaped act
+          +ion buttons matching the design mockup
+       78 +- **FR-005**: System MUST implement surface hierarchy using ba
+          +ckground color shifts instead of visible borders for section b
+          +oundaries
+       79 +- **FR-006**: System MUST display goal cards with rounded corn
+          +ers, hover translate interactions, and urgency-based color cod
+          +ing using the orange design token palette
+       80 +- **FR-007**: System MUST render the "Recently Completed" side
+          +bar with coral-orange check icons, a light grey-blue backgroun
+          +d container, and a "Pro Tip" card with decorative icon
+       81 +- **FR-008**: System MUST apply tinted ambient shadows using p
+          +rimary color tint instead of standard black drop shadows on fl
+          +oating elements
+       82 +- **FR-009**: System MUST maintain a sticky header with the "D
+          +o It" brand in coral-orange, navigation links with active indi
+          +cator, and notification/settings/profile icons
+       83 +- **FR-010**: System MUST ensure responsive layout where the d
+          +ashboard collapses from a multi-column grid to a single column
+          + on mobile viewports
+       84 
+       93 -*Example of marking unclear requirements:*                    
+       85 +### Key Entities
+       86 
+       95 -- **FR-006**: System MUST authenticate users via [NEEDS CLARIF
+          -ICATION: auth method not specified - email/password, SSO, OAut
+          -h?]                                                           
+       96 -- **FR-007**: System MUST retain user data for [NEEDS CLARIFIC
+          -ATION: retention period not specified]                        
+       87 +- **Design Token Set**: The complete color, typography, spacin
+          +g, and elevation token system derived from the orange DESIGN.m
+          +d and mockup files, defining the visual language for all UI co
+          +mponents
+       88 +- **Goal Card**: The visual representation of an active goal,
+          +incorporating urgency states, progress indicators, and interac
+          +tive behaviors styled per the new design system
+       89 +- **Goal Creation Modal**: The overlay dialog for creating new
+          + goals, featuring a gradient header, structured form inputs, f
+          +ocus area chips, and glassmorphism effects
+       90 
+       98 -### Key Entities *(include if feature involves data)*         
+       99 -                                                              
+      100 -- **[Entity 1]**: [What it represents, key attributes without 
+          -implementation]                                               
+      101 -- **[Entity 2]**: [What it represents, relationships to other 
+          -entities]                                                     
+      102 -                                                              
+       91  ## Success Criteria *(mandatory)*
+       92 
+      105 -<!--                                                          
+      106 -  ACTION REQUIRED: Define measurable success criteria.        
+      107 -  These must be technology-agnostic and measurable.           
+      108 --->                                                           
+      109 -                                                              
+       93  ### Measurable Outcomes
+       94 
+      112 -- **SC-001**: [Measurable metric, e.g., "Users can complete ac
+          -count creation in under 2 minutes"]                           
+      113 -- **SC-002**: [Measurable metric, e.g., "System handles 1000 c
+          -oncurrent users without degradation"]                         
+      114 -- **SC-003**: [User satisfaction metric, e.g., "90% of users s
+          -uccessfully complete primary task on first attempt"]          
+      115 -- **SC-004**: [Business metric, e.g., "Reduce support tickets 
+          -related to [X] by 50%"]                                       
+       95 +- **SC-001**: All dashboard components visually match the desi
+          +gn mockups in the ./design/orange folder when compared side-by
+          +-side at desktop viewport widths
+       96 +- **SC-002**: Users can identify the brand and navigate the da
+          +shboard within 3 seconds of page load, with the new design not
+          + introducing any layout shift or rendering delay
+       97 +- **SC-003**: The "Add New Goal" modal opens with the gradient
+          + header, styled inputs, and focus area chips, and users can co
+          +mplete goal creation without any confusion caused by the redes
+          +ign
+       98 +- **SC-004**: No pure black text or standard visible borders a
+          +ppear anywhere in the rendered UI, validating adherence to the
+          + "No-Line Rule" and soft contrast guidelines
+       99 +- **SC-005**: All interactive elements (buttons, chips, checkb
+          +oxes) use pill-shaped or rounded styling with smooth hover/act
+          +ive transitions, providing tactile feedback to users
+      100 +- **SC-006**: The application renders correctly and maintains
+          +usability on viewports from 320px to 1920px wide
+      101 
+      102  ## Assumptions
+      103 
+      119 -<!--                                                          
+      120 -  ACTION REQUIRED: The content in this section represents plac
+          -eholders.                                                     
+      121 -  Fill them out with the right assumptions based on reasonable
+          - defaults                                                     
+      122 -  chosen when the feature description did not specify certain 
+          -details.                                                      
+      123 --->                                                           
+      124 -                                                              
+      125 -- [Assumption about target users, e.g., "Users have stable int
+          -ernet connectivity"]                                          
+      126 -- [Assumption about scope boundaries, e.g., "Mobile support is
+          - out of scope for v1"]                                        
+      127 -- [Assumption about data/environment, e.g., "Existing authenti
+          -cation system will be reused"]                                
+      128 -- [Dependency on existing system/service, e.g., "Requires acce
+          -ss to the existing user profile API"]                         
+      104 +- The existing application structure (pages, components, API r
+          +outes) will be preserved; only the visual layer is being updat
+          +ed
+      105 +- The Google Fonts (Plus Jakarta Sans, Inter) and Material Sym
+          +bols icon font are acceptable external dependencies
+      106 +- The orange design system from ./design/orange is the authori
+          +tative visual reference, taking precedence over the existing p
+          +astel color scheme and the green design variant
+      107 +- The "Focus Area" chip selector in the modal is a visual/UI e
+          +nhancement; backend storage for focus area data will be addres
+          +sed in a separate feature if not already supported
+      108 +- Accessibility requirements (contrast ratios, focus indicator
+          +s) must still be met with the new color palette
+      109 +- The "Recently Completed" sidebar, "Pro Tip" card, and notifi
+          +cation/settings icons shown in the mockup represent the target
+          + UI state, even if some backing functionality does not yet exi
+          +st
+
+● Now let me create the quality checklist and validate the spec.
+
+● Bash(mkdir -p "C:/Users/rlond/Documents/GitHub/doit_speckit-claude/specs/002-u
+      i-enhancement/checklists")
+  ⎿  Done
+
+● Write(specs\002-ui-enhancement\checklists\requirements.md)
+  ⎿  Wrote 36 lines to specs\002-ui-enhancement\checklists\requirements.md
+       1 # Specification Quality Checklist: UI Enhancement with Orange De
+         sign System
+       2 
+       3 **Purpose**: Validate specification completeness and quality bef
+         ore proceeding to planning
+       4 **Created**: 2026-03-25
+       5 **Feature**: [spec.md](../spec.md)
+       6 
+       7 ## Content Quality
+       8 
+       9 - [x] No implementation details (languages, frameworks, APIs)
+      10 - [x] Focused on user value and business needs
+     … +26 lines (ctrl+o to expand)
+
+● All checklist items pass. No extension hooks file exists, so skipping
+  post-hooks.
+
+  ---
+  Specification Complete
+
+  Branch: 002-ui-enhancement
+  Spec file: specs/002-ui-enhancement/spec.md
+  Checklist: specs/002-ui-enhancement/checklists/requirements.md -- all items
+  pass
+
+  Summary
+
+  The spec covers 3 user stories prioritized by visual impact:
+  1. P1 - Refreshed Dashboard -- full dashboard reskin with orange design
+  tokens, coral-orange accents, Plus Jakarta Sans/Inter typography, pill
+  buttons, surface hierarchy
+  2. P2 - Redesigned Add Goal Modal -- gradient header ("Ignite a New Path"),
+  glassmorphism backdrop, focus area chips, borderless inputs
+  3. P3 - Consistent Token System -- no-line rule, tinted shadows, consistent
+  typography and color application across all screens
+
+  The spec references both design mockups (dashboard + modal screenshots) and
+  the DESIGN.md guidelines as the authoritative visual targets.
+
+  Next Steps
+
+  - Run /speckit.clarify to refine any underspecified areas
+  - Or run /speckit.plan to generate the implementation plan
+
+✻ Brewed for 3m 38s
+
+❯ /export 09_speckit.specify_002-chat.md                                        
+  ⎿  Conversation exported to: C:\Users\rlond\Documents\GitHub\doit_speckit-clau
+     de\09_speckit.specify_002-chat.txt
+
+❯ /speckit.clarify                                                              
+
+● Bash(powershell -File .specify/scripts/powershell/check-prerequisites.ps1
+      -Json -PathsOnly)
+  ⎿  {
+       "REPO_ROOT": "C:\\Users\\rlond\\Documents\\GitHub\\doit_speckit-clau
+     de",
+     … +10 lines (ctrl+o to expand)
+
+  Read 1 file (ctrl+o to expand)
+
+● I've completed the ambiguity scan across all taxonomy categories. Most areas
+  are well-covered for a UI enhancement spec. I identified 2 material 
+  ambiguities worth clarifying. Let me ask them one at a time.
+
+  ---
+  Question 1 of 2 — Scope of new UI elements from mockup
+
+  The orange design mockups include several UI elements that do not currently 
+  exist in the app: a "Recently Completed" sidebar with completed goal entries,
+  a "Pro Tip" card, notification/settings/profile icons in the header, and
+  progress bars on goal cards. The current spec assumes these "represent the
+  target UI state, even if some backing functionality does not yet exist" — but
+  this is ambiguous about whether they should actually be built.
+
+  Recommended: Option B — Build these as visual components with placeholder or
+  locally-sourced data. This achieves full mockup parity without requiring new
+  backend work, and clearly separates the UI enhancement from feature expansion.
+
+  ┌────────┬─────────────────────────────────────────────────────────────────┐
+  │ Option │                           Description                           │
+  ├────────┼─────────────────────────────────────────────────────────────────┤
+  │ A      │ Build all with full functionality (new API endpoints, data      │
+  │        │ models for completed goals, etc.)                               │
+  ├────────┼─────────────────────────────────────────────────────────────────┤
+  │ B      │ Build as visual components with placeholder/local data (no new  │
+  │        │ backend work)                                                   │
+  ├────────┼─────────────────────────────────────────────────────────────────┤
+  │ C      │ Skip entirely — only restyle components that already exist in   │
+  │        │ the current app                                                 │
+  ├────────┼─────────────────────────────────────────────────────────────────┤
+  │ Short  │ Provide a different short answer (<=5 words)                    │
+  └────────┴─────────────────────────────────────────────────────────────────┘
+
+  You can reply with the option letter (e.g., "A"), accept the recommendation by
+   saying "yes" or "recommended", or provide your own short answer.
+
+✻ Sautéed for 1m 7s
+❯ The 'Recently Completed' sidebar is actually what you built as the 'Completed 
+ Goals' column so make sure there is dynamic data in that column. For all the   
+other UI elements that don't currently use in the app and can't easily map to   
+existing backend functionality, build them as mocked up visual components with  
+placeholder/local data                                                          
+
+● Got it. The "Recently Completed" sidebar maps to the existing Completed Goals
+  column (real data), and all other new mockup elements (Pro Tip card, header
+  icons, progress bars) are visual placeholders. Let me update the spec.
+
+  Read 1 file (ctrl+o to expand)
+
+● Update(specs\002-ui-enhancement\spec.md)
+  ⎿  Added 6 lines
+       5  **Status**: Draft
+       6  **Input**: User description: "ui-enhancement - enhance the look
+           and feel of the UI by using Google Stitch DESIGN.md and mockup
+          s available in the ./design/orange folder"
+       7 
+       8 +## Clarifications
+       9 +
+      10 +### Session 2026-03-25
+      11 +
+      12 +- Q: The mockup shows UI elements not in the current app (Recen
+         +tly Completed sidebar, Pro Tip card, header icons, progress bar
+         +s). How should these be handled? → A: The "Recently Completed"
+         +sidebar maps to the existing Completed Goals column and must us
+         +e real dynamic data. All other new UI elements (Pro Tip card, n
+         +otification/settings/profile icons, progress bars on goal cards
+         +) should be built as visual components with placeholder/local d
+         +ata — no new backend work required.
+      13 +
+      14  ## User Scenarios & Testing *(mandatory)*
+      15 
+      16  ### User Story 1 - Refreshed Dashboard Experience (Priority: P1
+          )
+
+● Now update FR-007 and the assumption to reflect the clarification.
+
+● Update(specs\002-ui-enhancement\spec.md)
+  ⎿  Added 1 line, removed 1 line
+      83  - **FR-004**: System MUST display the "Add New Goal" modal with
+           an orange gradient header, glassmorphism backdrop, borderless
+          input fields, focus area chip selectors, and pill-shaped action
+           buttons matching the design mockup
+      84  - **FR-005**: System MUST implement surface hierarchy using bac
+          kground color shifts instead of visible borders for section bou
+          ndaries
+      85  - **FR-006**: System MUST display goal cards with rounded corne
+          rs, hover translate interactions, and urgency-based color codin
+          g using the orange design token palette
+      86 -- **FR-007**: System MUST render the "Recently Completed" sideb
+         -ar with coral-orange check icons, a light grey-blue background 
+         -container, and a "Pro Tip" card with decorative icon           
+      86 +- **FR-007**: System MUST restyle the existing Completed Goals
+         +column as the "Recently Completed" sidebar with coral-orange ch
+         +eck icons, a light grey-blue background container, and dynamic
+         +data from the existing backend. A "Pro Tip" card with decorativ
+         +e icon should be added as a static visual element
+      87  - **FR-008**: System MUST apply tinted ambient shadows using pr
+          imary color tint instead of standard black drop shadows on floa
+          ting elements
+      88  - **FR-009**: System MUST maintain a sticky header with the "Do
+           It" brand in coral-orange, navigation links with active indica
+          tor, and notification/settings/profile icons
+      89  - **FR-010**: System MUST ensure responsive layout where the da
+          shboard collapses from a multi-column grid to a single column o
+          n mobile viewports
+
+● Update(specs\002-ui-enhancement\spec.md)
+  ⎿  Added 1 line, removed 1 line
+      112  - The orange design system from ./design/orange is the authori
+           tative visual reference, taking precedence over the existing p
+           astel color scheme and the green design variant
+      113  - The "Focus Area" chip selector in the modal is a visual/UI e
+           nhancement; backend storage for focus area data will be addres
+           sed in a separate feature if not already supported
+      114  - Accessibility requirements (contrast ratios, focus indicator
+           s) must still be met with the new color palette
+      115 -- The "Recently Completed" sidebar, "Pro Tip" card, and notifi
+          -cation/settings icons shown in the mockup represent the target
+          - UI state, even if some backing functionality does not yet exi
+          -st                                                            
+      115 +- The "Recently Completed" sidebar is a restyled version of th
+          +e existing Completed Goals column and uses real dynamic data.
+          +Other new mockup elements (Pro Tip card, notification/settings
+          +/profile icons in header, progress bars on goal cards) are bui
+          +lt as visual placeholders with local/static data — no new back
+          +end endpoints required
+
+● Answer recorded and spec updated. Moving to the next question.
+
+  ---
+  Question 2 of 2 — Focus area chip behavior in the modal
+
+  The mockup shows "Professional" and "Personal" focus area chips in the Add New
+   Goal modal. The current app only captures goal title and end date. Should the
+   selected focus area chip value be saved alongside the goal (requiring a minor
+   schema/API update), or remain purely decorative for now?
+
+  Recommended: Option A — Save the selection. Adding a simple text field to the
+  existing goal record is minimal backend work and avoids rebuilding the modal
+  later when focus areas become functional. It also makes the chip selection
+  feel purposeful rather than misleading.
+
+  ┌────────┬─────────────────────────────────────────────────────────────────┐
+  │ Option │                           Description                           │
+  ├────────┼─────────────────────────────────────────────────────────────────┤
+  │ A      │ Save selection to goal record (minor schema addition)           │
+  ├────────┼─────────────────────────────────────────────────────────────────┤
+  │ B      │ Visual-only — chips are interactive but the value is not        │
+  │        │ persisted                                                       │
+  ├────────┼─────────────────────────────────────────────────────────────────┤
+  │ Short  │ Provide a different short answer (<=5 words)                    │
+  └────────┴─────────────────────────────────────────────────────────────────┘
+
+  You can reply with the option letter (e.g., "A"), accept the recommendation by
+   saying "yes" or "recommended", or provide your own short answer.
+
+✻ Crunched for 1m 6s
+
+❯ A                                                                             
+
+● Recorded. Focus area selection will be persisted. Updating the spec now.
+
+● Update(specs\002-ui-enhancement\spec.md)
+  ⎿  Added 1 line
+      10  ### Session 2026-03-25
+      11 
+      12  - Q: The mockup shows UI elements not in the current app (Recen
+          tly Completed sidebar, Pro Tip card, header icons, progress bar
+          s). How should these be handled? → A: The "Recently Completed"
+          sidebar maps to the existing Completed Goals column and must us
+          e real dynamic data. All other new UI elements (Pro Tip card, n
+          otification/settings/profile icons, progress bars on goal cards
+          ) should be built as visual components with placeholder/local d
+          ata — no new backend work required.
+      13 +- Q: Should the Focus Area chip selection in the Add New Goal m
+         +odal be persisted to the goal record? → A: Yes, save the select
+         +ion. A minor schema/API addition to store the focus area value
+         +alongside the goal.
+      14 
+      15  ## User Scenarios & Testing *(mandatory)*
+      16 
+
+● Update(specs\002-ui-enhancement\spec.md)
+  ⎿  Added 1 line, removed 1 line
+      81  - **FR-001**: System MUST apply the warm orange/coral color pal
+          ette across all dashboard components, replacing the current pas
+          tel color scheme
+      82  - **FR-002**: System MUST use Plus Jakarta Sans as the headline
+          /display font and Inter as the body/label font throughout the a
+          pplication
+      83  - **FR-003**: System MUST render all primary action buttons as
+          pill-shaped elements with the coral-orange gradient and tinted
+          shadows
+      84 -- **FR-004**: System MUST display the "Add New Goal" modal with
+         - an orange gradient header, glassmorphism backdrop, borderless 
+         -input fields, focus area chip selectors, and pill-shaped action
+         - buttons matching the design mockup                            
+      84 +- **FR-004**: System MUST display the "Add New Goal" modal with
+         + an orange gradient header, glassmorphism backdrop, borderless
+         +input fields, focus area chip selectors, and pill-shaped action
+         + buttons matching the design mockup. The selected focus area va
+         +lue MUST be persisted to the goal record
+      85  - **FR-005**: System MUST implement surface hierarchy using bac
+          kground color shifts instead of visible borders for section bou
+          ndaries
+      86  - **FR-006**: System MUST display goal cards with rounded corne
+          rs, hover translate interactions, and urgency-based color codin
+          g using the orange design token palette
+      87  - **FR-007**: System MUST restyle the existing Completed Goals
+          column as the "Recently Completed" sidebar with coral-orange ch
+          eck icons, a light grey-blue background container, and dynamic
+          data from the existing backend. A "Pro Tip" card with decorativ
+          e icon should be added as a static visual element
+
+● Update(specs\002-ui-enhancement\spec.md)
+  ⎿  Added 1 line, removed 1 line
+      111  - The existing application structure (pages, components, API r
+           outes) will be preserved; only the visual layer is being updat
+           ed
+      112  - The Google Fonts (Plus Jakarta Sans, Inter) and Material Sym
+           bols icon font are acceptable external dependencies
+      113  - The orange design system from ./design/orange is the authori
+           tative visual reference, taking precedence over the existing p
+           astel color scheme and the green design variant
+      114 -- The "Focus Area" chip selector in the modal is a visual/UI e
+          -nhancement; backend storage for focus area data will be addres
+          -sed in a separate feature if not already supported            
+      114 +- The "Focus Area" chip selector in the modal persists the sel
+          +ected value (e.g., "Professional", "Personal") to the goal rec
+          +ord, requiring a minor schema and API update
+      115  - Accessibility requirements (contrast ratios, focus indicator
+           s) must still be met with the new color palette
+      116  - The "Recently Completed" sidebar is a restyled version of th
+           e existing Completed Goals column and uses real dynamic data.
+           Other new mockup elements (Pro Tip card, notification/settings
+           /profile icons in header, progress bars on goal cards) are bui
+           lt as visual placeholders with local/static data — no new back
+           end endpoints required
+
+● No further critical ambiguities remain. Here's the completion report:
+
+  ---
+  Clarification Complete
+
+  Questions asked & answered: 2 of 5 (remaining questions not needed)
+  Spec file: specs/002-ui-enhancement/spec.md
+
+  Sections touched:
+  - Clarifications (new section added)
+  - Functional Requirements (FR-004, FR-007 updated)
+  - Assumptions (2 entries updated)
+
+  Coverage Summary
+
+  ┌───────────────────────────────────┬──────────┐
+  │             Category              │  Status  │
+  ├───────────────────────────────────┼──────────┤
+  │ Functional Scope & Behavior       │ Resolved │
+  ├───────────────────────────────────┼──────────┤
+  │ Domain & Data Model               │ Resolved │
+  ├───────────────────────────────────┼──────────┤
+  │ Interaction & UX Flow             │ Clear    │
+  ├───────────────────────────────────┼──────────┤
+  │ Non-Functional Quality Attributes │ Clear    │
+  ├───────────────────────────────────┼──────────┤
+  │ Integration & External Deps       │ Clear    │
+  ├───────────────────────────────────┼──────────┤
+  │ Edge Cases & Failure Handling     │ Clear    │
+  ├───────────────────────────────────┼──────────┤
+  │ Constraints & Tradeoffs           │ Clear    │
+  ├───────────────────────────────────┼──────────┤
+  │ Terminology & Consistency         │ Clear    │
+  ├───────────────────────────────────┼──────────┤
+  │ Completion Signals                │ Clear    │
+  ├───────────────────────────────────┼──────────┤
+  │ Misc / Placeholders               │ Clear    │
+  └───────────────────────────────────┴──────────┘
+
+  All categories are now Clear or Resolved. No Outstanding or Deferred items
+  remain.
+
+  Suggested next command: /speckit.plan
+
+✻ Crunched for 31s
+
+❯ /speckit.clarify reference the code.html files stored inside                  
+design/orange/.../ folders in the spec and requirements so that they are fully  
+used when implemented by tasks                                                  
+
+● The user's instruction is clear and direct — add explicit references to the
+  code.html files so tasks use them as implementation blueprints. No questions
+  needed; I'll integrate this directly.
+
+● Bash(powershell -File .specify/scripts/powershell/check-prerequisites.ps1
+      -Json -PathsOnly)
+  ⎿  {
+       "REPO_ROOT": "C:\\Users\\rlond\\Documents\\GitHub\\doit_speckit-clau
+     de",
+     … +10 lines (ctrl+o to expand)
+
+  Read 1 file (ctrl+o to expand)
+
+● This is a direct user instruction rather than an ambiguity to clarify through
+  questions. I'll add explicit code.html file references throughout the spec so
+  tasks know exactly which reference HTML to use for each component.
+
+● Update(specs\002-ui-enhancement\spec.md)
+  ⎿  Added 1 line
+      11 
+      12  - Q: The mockup shows UI elements not in the current app (Recen
+          tly Completed sidebar, Pro Tip card, header icons, progress bar
+          s). How should these be handled? → A: The "Recently Completed"
+          sidebar maps to the existing Completed Goals column and must us
+          e real dynamic data. All other new UI elements (Pro Tip card, n
+          otification/settings/profile icons, progress bars on goal cards
+          ) should be built as visual components with placeholder/local d
+          ata — no new backend work required.
+      13  - Q: Should the Focus Area chip selection in the Add New Goal m
+          odal be persisted to the goal record? → A: Yes, save the select
+          ion. A minor schema/API addition to store the focus area value
+          alongside the goal.
+      14 +- Q: Should the code.html reference files in design/orange be e
+         +xplicitly referenced in the spec? → A: Yes. Each code.html file
+         + serves as the canonical HTML/CSS implementation blueprint for
+         +its corresponding UI component. Tasks MUST read and use these f
+         +iles to extract exact color tokens, Tailwind config, class name
+         +s, layout structure, and component markup.
+      15 
+      16  ## User Scenarios & Testing *(mandatory)*
+      17 
+
+● Now add the design reference files section and update requirements to point to
+   specific code.html files.
+
+● Update(specs\002-ui-enhancement\spec.md)
+  ⎿  Added 14 lines
+      13  - Q: Should the Focus Area chip selection in the Add New Goal m
+          odal be persisted to the goal record? → A: Yes, save the select
+          ion. A minor schema/API addition to store the focus area value
+          alongside the goal.
+      14  - Q: Should the code.html reference files in design/orange be e
+          xplicitly referenced in the spec? → A: Yes. Each code.html file
+           serves as the canonical HTML/CSS implementation blueprint for
+          its corresponding UI component. Tasks MUST read and use these f
+          iles to extract exact color tokens, Tailwind config, class name
+          s, layout structure, and component markup.
+      15 
+      16 +## Design Reference Files
+      17 +
+      18 +The following files in the `./design/orange/` folder serve as t
+         +he **canonical implementation blueprints**. Each `code.html` co
+         +ntains the exact Tailwind CSS configuration, color tokens, clas
+         +s names, layout structure, and component markup that tasks MUST
+         + read and use during implementation.
+      19 +
+      20 +| Reference File | Purpose | Used By |
+      21 +|----------------|---------|---------|
+      22 +| `design/orange/do_it_dashboard/code.html` | Dashboard layout:
+         + header, greeting, active goal cards, Recently Completed sideba
+         +r, Pro Tip card, Add New Goal button. Contains the full Tailwin
+         +d config with orange color tokens. | US-1 (P1), FR-001, FR-003,
+         + FR-005, FR-006, FR-007, FR-008, FR-009, FR-010 |
+      23 +| `design/orange/add_new_goal_modal_orange/code.html` | Add New
+         + Goal modal: gradient header, form inputs, focus area chips, ac
+         +tion buttons, glassmorphism backdrop. Contains the orange-warm
+         +Tailwind config variant. | US-2 (P2), FR-004, FR-008 |
+      24 +| `design/orange/do_it_pastel/DESIGN.md` | Design system strate
+         +gy document: color theory, typography rules, elevation principl
+         +es, component signature styles, do's and don'ts. Provides the r
+         +ationale and rules behind the visual decisions. | US-3 (P3), FR
+         +-002, FR-005, FR-008, all components |
+      25 +| `design/orange/do_it_dashboard/screen.png` | Visual mockup of
+         + the complete dashboard for side-by-side comparison during vali
+         +dation. | SC-001 |
+      26 +| `design/orange/add_new_goal_modal_orange/screen.png` | Visual
+         + mockup of the Add New Goal modal for side-by-side comparison d
+         +uring validation. | SC-001, SC-003 |
+      27 +
+      28 +**Implementation directive**: When implementing any UI componen
+         +t, the corresponding `code.html` file MUST be read first. Extra
+         +ct the Tailwind color token definitions, CSS custom properties,
+         + class compositions, and HTML structure as the starting point.
+         +Adapt the static HTML to React/Next.js components while preserv
+         +ing the exact visual output.
+      29 +
+      30  ## User Scenarios & Testing *(mandatory)*
+      31 
+      32  ### User Story 1 - Refreshed Dashboard Experience (Priority: P1
+          )
+
+● Now update the relevant user stories and requirements to explicitly reference
+  the code.html files.
+
+● Update(specs\002-ui-enhancement\spec.md)
+  ⎿  Added 1 line, removed 1 line
+      35 
+      36  **Why this priority**: The dashboard is the primary screen user
+          s interact with every session. Updating its visual language to
+          the orange design system establishes the new brand identity and
+           delivers the most visible impact.
+      37 
+      38 -**Independent Test**: Can be fully tested by opening the dashbo
+         -ard and verifying that the layout, colors, typography, and comp
+         -onent styling match the orange design mockup (do_it_dashboard).
+         - Delivers a cohesive, premium visual experience on the main scr
+         -een.                                                           
+      38 +**Independent Test**: Can be fully tested by opening the dashbo
+         +ard and verifying that the layout, colors, typography, and comp
+         +onent styling match `design/orange/do_it_dashboard/code.html` a
+         +nd `screen.png`. Delivers a cohesive, premium visual experience
+         + on the main screen.
+      39 
+      40  **Acceptance Scenarios**:
+      41 
+
+● Update(specs\002-ui-enhancement\spec.md)  ⎿  Added 1 line, removed 1 line
+      53 
+      54  **Why this priority**: Goal creation is the core action in the
+          app. A polished modal with the orange gradient header ("Ignite
+          a New Path"), improved input styling, and focus area selection
+          elevates the experience for the most frequent user action.
+      55 
+      56 -**Independent Test**: Can be fully tested by clicking "Add New 
+         -Goal" and verifying the modal matches the add_new_goal_modal_or
+         -ange mockup -- gradient header, styled inputs, focus area chips
+         -, and pill-shaped CTA button.                                  
+      56 +**Independent Test**: Can be fully tested by clicking "Add New
+         +Goal" and verifying the modal matches `design/orange/add_new_go
+         +al_modal_orange/code.html` and `screen.png` -- gradient header,
+         + styled inputs, focus area chips, and pill-shaped CTA button.
+      57 
+      58  **Acceptance Scenarios**:
+      59 
+
+● Update(specs\002-ui-enhancement\spec.md)
+  ⎿  Added 1 line, removed 1 line
+      71 
+      72  **Why this priority**: Consistent design tokens across all scre
+          ens prevent visual fragmentation. This ensures the new orange d
+          esign language applies uniformly, not just to individual compon
+          ents.
+      73 
+      74 -**Independent Test**: Can be fully tested by navigating through
+         - all pages and verifying that typography (Plus Jakarta Sans for
+         - headlines, Inter for body), color tokens (warm orange palette)
+         -, and spacing follow the DESIGN.md guidelines consistently.    
+      74 +**Independent Test**: Can be fully tested by navigating through
+         + all pages and verifying that typography, color tokens, and spa
+         +cing follow `design/orange/do_it_pastel/DESIGN.md` guidelines a
+         +nd are consistent with the token definitions in both `code.html
+         +` files.
+      75 
+      76  **Acceptance Scenarios**:
+      77 
+
+● Now update the functional requirements to reference specific code.html files.
+
+● Update(specs\002-ui-enhancement\spec.md)
+  ⎿  Added 10 lines, removed 10 lines
+       93 
+       94  ### Functional Requirements
+       95 
+       96 -- **FR-001**: System MUST apply the warm orange/coral color pa
+          -lette across all dashboard components, replacing the current p
+          -astel color scheme                                            
+       97 -- **FR-002**: System MUST use Plus Jakarta Sans as the headlin
+          -e/display font and Inter as the body/label font throughout the
+          - application                                                  
+       98 -- **FR-003**: System MUST render all primary action buttons as
+          - pill-shaped elements with the coral-orange gradient and tinte
+          -d shadows                                                     
+       99 -- **FR-004**: System MUST display the "Add New Goal" modal wit
+          -h an orange gradient header, glassmorphism backdrop, borderles
+          -s input fields, focus area chip selectors, and pill-shaped act
+          -ion buttons matching the design mockup. The selected focus are
+          -a value MUST be persisted to the goal record                  
+      100 -- **FR-005**: System MUST implement surface hierarchy using ba
+          -ckground color shifts instead of visible borders for section b
+          -oundaries                                                     
+      101 -- **FR-006**: System MUST display goal cards with rounded corn
+          -ers, hover translate interactions, and urgency-based color cod
+          -ing using the orange design token palette                     
+      102 -- **FR-007**: System MUST restyle the existing Completed Goals
+          - column as the "Recently Completed" sidebar with coral-orange 
+          -check icons, a light grey-blue background container, and dynam
+          -ic data from the existing backend. A "Pro Tip" card with decor
+          -ative icon should be added as a static visual element         
+      103 -- **FR-008**: System MUST apply tinted ambient shadows using p
+          -rimary color tint instead of standard black drop shadows on fl
+          -oating elements                                               
+      104 -- **FR-009**: System MUST maintain a sticky header with the "D
+          -o It" brand in coral-orange, navigation links with active indi
+          -cator, and notification/settings/profile icons                
+      105 -- **FR-010**: System MUST ensure responsive layout where the d
+          -ashboard collapses from a multi-column grid to a single column
+          - on mobile viewports                                          
+       96 +- **FR-001**: System MUST apply the warm orange/coral color pa
+          +lette across all dashboard components, replacing the current p
+          +astel color scheme. Color tokens MUST be extracted from the Ta
+          +ilwind config in `design/orange/do_it_dashboard/code.html`
+       97 +- **FR-002**: System MUST use Plus Jakarta Sans as the headlin
+          +e/display font and Inter as the body/label font throughout the
+          + application, following the typography rules in `design/orange
+          +/do_it_pastel/DESIGN.md` (Section 3)
+       98 +- **FR-003**: System MUST render all primary action buttons as
+          + pill-shaped elements with the coral-orange gradient and tinte
+          +d shadows, matching the `.bg-radiant-primary` class and button
+          + markup in `design/orange/do_it_dashboard/code.html`
+       99 +- **FR-004**: System MUST display the "Add New Goal" modal mat
+          +ching the structure and styling in `design/orange/add_new_goal
+          +_modal_orange/code.html` — including the orange gradient heade
+          +r, glassmorphism backdrop, borderless input fields, focus area
+          + chip selectors, and pill-shaped action buttons. The selected
+          +focus area value MUST be persisted to the goal record
+      100 +- **FR-005**: System MUST implement surface hierarchy using ba
+          +ckground color shifts instead of visible borders for section b
+          +oundaries, per the "No-Line Rule" in `design/orange/do_it_past
+          +el/DESIGN.md` (Section 2)
+      101 +- **FR-006**: System MUST display goal cards with rounded corn
+          +ers, hover translate interactions, and urgency-based color cod
+          +ing, matching the goal card markup in `design/orange/do_it_das
+          +hboard/code.html`
+      102 +- **FR-007**: System MUST restyle the existing Completed Goals
+          + column as the "Recently Completed" sidebar with coral-orange
+          +check icons, a light grey-blue background container, and dynam
+          +ic data from the existing backend, matching the aside markup i
+          +n `design/orange/do_it_dashboard/code.html`. A "Pro Tip" card
+          +with decorative icon should be added as a static visual elemen
+          +t
+      103 +- **FR-008**: System MUST apply tinted ambient shadows using p
+          +rimary color tint instead of standard black drop shadows on fl
+          +oating elements, per the elevation rules in `design/orange/do_
+          +it_pastel/DESIGN.md` (Section 4)
+      104 +- **FR-009**: System MUST maintain a sticky header with the "D
+          +o It" brand in coral-orange, navigation links with active indi
+          +cator, and notification/settings/profile icons, matching the h
+          +eader markup in `design/orange/do_it_dashboard/code.html`
+      105 +- **FR-010**: System MUST ensure responsive layout where the d
+          +ashboard collapses from a multi-column grid to a single column
+          + on mobile viewports, following the grid structure in `design/
+          +orange/do_it_dashboard/code.html`
+      106 
+      107  ### Key Entities
+      108 
+
+● Now update the Key Entities and Assumptions sections.
+
+● Update(specs\002-ui-enhancement\spec.md)
+  ⎿  Added 1 line, removed 1 line
+      106 
+      107  ### Key Entities
+      108 
+      109 -- **Design Token Set**: The complete color, typography, spacin
+          -g, and elevation token system derived from the orange DESIGN.m
+          -d and mockup files, defining the visual language for all UI co
+          -mponents                                                      
+      109 +- **Design Token Set**: The complete color, typography, spacin
+          +g, and elevation token system extracted from the Tailwind conf
+          +igs in `design/orange/do_it_dashboard/code.html` and `design/o
+          +range/add_new_goal_modal_orange/code.html`, with design ration
+          +ale from `design/orange/do_it_pastel/DESIGN.md`
+      110  - **Goal Card**: The visual representation of an active goal,
+           incorporating urgency states, progress indicators, and interac
+           tive behaviors styled per the new design system
+      111  - **Goal Creation Modal**: The overlay dialog for creating new
+            goals, featuring a gradient header, structured form inputs, f
+           ocus area chips, and glassmorphism effects
+      112 
+
+● Update(specs\002-ui-enhancement\spec.md)
+  ⎿  Added 1 line, removed 1 line
+      125 
+      126  - The existing application structure (pages, components, API r
+           outes) will be preserved; only the visual layer is being updat
+           ed
+      127  - The Google Fonts (Plus Jakarta Sans, Inter) and Material Sym
+           bols icon font are acceptable external dependencies
+      128 -- The orange design system from ./design/orange is the authori
+          -tative visual reference, taking precedence over the existing p
+          -astel color scheme and the green design variant               
+      128 +- The orange design system from ./design/orange is the authori
+          +tative visual reference, taking precedence over the existing p
+          +astel color scheme and the green design variant. The `code.htm
+          +l` files are the primary implementation blueprints; the `scree
+          +n.png` files are for visual validation
+      129  - The "Focus Area" chip selector in the modal persists the sel
+           ected value (e.g., "Professional", "Personal") to the goal rec
+           ord, requiring a minor schema and API update
+      130  - Accessibility requirements (contrast ratios, focus indicator
+           s) must still be met with the new color palette
+      131  - The "Recently Completed" sidebar is a restyled version of th
+           e existing Completed Goals column and uses real dynamic data.
+           Other new mockup elements (Pro Tip card, notification/settings
+           /profile icons in header, progress bars on goal cards) are bui
+           lt as visual placeholders with local/static data — no new back
+           end endpoints required
+
+● No critical ambiguities remain beyond this direct integration. Here's the
+  completion report:
+
+  ---
+  Clarification Complete
+
+  Questions asked & answered: 0 (direct user instruction integrated without
+  needing interactive Q&A)
+  Spec file: specs/002-ui-enhancement/spec.md
+
+  Sections touched:
+  - Clarifications (new bullet added for the code.html directive)
+  - Design Reference Files (new section with file-to-requirement mapping table)
+  - User Stories 1, 2, 3 (Independent Test updated with specific file paths)
+  - Functional Requirements (all 10 FRs updated with specific
+  code.html/DESIGN.md references)
+  - Key Entities (Design Token Set updated)
+  - Assumptions (authoritative reference clarified)
+
+  Coverage Summary
+
+  ┌───────────────────────────────────┬────────┐
+  │             Category              │ Status │
+  ├───────────────────────────────────┼────────┤
+  │ Functional Scope & Behavior       │ Clear  │
+  ├───────────────────────────────────┼────────┤
+  │ Domain & Data Model               │ Clear  │
+  ├───────────────────────────────────┼────────┤
+  │ Interaction & UX Flow             │ Clear  │
+  ├───────────────────────────────────┼────────┤
+  │ Non-Functional Quality Attributes │ Clear  │
+  ├───────────────────────────────────┼────────┤
+  │ Integration & External Deps       │ Clear  │
+  ├───────────────────────────────────┼────────┤
+  │ Edge Cases & Failure Handling     │ Clear  │
+  ├───────────────────────────────────┼────────┤
+  │ Constraints & Tradeoffs           │ Clear  │
+  ├───────────────────────────────────┼────────┤
+  │ Terminology & Consistency         │ Clear  │
+  ├───────────────────────────────────┼────────┤
+  │ Completion Signals                │ Clear  │
+  ├───────────────────────────────────┼────────┤
+  │ Misc / Placeholders               │ Clear  │
+  └───────────────────────────────────┴────────┘
+
+  All categories Clear. Every functional requirement now points to the specific
+  code.html or DESIGN.md file that tasks must read during implementation.
+
+  Suggested next command: /speckit.plan
+
+✻ Cooked for 2m 49s
