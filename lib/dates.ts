@@ -1,7 +1,8 @@
-import { differenceInCalendarDays, parseISO } from "date-fns";
+import { differenceInCalendarDays } from "date-fns";
 
-export function daysRemaining(endDate: string): number {
-  return differenceInCalendarDays(parseISO(endDate), new Date());
+export function daysRemaining(endDate: string | Date): number {
+  const date = typeof endDate === "string" ? new Date(endDate) : endDate;
+  return differenceInCalendarDays(date, new Date());
 }
 
 export function computeUrgency(daysLeft: number): "normal" | "urgent" | "overdue" {
