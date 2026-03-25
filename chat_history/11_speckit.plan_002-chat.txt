@@ -1,0 +1,444 @@
+╭─── Claude Code v2.1.83 ──────────────────────────────────────────────────────╮
+│                                                    │ Recent activity         │
+│                Welcome back Raphael!               │ No recent activity      │
+│                                                    │ ─────────────────────── │
+│                       ▐▛███▜▌                      │ What's new              │
+│                      ▝▜█████▛▘                     │ Added `managed-setting… │
+│                        ▘▘ ▝▝                       │ Added `CwdChanged` and… │
+│  Sonnet 4.6 · Claude Pro · contact@milissai.com's  │ Added `sandbox.failIfU… │
+│  Organization                                      │ /release-notes for more │
+│       ~\Documents\GitHub\doit_speckit-claude       │                         │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+❯ /clear                                                                        
+  ⎿  (no content)
+
+❯ /speckit.plan                                                                 
+
+● Running the planning workflow. Let me start with setup and hook checks.
+
+  Read 1 file (ctrl+o to expand)
+
+● Bash(powershell -ExecutionPolicy Bypass -File
+      .specify/scripts/powershell/setup-plan.ps1 -Json)
+  ⎿  Copied plan template to C:\Users\rlond\Documents\GitHub\doit_speckit-c
+     laude\specs\002-ui-enhancement\plan.md
+     {
+     … +9 lines (ctrl+o to expand)
+
+● No extension hooks. Setup complete. Let me load the context files.
+
+  Read 3 files (ctrl+o to expand)
+
+● Now let me load the design reference files to understand the technical
+  details.
+
+  Read 3 files (ctrl+o to expand)
+
+● Now let me examine the current codebase structure.
+
+  Searched for 1 pattern, read 9 files (ctrl+o to expand)
+
+● Let me also check the API route and goals service for the focus_area schema
+  change.
+
+  Read 3 files (ctrl+o to expand)
+
+● Now I have full context. Let me write the plan artifacts.
+● Now let me fill in the plan.md with the full technical context and
+  constitution check.
+
+● Write(specs\002-ui-enhancement\plan.md)
+  ⎿  Added 51 lines, removed 74 lines
+        1 -# Implementation Plan: [FEATURE]                              
+        1 +# Implementation Plan: UI Enhancement with Orange Design Syste
+          +m
+        2 
+        3 -**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**
+          -: [link]                                                      
+        4 -**Input**: Feature specification from `/specs/[###-feature-nam
+          -e]/spec.md`                                                   
+        3 +**Branch**: `002-ui-enhancement` | **Date**: 2026-03-25 | **Sp
+          +ec**: [spec.md](./spec.md)
+        4 +**Input**: Feature specification from `/specs/002-ui-enhanceme
+          +nt/spec.md`
+        5 
+        6  **Note**: This template is filled in by the `/speckit.plan` co
+           mmand. See `.specify/templates/plan-template.md` for the execu
+           tion workflow.
+        7 
+        8  ## Summary
+        9 
+       10 -[Extract from feature spec: primary requirement + technical ap
+          -proach from research]                                         
+       10 +Apply the "Radiant Catalyst" orange design system across the e
+          +ntire Do It dashboard and Add New Goal modal. This involves re
+          +placing the current pastel/shadcn-based styling with a warm or
+          +ange/coral color palette, Plus Jakarta Sans + Inter typography
+          +, pill-shaped buttons, surface-hierarchy-based layouts (no vis
+          +ible borders), and glassmorphism modal effects. A minor schema
+          + addition (`focus_area`) is required for the goal creation mod
+          +al. The existing component architecture (Next.js App Router, R
+          +eact client components, Tailwind CSS) is preserved; only the v
+          +isual layer and one data field change.
+       11 
+       12  ## Technical Context
+       13 
+       14 -<!--                                                          
+       15 -  ACTION REQUIRED: Replace the content in this section with th
+          -e technical details                                           
+       16 -  for the project. The structure here is presented in advisory
+          - capacity to guide                                            
+       17 -  the iteration process.                                      
+       18 --->                                                           
+       14 +**Language/Version**: TypeScript ^5, Node.js (Next.js runtime)
+       15 +**Primary Dependencies**: Next.js ^16.2.0, React ^19.2.4, Tail
+          +wind CSS ^4, shadcn/ui (@base-ui/react), date-fns, pg driver
+       16 +**Storage**: PostgreSQL via Next.js API routes (source of trut
+          +h), localStorage (client-side cache)
+       17 +**Testing**: None -- constitution prohibits tests
+       18 +**Target Platform**: Web (desktop + mobile responsive, 320px-1
+          +920px)
+       19 +**Project Type**: Web application (Next.js App Router)
+       20 +**Performance Goals**: No layout shift or rendering delay from
+          + the redesign (SC-002)
+       21 +**Constraints**: No new npm packages without justification (Co
+          +nstitution IV); Google Fonts (Plus Jakarta Sans, Inter, Materi
+          +al Symbols) are external CDN dependencies justified by the des
+          +ign spec
+       22 +**Scale/Scope**: Single-page dashboard with modal, ~8 componen
+          +ts to restyle
+       23 
+       20 -**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75
+          - or NEEDS CLARIFICATION]                                      
+       21 -**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS
+          - CLARIFICATION]                                               
+       22 -**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files
+          - or N/A]                                                      
+       23 -**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIF
+          -ICATION]                                                      
+       24 -**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEE
+          -DS CLARIFICATION]                                             
+       25 -**Project Type**: [e.g., library/cli/web-service/mobile-app/co
+          -mpiler/desktop-app or NEEDS CLARIFICATION]                    
+       26 -**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k
+          - lines/sec, 60 fps or NEEDS CLARIFICATION]                    
+       27 -**Constraints**: [domain-specific, e.g., <200ms p95, <100MB me
+          -mory, offline-capable or NEEDS CLARIFICATION]                 
+       28 -**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50
+          - screens or NEEDS CLARIFICATION]                              
+       29 -                                                              
+       24  ## Constitution Check
+       25 
+       26  *GATE: Must pass before Phase 0 research. Re-check after Phase
+            1 design.*
+       27 
+       34 -[Gates determined based on constitution file]                 
+       28 +| Principle | Status | Notes |
+       29 +|-----------|--------|-------|
+       30 +| I. Clean Code | PASS | Restyling existing components; no new
+          + abstractions needed beyond design tokens |
+       31 +| II. Simple UX | PASS | Design maintains single primary actio
+          +n per screen; loading/empty/error states preserved |
+       32 +| III. Responsive Design | PASS | Design spec includes respons
+          +ive grid (lg:grid-cols-12 -> single column); mobile-first appr
+          +oach with Tailwind breakpoints |
+       33 +| IV. Minimal Dependencies | REVIEW | Google Fonts (Plus Jakar
+          +ta Sans, Inter, Material Symbols Outlined) loaded via `next/fo
+          +nt/google` and CSS link. No new npm packages required. Justifi
+          +ed: design system mandates these specific fonts. |
+       34 +| V. No Testing | PASS | No test artifacts will be created |
+       35 
+       36 +**Gate Result**: PASS (Principle IV reviewed -- font loading i
+          +s a CSS/font dependency, not an npm package; justified by desi
+          +gn mandate)
+       37 +
+       38  ## Project Structure
+       39 
+       40  ### Documentation (this feature)
+       41 
+       42  ```text
+       41 -specs/[###-feature]/                                          
+       42 -├── plan.md              # This file (/speckit.plan command ou
+          -tput)                                                         
+       43 -├── research.md          # Phase 0 output (/speckit.plan comma
+          -nd)                                                           
+       44 -├── data-model.md        # Phase 1 output (/speckit.plan comma
+          -nd)                                                           
+       45 -├── quickstart.md        # Phase 1 output (/speckit.plan comma
+          -nd)                                                           
+       46 -├── contracts/           # Phase 1 output (/speckit.plan comma
+          -nd)                                                           
+       47 -└── tasks.md             # Phase 2 output (/speckit.tasks comm
+          -and - NOT created by /speckit.plan)                           
+       43 +specs/002-ui-enhancement/
+       44 +├── plan.md              # This file
+       45 +├── research.md          # Phase 0 output
+       46 +├── data-model.md        # Phase 1 output
+       47 +├── quickstart.md        # Phase 1 output
+       48 +├── contracts/           # Phase 1 output
+       49 +│   └── api-goals.md     # Updated API contract for focus_area
+       50 +└── tasks.md             # Phase 2 output (/speckit.tasks comm
+          +and)
+       51  ```
+       52 
+       53  ### Source Code (repository root)
+       51 -<!--                                                          
+       52 -  ACTION REQUIRED: Replace the placeholder tree below with the
+          - concrete layout                                              
+       53 -  for this feature. Delete unused options and expand the chose
+          -n structure with                                              
+       54 -  real paths (e.g., apps/admin, packages/something). The deliv
+          -ered plan must                                                
+       55 -  not include Option labels.                                  
+       56 --->                                                           
+       54 
+       55  ```text
+       59 -# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)       
+       60 -src/                                                          
+       61 -├── models/                                                   
+       62 -├── services/                                                 
+       63 -├── cli/                                                      
+       64 -└── lib/                                                      
+       65 -                                                              
+       66 -tests/                                                        
+       67 -├── contract/                                                 
+       68 -├── integration/                                              
+       69 -└── unit/                                                     
+       70 -                                                              
+       71 -# [REMOVE IF UNUSED] Option 2: Web application (when "frontend
+          -" + "backend" detected)                                       
+       72 -backend/                                                      
+       73 -├── src/                                                      
+       74 -│   ├── models/                                               
+       75 -│   ├── services/                                             
+       76 -│   └── api/                                                  
+       77 -└── tests/                                                    
+       78 -                                                              
+       79 -frontend/                                                     
+       80 -├── src/                                                      
+       81 -│   ├── components/                                           
+       82 -│   ├── pages/                                                
+       83 -│   └── services/                                             
+       84 -└── tests/                                                    
+       85 -                                                              
+       86 -# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android
+          -" detected)                                                   
+       87 -api/                                                          
+       88 -└── [same as backend above]                                   
+       89 -                                                              
+       90 -ios/ or android/                                              
+       91 -└── [platform-specific structure: feature modules, UI flows, p
+          -latform tests]                                                
+       56 +app/
+       57 +├── globals.css          # MODIFY: Replace shadcn color tokens
+          + with orange design system tokens
+       58 +├── layout.tsx           # MODIFY: Replace header, swap fonts
+          +to Plus Jakarta Sans + Inter
+       59 +├── page.tsx             # MODIFY: New dashboard layout with g
+          +reeting, active goals, sidebar
+       60 +├── api/
+       61 +│   └── goals/
+       62 +│       └── route.ts     # MODIFY: Accept/return focus_area fi
+          +eld
+       63 +│       └── [id]/
+       64 +│           └── route.ts # No changes needed (PATCH/DELETE unc
+          +hanged)
+       65 +components/
+       66 +├── add-goal-modal.tsx   # MODIFY: Orange gradient header, foc
+          +us area chips, glassmorphism
+       67 +├── delete-confirm-dialog.tsx # MODIFY: Restyle to match desig
+          +n system
+       68 +├── goal-card.tsx        # MODIFY: Orange urgency states, hove
+          +r translate, rounded corners
+       69 +├── goal-list.tsx        # MODIFY: Split into active goals sec
+          +tion + completed sidebar
+       70 +├── ui/                  # EXISTING: shadcn primitives (may st
+          +ill be used for Dialog/AlertDialog behavior)
+       71 +lib/
+       72 +├── goals.ts             # MODIFY: Add focus_area to queries
+       73 +├── schema.sql           # MODIFY: Add focus_area column
+       74 +├── types.ts             # MODIFY: Add focusArea field to Goal
+          + interface
+       75  ```
+       76 
+       94 -**Structure Decision**: [Document the selected structure and r
+          -eference the real                                             
+       95 -directories captured above]                                   
+       77 +**Structure Decision**: Existing Next.js App Router structure
+          +preserved. No new directories needed. All changes are modifica
+          +tions to existing files.
+       78 
+       79  ## Complexity Tracking
+       80 
+       99 -> **Fill ONLY if Constitution Check has violations that must b
+          -e justified**                                                 
+      100 -                                                              
+      101 -| Violation | Why Needed | Simpler Alternative Rejected Becaus
+          -e |                                                           
+      102 -|-----------|------------|------------------------------------
+          --|                                                            
+      103 -| [e.g., 4th project] | [current need] | [why 3 projects insuf
+          -ficient] |                                                    
+      104 -| [e.g., Repository pattern] | [specific problem] | [why direc
+          -t DB access insufficient] |                                   
+       81 +No constitution violations requiring justification.
+
+● Now generating Phase 0 research.md. Key unknowns to resolve: two different
+  color configs, font loading, focus_area schema, glassmorphism in Tailwind 4.
+
+● Write(specs\002-ui-enhancement\research.md)
+  ⎿  Wrote 113 lines to specs\002-ui-enhancement\research.md
+      1 # Research: UI Enhancement with Orange Design System
+      2 
+      3 **Feature**: 002-ui-enhancement | **Date**: 2026-03-25
+      4 
+      5 ## R-001: Two Different Tailwind Color Configs (Dashboard vs Moda
+        l)
+      6 
+      7 **Context**: The dashboard `code.html` uses a cool-toned orange p
+        alette (primary: `#ff7f70`, surface: `#f8fafc`, on-surface: `#1e2
+        93b`) while the modal `code.html` uses a warm-toned orange palett
+        e (primary: `#f07a50`, surface: `#fffaf5`, on-surface: `#3d352e`)
+        .
+      8 
+      9 **Decision**: Use the **dashboard color config** as the applicati
+        on-wide token set, since it covers the full UI. Use the **modal c
+        olor config** only within the modal component scope via CSS custo
+        m properties or Tailwind arbitrary values. The modal's warmer ton
+        es create visual distinction for the overlay context.
+     … +103 lines (ctrl+o to expand)
+
+● Write(specs\002-ui-enhancement\data-model.md)
+  ⎿  Wrote 123 lines to specs\002-ui-enhancement\data-model.md
+      1 # Data Model: UI Enhancement with Orange Design System
+      2 
+      3 **Feature**: 002-ui-enhancement | **Date**: 2026-03-25
+      4 
+      5 ## Entity Changes
+      6 
+      7 ### Goal (modified)
+      8 
+      9 The only data model change is adding the `focus_area` field to th
+        e existing `goals` table.
+     … +113 lines (ctrl+o to expand)
+
+● Bash(mkdir -p specs/002-ui-enhancement/contracts)
+  ⎿  Done
+
+● Write(specs\002-ui-enhancement\contracts\api-goals.md)
+  ⎿  Wrote 89 lines to specs\002-ui-enhancement\contracts\api-goals.md
+      1 # API Contract: Goals Endpoint (Updated)
+      2 
+      3 **Feature**: 002-ui-enhancement | **Date**: 2026-03-25
+      4 
+      5 ## Changes Summary
+      6 
+      7 The only API change is adding the optional `focusArea` field to g
+        oal creation and goal responses.
+      8 
+      9 ---
+     … +79 lines (ctrl+o to expand)
+
+● Write(specs\002-ui-enhancement\quickstart.md)
+  ⎿  Wrote 75 lines to specs\002-ui-enhancement\quickstart.md
+      1 # Quickstart: UI Enhancement with Orange Design System
+      2 
+      3 **Feature**: 002-ui-enhancement | **Date**: 2026-03-25
+      4 
+      5 ## Prerequisites
+      6 
+      7 - Node.js, pnpm installed
+      8 - PostgreSQL running with existing `goals` table
+      9 - Run `pnpm dev` to start the dev server
+     … +65 lines (ctrl+o to expand)
+
+● Now let me re-check the constitution after Phase 1 design and update the agent
+   context.
+
+● Re-evaluating Constitution Check post-design:
+
+  ┌────────────────┬────────┬───────────────────────────────────────────────┐
+  │   Principle    │ Status │                     Notes                     │
+  ├────────────────┼────────┼───────────────────────────────────────────────┤
+  │ I. Clean Code  │ PASS   │ No new abstractions; design tokens in         │
+  │                │        │ globals.css, one new DB field                 │
+  ├────────────────┼────────┼───────────────────────────────────────────────┤
+  │ II. Simple UX  │ PASS   │ Single primary action per screen preserved;   │
+  │                │        │ empty/loading/error states planned            │
+  ├────────────────┼────────┼───────────────────────────────────────────────┤
+  │ III.           │        │ Grid responsive breakpoints defined;          │
+  │ Responsive     │ PASS   │ mobile-first approach in quickstart           │
+  │ Design         │        │                                               │
+  ├────────────────┼────────┼───────────────────────────────────────────────┤
+  │                │        │ No new npm packages. Google Fonts loaded via  │
+  │ IV. Minimal    │ PASS   │ next/font (self-hosted) and one CDN <link>    │
+  │ Dependencies   │        │ for Material Symbols (justified: design       │
+  │                │        │ mandate, not npm)                             │
+  ├────────────────┼────────┼───────────────────────────────────────────────┤
+  │ V. No Testing  │ PASS   │ No test artifacts in any plan artifact        │
+  └────────────────┴────────┴───────────────────────────────────────────────┘
+
+  Post-design gate: PASS
+
+● Bash(powershell -ExecutionPolicy Bypass -File
+      .specify/scripts/powershell/update-agent-context.ps1 -AgentType claude)
+  ⎿  INFO: === Updating agent context files for feature 002-ui-enhancement
+     ===
+     INFO: Parsing plan data from C:\Users\rlond\Documents\GitHub\doit_spec
+     … +16 lines (ctrl+o to expand)
+● No extension hooks file exists, so skipping after_plan hooks.
+
+  ---
+  Planning Complete
+
+  Branch: 002-ui-enhancement
+  Plan: specs/002-ui-enhancement/plan.md
+
+  Generated Artifacts
+
+  Artifact: Plan
+  Path: specs/002-ui-enhancement/plan.md
+  Description: Technical context, constitution check, project structure
+  ────────────────────────────────────────
+  Artifact: Research
+  Path: specs/002-ui-enhancement/research.md
+  Description: 6 decisions: dual color configs, font loading, focus_area schema,
+
+    glassmorphism, shadcn migration, no-line rule
+  ────────────────────────────────────────
+  Artifact: Data Model
+  Path: specs/002-ui-enhancement/data-model.md
+  Description: Goal entity + focus_area field, design token reference,
+  TypeScript
+    interfaces
+  ────────────────────────────────────────
+  Artifact: API Contract
+  Path: specs/002-ui-enhancement/contracts/api-goals.md
+  Description: Updated POST/GET contracts with focusArea field
+  ────────────────────────────────────────
+  Artifact: Quickstart
+  Path: specs/002-ui-enhancement/quickstart.md
+  Description: Implementation order (4 phases, 11 steps), color token reference,
+
+    design rules
+  ────────────────────────────────────────
+  Artifact: Agent Context
+  Path: CLAUDE.md
+  Description: Updated with feature technologies
+
+  Key Decisions
+
+  1. Dashboard color config is the global token set; modal uses scoped overrides
+   for its warmer tones
+  2. Plus Jakarta Sans + Inter via next/font/google; Material Symbols via CDN
+  <link> (no new npm packages)
+  3. focus_area as simple nullable VARCHAR(50) -- no enum, no lookup table
+  4. Keep @base-ui/react for behavior, replace all visual styling with orange
+  design system classes
+  5. code.html takes precedence over DESIGN.md where they diverge (pragmatic
+  border usage)
+
+  Next step: Run /speckit.tasks to generate the implementation task list.
+
+✻ Churned for 6m 15s
