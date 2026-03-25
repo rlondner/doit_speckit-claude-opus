@@ -71,11 +71,11 @@ export default function Home() {
     }
   };
 
-  const handleAdd = async (title: string, endDate: string) => {
+  const handleAdd = async (title: string, endDate: string, focusArea?: string) => {
     const res = await fetch("/api/goals", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, endDate }),
+      body: JSON.stringify({ title, endDate, focusArea }),
     });
     if (!res.ok) throw new Error("Failed to create goal");
     invalidateGoalCache();
@@ -88,7 +88,7 @@ export default function Home() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <p className="text-muted-foreground">Loading goals...</p>
+        <p className="text-on-surface-variant font-body">Loading goals...</p>
       </div>
     );
   }
@@ -96,31 +96,52 @@ export default function Home() {
   if (error) {
     return (
       <div className="flex items-center justify-center h-64">
-        <p className="text-destructive">{error}</p>
+        <p className="text-error font-body">{error}</p>
       </div>
     );
   }
 
   return (
-    <div className="space-y-4">
-      <div className="flex justify-end">
+    <div>
+      {/* Greeting section */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-6">
+        <div>
+          <h1 className="font-headline text-4xl font-extrabold tracking-tight mb-2">
+            Good morning
+          </h1>
+          <p className="text-on-surface-variant text-lg">
+            You have{" "}
+            <span className="text-coral-accent font-semibold">
+              {activeGoals.length} active goal{activeGoals.length !== 1 ? "s" : ""}
+            </span>{" "}
+            to focus on today.
+          </p>
+        </div>
         <AddGoalModal onAdd={handleAdd} />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-[calc(100vh-180px)]">
-      <GoalList
-        title="Active Goals"
-        goals={activeGoals}
-        emptyMessage="No active goals. Add one to get started!"
-        onToggle={handleToggle}
-        onDelete={handleDelete}
-      />
-      <GoalList
-        title="Completed Goals"
-        goals={completedGoals}
-        emptyMessage="No completed goals yet."
-        onToggle={handleToggle}
-        onDelete={handleDelete}
-      />
+
+      {/* Main grid: active goals + recently completed sidebar */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <section className="lg:col-span-8">
+          <GoalList
+            title="Active Goals"
+            goals={activeGoals}
+            emptyMessage="No active goals. Add one to get started!"
+            onToggle={handleToggle}
+            onDelete={handleDelete}
+            variant="active"
+          />
+        </section>
+        <aside className="lg:col-span-4">
+          <GoalList
+            title="Recently Completed"
+            goals={completedGoals}
+            emptyMessage="No completed goals yet."
+            onToggle={handleToggle}
+            onDelete={handleDelete}
+            variant="completed"
+          />
+        </aside>
       </div>
     </div>
   );

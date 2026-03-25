@@ -3,6 +3,7 @@ export interface Goal {
   title: string;
   endDate: string;
   status: "active" | "completed";
+  focusArea: string | null;
   createdAt: string;
   completedAt: string | null;
 }
@@ -15,4 +16,5 @@ export interface GoalWithUrgency extends Goal {
 export interface CreateGoalInput {
   title: string;
   endDate: string;
+  focusArea?: string;
 }

@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { listGoals, createGoal } from "@/lib/goals";
 import { daysRemaining, computeUrgency } from "@/lib/dates";
-import { isPast, parseISO, isToday } from "date-fns";
 import type { GoalWithUrgency } from "@/lib/types";
 
 export async function GET(request: NextRequest) {
@@ -35,7 +34,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { title, endDate } = body;
+    const { title, endDate, focusArea } = body;
 
     if (!title || typeof title !== "string" || title.trim().length === 0) {
       return NextResponse.json(
@@ -51,6 +50,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const { isPast, parseISO, isToday } = await import("date-fns");
     const parsedDate = parseISO(endDate);
     if (isPast(parsedDate) && !isToday(parsedDate)) {
       return NextResponse.json(
@@ -59,7 +59,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const goal = await createGoal(title.trim(), endDate);
+    if (focusArea !== undefined && focusArea !== null) {
+      if (typeof focusArea !== "string" || focusArea.length === 0 || focusArea.length > 50) {
+        return NextResponse.json(
+          { error: "Focus area must be a non-empty string (max 50 characters)" },
+          { status: 400 }
+        );
+      }
+    }
+
+    const goal = await createGoal(title.trim(), endDate, focusArea ?? undefined);
     return NextResponse.json(goal, { status: 201 });
   } catch (error) {
     console.error("Failed to create goal:", error);

@@ -27,12 +27,12 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-- [ ] T001 Replace shadcn color tokens with orange design system CSS custom properties and Tailwind theme extensions in `app/globals.css` — extract all color tokens, gradient classes (`.bg-radiant-primary`), and surface hierarchy variables from `design/orange/do_it_dashboard/code.html`
-- [ ] T002 [P] Swap Geist/Geist Mono fonts for Plus Jakarta Sans (headlines) and Inter (body) via `next/font/google` in `app/layout.tsx` — set CSS variables `--font-headline` and `--font-body` on the `<html>` element, add Material Symbols Outlined `<link>` tag per R-002
-- [ ] T003 [P] Update Goal TypeScript interface to add `focusArea: string | null` field, update `CreateGoalInput` to add optional `focusArea`, and update `GoalWithUrgency` in `lib/types.ts` per data-model.md
-- [ ] T004 [P] Add `focus_area VARCHAR(50)` column to the goals table DDL in `lib/schema.sql` per data-model.md migration
-- [ ] T005 Update `createGoal` and `listGoals` functions to handle `focus_area` column (INSERT with focusArea param, SELECT with `focus_area AS "focusArea"`) in `lib/goals.ts` — depends on T003, T004
-- [ ] T006 Update POST handler to accept optional `focusArea` in request body and pass to `createGoal`; update GET handler to return `focusArea` in goal responses in `app/api/goals/route.ts` — depends on T005, per contracts/api-goals.md
+- [X] T001 Replace shadcn color tokens with orange design system CSS custom properties and Tailwind theme extensions in `app/globals.css` — extract all color tokens, gradient classes (`.bg-radiant-primary`), and surface hierarchy variables from `design/orange/do_it_dashboard/code.html`
+- [X] T002 [P] Swap Geist/Geist Mono fonts for Plus Jakarta Sans (headlines) and Inter (body) via `next/font/google` in `app/layout.tsx` — set CSS variables `--font-headline` and `--font-body` on the `<html>` element, add Material Symbols Outlined `<link>` tag per R-002
+- [X] T003 [P] Update Goal TypeScript interface to add `focusArea: string | null` field, update `CreateGoalInput` to add optional `focusArea`, and update `GoalWithUrgency` in `lib/types.ts` per data-model.md
+- [X] T004 [P] Add `focus_area VARCHAR(50)` column to the goals table DDL in `lib/schema.sql` per data-model.md migration
+- [X] T005 Update `createGoal` and `listGoals` functions to handle `focus_area` column (INSERT with focusArea param, SELECT with `focus_area AS "focusArea"`) in `lib/goals.ts` — depends on T003, T004
+- [X] T006 Update POST handler to accept optional `focusArea` in request body and pass to `createGoal`; update GET handler to return `focusArea` in goal responses in `app/api/goals/route.ts` — depends on T005, per contracts/api-goals.md
 
 **Checkpoint**: Design tokens active, fonts loaded, schema updated -- user story implementation can begin
 
@@ -46,10 +46,10 @@
 
 ### Implementation for User Story 1
 
-- [ ] T007 [US1] Restyle the header in `app/layout.tsx` — sticky header with "Do It" brand in coral-accent color, navigation links with active indicator styling, notification/settings/profile icon placeholders using Material Symbols, per dashboard `code.html` header markup (FR-009)
-- [ ] T008 [US1] Rebuild the dashboard layout in `app/page.tsx` — greeting section with Plus Jakarta Sans headline and warm orange background, active goals in 8-column grid, recently completed sidebar in 4-column grid, and pill-shaped "Add New Goal" button with `.bg-radiant-primary` gradient per dashboard `code.html` (FR-001, FR-003, FR-010)
-- [ ] T009 [US1] Restyle goal cards in `components/goal-card.tsx` — rounded corners (`rounded-2xl`), orange design color tokens, hover translate-x interaction, urgency badges with color coding (normal/urgent/overdue per R-006 border rules), placeholder progress bars, per dashboard `code.html` goal card markup (FR-006)
-- [ ] T010 [US1] Restyle the goal list and split into active goals section + recently completed sidebar in `components/goal-list.tsx` — completed goals show coral-orange check icons, strikethrough text, light grey-blue background container (`bg-grey-blue-light`), rounded container (`rounded-3xl`), plus a static "Pro Tip" card with decorative icon, per dashboard `code.html` aside markup (FR-007)
+- [X] T007 [US1] Restyle the header in `app/layout.tsx` — sticky header with "Do It" brand in coral-accent color, navigation links with active indicator styling, notification/settings/profile icon placeholders using Material Symbols, per dashboard `code.html` header markup (FR-009)
+- [X] T008 [US1] Rebuild the dashboard layout in `app/page.tsx` — greeting section with Plus Jakarta Sans headline and warm orange background, active goals in 8-column grid, recently completed sidebar in 4-column grid, and pill-shaped "Add New Goal" button with `.bg-radiant-primary` gradient per dashboard `code.html` (FR-001, FR-003, FR-010)
+- [X] T009 [US1] Restyle goal cards in `components/goal-card.tsx` — rounded corners (`rounded-2xl`), orange design color tokens, hover translate-x interaction, urgency badges with color coding (normal/urgent/overdue per R-006 border rules), placeholder progress bars, per dashboard `code.html` goal card markup (FR-006)
+- [X] T010 [US1] Restyle the goal list and split into active goals section + recently completed sidebar in `components/goal-list.tsx` — completed goals show coral-orange check icons, strikethrough text, light grey-blue background container (`bg-grey-blue-light`), rounded container (`rounded-3xl`), plus a static "Pro Tip" card with decorative icon, per dashboard `code.html` aside markup (FR-007)
 
 **Checkpoint**: Dashboard fully restyled with orange design system — independently verifiable against mockup
 
@@ -63,8 +63,8 @@
 
 ### Implementation for User Story 2
 
-- [ ] T011 [US2] Restyle the Add New Goal modal in `components/add-goal-modal.tsx` — implement orange gradient header ("Ignite a New Path" title with warm gradient `#f07a50` to `#ffb48f`), glassmorphism backdrop (`bg-[#0f172a]/10 backdrop-blur-sm`), borderless input fields with warm surface background and focus ring, two-column layout for End Date and Focus Area, pill-shaped "Create Goal" button with orange gradient and tinted shadow, ghost-style "Cancel" button, per modal `code.html` (FR-004, R-001, R-004)
-- [ ] T012 [US2] Add focus area chip selector component within `components/add-goal-modal.tsx` — pill-shaped selectable chips for "Professional" and "Personal" values, single-select behavior, selected state with primary color fill, unselected with surface background, wire chip selection to the `focusArea` field in the create goal form submission (FR-004)
+- [X] T011 [US2] Restyle the Add New Goal modal in `components/add-goal-modal.tsx` — implement orange gradient header ("Ignite a New Path" title with warm gradient `#f07a50` to `#ffb48f`), glassmorphism backdrop (`bg-[#0f172a]/10 backdrop-blur-sm`), borderless input fields with warm surface background and focus ring, two-column layout for End Date and Focus Area, pill-shaped "Create Goal" button with orange gradient and tinted shadow, ghost-style "Cancel" button, per modal `code.html` (FR-004, R-001, R-004)
+- [X] T012 [US2] Add focus area chip selector component within `components/add-goal-modal.tsx` — pill-shaped selectable chips for "Professional" and "Personal" values, single-select behavior, selected state with primary color fill, unselected with surface background, wire chip selection to the `focusArea` field in the create goal form submission (FR-004)
 
 **Checkpoint**: Modal fully restyled with focus area persistence — independently verifiable against mockup
 
@@ -78,9 +78,9 @@
 
 ### Implementation for User Story 3
 
-- [ ] T013 [US3] Restyle the delete confirmation dialog in `components/delete-confirm-dialog.tsx` — apply orange design system tokens, pill-shaped buttons, surface hierarchy backgrounds, tinted shadows, Plus Jakarta Sans headings and Inter body text per DESIGN.md (FR-005, FR-008)
-- [ ] T014 [US3] Audit and update empty state, loading state, and error state UI across `app/page.tsx` and `components/goal-list.tsx` — ensure all states use new design tokens (warm dark text `#1e293b`, no pure black, surface backgrounds, pill buttons), consistent typography (Plus Jakarta Sans headlines, Inter body), and follow the No-Line Rule (FR-001, FR-002, FR-005)
-- [ ] T015 [P] [US3] Audit all components for pure black text (`#000000` or `text-black`), standard visible borders (replace with surface hierarchy where appropriate per R-006 exceptions), and non-pill buttons — fix any violations of DESIGN.md rules across all files in `app/` and `components/` (SC-004, SC-005)
+- [X] T013 [US3] Restyle the delete confirmation dialog in `components/delete-confirm-dialog.tsx` — apply orange design system tokens, pill-shaped buttons, surface hierarchy backgrounds, tinted shadows, Plus Jakarta Sans headings and Inter body text per DESIGN.md (FR-005, FR-008)
+- [X] T014 [US3] Audit and update empty state, loading state, and error state UI across `app/page.tsx` and `components/goal-list.tsx` — ensure all states use new design tokens (warm dark text `#1e293b`, no pure black, surface backgrounds, pill buttons), consistent typography (Plus Jakarta Sans headlines, Inter body), and follow the No-Line Rule (FR-001, FR-002, FR-005)
+- [X] T015 [P] [US3] Audit all components for pure black text (`#000000` or `text-black`), standard visible borders (replace with surface hierarchy where appropriate per R-006 exceptions), and non-pill buttons — fix any violations of DESIGN.md rules across all files in `app/` and `components/` (SC-004, SC-005)
 
 **Checkpoint**: All UI elements consistent with orange design system — no pure black text, no standard borders (except R-006 exceptions), all buttons pill-shaped
 
@@ -90,10 +90,10 @@
 
 **Purpose**: Responsive validation and final quality checks
 
-- [ ] T016 Validate responsive layout at 320px, 768px, 1280px, and 1920px viewports — verify dashboard grid collapses to single column on mobile, modal adapts to small screens, and all components remain usable per FR-010 and SC-006
-- [ ] T017 Validate long goal titles truncate with ellipsis rather than breaking card layout across `components/goal-card.tsx` and `components/goal-list.tsx`
-- [ ] T018 Run `pnpm lint` and `pnpm build` to verify no TypeScript errors, lint violations, or build failures from all changes
-- [ ] T019 Run quickstart.md validation — walk through the implementation order checklist in `specs/002-ui-enhancement/quickstart.md` and confirm all items are addressed
+- [X] T016 Validate responsive layout at 320px, 768px, 1280px, and 1920px viewports — verify dashboard grid collapses to single column on mobile, modal adapts to small screens, and all components remain usable per FR-010 and SC-006
+- [X] T017 Validate long goal titles truncate with ellipsis rather than breaking card layout across `components/goal-card.tsx` and `components/goal-list.tsx`
+- [X] T018 Run `pnpm lint` and `pnpm build` to verify no TypeScript errors, lint violations, or build failures from all changes
+- [X] T019 Run quickstart.md validation — walk through the implementation order checklist in `specs/002-ui-enhancement/quickstart.md` and confirm all items are addressed
 
 ---
 

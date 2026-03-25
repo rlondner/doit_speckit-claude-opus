@@ -1,0 +1,2014 @@
+ ▐▛███▜▌   Claude Code v2.1.83
+▝▜█████▛▘  Sonnet 4.6 · Claude Pro
+  ▘▘ ▝▝    ~\Documents\GitHub\doit_speckit-claude
+
+❯ /clear                                                                        
+  ⎿  (no content)
+
+❯ /speckit.implement                                                            
+
+● Bash(powershell -ExecutionPolicy Bypass -File
+      .specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks
+      -IncludeTasks)
+  ⎿  {
+       "FEATURE_DIR": "C:\\Users\\rlond\\Documents\\GitHub\\doit_speckit-cl
+     aude\\specs\\002-ui-enhancement",
+     … +8 lines (ctrl+o to expand)
+
+  Searched for 2 patterns, read 6 files (ctrl+o to expand)
+
+● Checklist Status
+
+  ┌─────────────────┬───────┬───────────┬────────────┬────────┐
+  │    Checklist    │ Total │ Completed │ Incomplete │ Status │
+  ├─────────────────┼───────┼───────────┼────────────┼────────┤
+  │ requirements.md │ 12    │ 12        │ 0          │ ✓ PASS │
+  └─────────────────┴───────┴───────────┴────────────┴────────┘
+
+  All checklists pass. Proceeding to implementation.
+
+  Let me read the existing source files and design references to begin.
+
+  Searched for 1 pattern, read 11 files (ctrl+o to expand)
+
+● Now let me read the design reference files and the API contract.
+
+  Read 4 files (ctrl+o to expand)
+
+● Now I have the full picture. Let me set up task tracking and verify the
+  project setup before starting implementation.
+
+● Let me first verify the .gitignore, then start Phase 2.
+
+  Read 1 file (ctrl+o to expand)
+
+● .gitignore looks good for Node.js/Next.js. Now starting Phase 2: Foundational.
+
+  T001: Replace color tokens in globals.css
+
+● Write(app\globals.css)
+  ⎿  Added 109 lines, removed 114 lines
+        5  @custom-variant dark (&:is(.dark *));
+        6 
+        7  @theme inline {
+        8 -    --font-heading: var(--font-sans);                         
+        9 -    --font-sans: var(--font-sans);                            
+       10 -    --color-sidebar-ring: var(--sidebar-ring);                
+       11 -    --color-sidebar-border: var(--sidebar-border);            
+       12 -    --color-sidebar-accent-foreground: var(--sidebar-accent-fo
+          -reground);                                                    
+       13 -    --color-sidebar-accent: var(--sidebar-accent);            
+       14 -    --color-sidebar-primary-foreground: var(--sidebar-primary-
+          -foreground);                                                  
+       15 -    --color-sidebar-primary: var(--sidebar-primary);          
+       16 -    --color-sidebar-foreground: var(--sidebar-foreground);    
+       17 -    --color-sidebar: var(--sidebar);                          
+       18 -    --color-chart-5: var(--chart-5);                          
+       19 -    --color-chart-4: var(--chart-4);                          
+       20 -    --color-chart-3: var(--chart-3);                          
+       21 -    --color-chart-2: var(--chart-2);                          
+       22 -    --color-chart-1: var(--chart-1);                          
+       23 -    --color-ring: var(--ring);                                
+       24 -    --color-input: var(--input);                              
+       25 -    --color-border: var(--border);                            
+       26 -    --color-destructive: var(--destructive);                  
+       27 -    --color-accent-foreground: var(--accent-foreground);      
+       28 -    --color-accent: var(--accent);                            
+       29 -    --color-muted-foreground: var(--muted-foreground);        
+       30 -    --color-muted: var(--muted);                              
+       31 -    --color-secondary-foreground: var(--secondary-foreground);
+       32 -    --color-secondary: var(--secondary);                      
+       33 -    --color-primary-foreground: var(--primary-foreground);    
+       34 -    --color-primary: var(--primary);                          
+       35 -    --color-popover-foreground: var(--popover-foreground);    
+       36 -    --color-popover: var(--popover);                          
+       37 -    --color-card-foreground: var(--card-foreground);          
+       38 -    --color-card: var(--card);                                
+       39 -    --color-foreground: var(--foreground);                    
+       40 -    --color-background: var(--background);                    
+       41 -    --radius-sm: calc(var(--radius) * 0.6);                   
+       42 -    --radius-md: calc(var(--radius) * 0.8);                   
+       43 -    --radius-lg: var(--radius);                               
+       44 -    --radius-xl: calc(var(--radius) * 1.4);                   
+       45 -    --radius-2xl: calc(var(--radius) * 1.8);                  
+       46 -    --radius-3xl: calc(var(--radius) * 2.2);                  
+       47 -    --radius-4xl: calc(var(--radius) * 2.6);                  
+        8 +    --font-heading: var(--font-headline);
+        9 +    --font-sans: var(--font-body);
+       10 
+       49 -    /* Pastel color tokens */                                 
+       50 -    --color-pastel-pink: #f8b4c8;                             
+       51 -    --color-pastel-lavender: #c4b7eb;                         
+       52 -    --color-pastel-mint: #b8e6d0;                             
+       53 -    --color-pastel-peach: #f8c9a0;                            
+       54 -    --color-pastel-sky: #a8d4f0;                              
+       55 -    --color-pastel-cream: #fef9f0;                            
+       11 +    /* Orange design system color tokens (from dashboard code.
+          +html) */
+       12 +    --color-surface: #f8fafc;
+       13 +    --color-on-surface: #1e293b;
+       14 +    --color-on-surface-variant: #64748b;
+       15 +    --color-surface-container-lowest: #ffffff;
+       16 +    --color-surface-container-low: #f1f5f9;
+       17 +    --color-surface-container: #f1f5f9;
+       18 +    --color-surface-container-high: #e2e8f0;
+       19 +    --color-surface-container-highest: #e2e8f0;
+       20 +    --color-surface-bright: #f8fafc;
+       21 +    --color-surface-dim: #e2e8f0;
+       22 +    --color-surface-variant: #f1f5f9;
+       23 +    --color-surface-tint: #ff7f70;
+       24 +    --color-inverse-surface: #0f172a;
+       25 +    --color-inverse-on-surface: #94a3b8;
+       26 +    --color-inverse-primary: #ff9e94;
+       27 +    --color-on-background: #1e293b;
+       28 +    --color-coral-accent: #ff7f70;
+       29 +    --color-primary-dim: #f47164;
+       30 +    --color-primary-fixed: #ff7f70;
+       31 +    --color-primary-fixed-dim: #ff7f70;
+       32 +    --color-primary-container: #ff7f70;
+       33 +    --color-on-primary: #ffffff;
+       34 +    --color-on-primary-container: #ffffff;
+       35 +    --color-on-primary-fixed: #ffffff;
+       36 +    --color-on-primary-fixed-variant: #ff7f70;
+       37 +    --color-secondary: #64748b;
+       38 +    --color-secondary-dim: #64748b;
+       39 +    --color-secondary-container: #f1f5f9;
+       40 +    --color-secondary-fixed: #f1f5f9;
+       41 +    --color-secondary-fixed-dim: #e2e8f0;
+       42 +    --color-on-secondary: #f1f5f9;
+       43 +    --color-on-secondary-container: #475569;
+       44 +    --color-on-secondary-fixed: #475569;
+       45 +    --color-on-secondary-fixed-variant: #64748b;
+       46 +    --color-tertiary: #64748b;
+       47 +    --color-tertiary-dim: #475569;
+       48 +    --color-tertiary-container: #e2e8f0;
+       49 +    --color-tertiary-fixed: #f1f5f9;
+       50 +    --color-tertiary-fixed-dim: #cbd5e1;
+       51 +    --color-on-tertiary: #ffffff;
+       52 +    --color-on-tertiary-container: #475569;
+       53 +    --color-on-tertiary-fixed: #334155;
+       54 +    --color-on-tertiary-fixed-variant: #475569;
+       55 +    --color-outline: #94a3b8;
+       56 +    --color-outline-variant: #cbd5e1;
+       57 +    --color-error-container: #fee2e2;
+       58 +    --color-on-error: #fff5f5;
+       59 +    --color-on-error-container: #7f1d1d;
+       60 +    --color-error-dim: #991b1b;
+       61 +    --color-grey-blue-light: #f1f5f9;
+       62 +    --color-grey-blue: #e2e8f0;
+       63 +    --color-grey-blue-dark: #475569;
+       64 
+       65 +    /* Font families */
+       66 +    --font-headline: "Plus Jakarta Sans", sans-serif;
+       67 +    --font-body: "Inter", sans-serif;
+       68 +    --font-label: "Inter", sans-serif;
+       69 +
+       70      /* Responsive breakpoints */
+       71      --breakpoint-md: 768px;
+       72      --breakpoint-lg: 1280px;
+       73  }
+       74 
+       75  :root {
+       63 -    --background: oklch(1 0 0);                               
+       64 -    --foreground: oklch(0.145 0 0);                           
+       65 -    --card: oklch(1 0 0);                                     
+       66 -    --card-foreground: oklch(0.145 0 0);                      
+       67 -    --popover: oklch(1 0 0);                                  
+       68 -    --popover-foreground: oklch(0.145 0 0);                   
+       69 -    --primary: oklch(0.205 0 0);                              
+       70 -    --primary-foreground: oklch(0.985 0 0);                   
+       71 -    --secondary: oklch(0.97 0 0);                             
+       72 -    --secondary-foreground: oklch(0.205 0 0);                 
+       73 -    --muted: oklch(0.97 0 0);                                 
+       74 -    --muted-foreground: oklch(0.556 0 0);                     
+       75 -    --accent: oklch(0.97 0 0);                                
+       76 -    --accent-foreground: oklch(0.205 0 0);                    
+       77 -    --destructive: oklch(0.577 0.245 27.325);                 
+       78 -    --border: oklch(0.922 0 0);                               
+       79 -    --input: oklch(0.922 0 0);                                
+       80 -    --ring: oklch(0.708 0 0);                                 
+       81 -    --chart-1: oklch(0.87 0 0);                               
+       82 -    --chart-2: oklch(0.556 0 0);                              
+       83 -    --chart-3: oklch(0.439 0 0);                              
+       84 -    --chart-4: oklch(0.371 0 0);                              
+       85 -    --chart-5: oklch(0.269 0 0);                              
+       86 -    --radius: 0.625rem;                                       
+       87 -    --sidebar: oklch(0.985 0 0);                              
+       88 -    --sidebar-foreground: oklch(0.145 0 0);                   
+       89 -    --sidebar-primary: oklch(0.205 0 0);                      
+       90 -    --sidebar-primary-foreground: oklch(0.985 0 0);           
+       91 -    --sidebar-accent: oklch(0.97 0 0);                        
+       92 -    --sidebar-accent-foreground: oklch(0.205 0 0);            
+       93 -    --sidebar-border: oklch(0.922 0 0);                       
+       94 -    --sidebar-ring: oklch(0.708 0 0);                         
+       76 +    --background: #f8fafc;
+       77 +    --foreground: #1e293b;
+       78 +    --card: #ffffff;
+       79 +    --card-foreground: #1e293b;
+       80 +    --popover: #ffffff;
+       81 +    --popover-foreground: #1e293b;
+       82 +    --primary: #ff7f70;
+       83 +    --primary-foreground: #ffffff;
+       84 +    --secondary: #f1f5f9;
+       85 +    --secondary-foreground: #475569;
+       86 +    --muted: #f1f5f9;
+       87 +    --muted-foreground: #64748b;
+       88 +    --accent: #f1f5f9;
+       89 +    --accent-foreground: #1e293b;
+       90 +    --destructive: #ef4444;
+       91 +    --border: #e2e8f0;
+       92 +    --input: #f1f5f9;
+       93 +    --ring: #ff7f70;
+       94 +    --chart-1: #ff7f70;
+       95 +    --chart-2: #64748b;
+       96 +    --chart-3: #475569;
+       97 +    --chart-4: #334155;
+       98 +    --chart-5: #1e293b;
+       99 +    --radius: 0.75rem;
+      100 +    --sidebar: #f8fafc;
+      101 +    --sidebar-foreground: #1e293b;
+      102 +    --sidebar-primary: #ff7f70;
+      103 +    --sidebar-primary-foreground: #ffffff;
+      104 +    --sidebar-accent: #f1f5f9;
+      105 +    --sidebar-accent-foreground: #1e293b;
+      106 +    --sidebar-border: #e2e8f0;
+      107 +    --sidebar-ring: #ff7f70;
+      108  }
+      109 
+       97 -.dark {                                                       
+       98 -    --background: oklch(0.145 0 0);                           
+       99 -    --foreground: oklch(0.985 0 0);                           
+      100 -    --card: oklch(0.205 0 0);                                 
+      101 -    --card-foreground: oklch(0.985 0 0);                      
+      102 -    --popover: oklch(0.205 0 0);                              
+      103 -    --popover-foreground: oklch(0.985 0 0);                   
+      104 -    --primary: oklch(0.922 0 0);                              
+      105 -    --primary-foreground: oklch(0.205 0 0);                   
+      106 -    --secondary: oklch(0.269 0 0);                            
+      107 -    --secondary-foreground: oklch(0.985 0 0);                 
+      108 -    --muted: oklch(0.269 0 0);                                
+      109 -    --muted-foreground: oklch(0.708 0 0);                     
+      110 -    --accent: oklch(0.269 0 0);                               
+      111 -    --accent-foreground: oklch(0.985 0 0);                    
+      112 -    --destructive: oklch(0.704 0.191 22.216);                 
+      113 -    --border: oklch(1 0 0 / 10%);                             
+      114 -    --input: oklch(1 0 0 / 15%);                              
+      115 -    --ring: oklch(0.556 0 0);                                 
+      116 -    --chart-1: oklch(0.87 0 0);                               
+      117 -    --chart-2: oklch(0.556 0 0);                              
+      118 -    --chart-3: oklch(0.439 0 0);                              
+      119 -    --chart-4: oklch(0.371 0 0);                              
+      120 -    --chart-5: oklch(0.269 0 0);                              
+      121 -    --sidebar: oklch(0.205 0 0);                              
+      122 -    --sidebar-foreground: oklch(0.985 0 0);                   
+      123 -    --sidebar-primary: oklch(0.488 0.243 264.376);            
+      124 -    --sidebar-primary-foreground: oklch(0.985 0 0);           
+      125 -    --sidebar-accent: oklch(0.269 0 0);                       
+      126 -    --sidebar-accent-foreground: oklch(0.985 0 0);            
+      127 -    --sidebar-border: oklch(1 0 0 / 10%);                     
+      128 -    --sidebar-ring: oklch(0.556 0 0);                         
+      110 +/* Material Symbols configuration */
+      111 +.material-symbols-outlined {
+      112 +    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, '
+          +opsz' 24;
+      113 +    vertical-align: middle;
+      114  }
+      115 
+      116 +/* Orange design system gradient */
+      117 +.bg-radiant-primary {
+      118 +    background: linear-gradient(135deg, #ff7f70 0%, #ff9e94 10
+          +0%);
+      119 +}
+      120 +
+      121 +/* Modal-specific gradient (warmer tones per R-001) */
+      122 +.bg-radiant-primary-modal {
+      123 +    background: linear-gradient(135deg, #f07a50 0%, #ffb48f 10
+          +0%);
+      124 +}
+      125 +
+      126  @layer base {
+      127    * {
+      128      @apply border-border outline-ring/50;
+      129      }
+      130    body {
+      136 -    @apply bg-background text-foreground;                     
+      131 +    @apply bg-surface text-on-surface;
+      132      }
+      133    html {
+      139 -    @apply font-sans;                                         
+      134 +    @apply font-sans antialiased;
+      135      }
+      141 -}                                                             
+      136   No newline at end of file
+      137 +}
+
+● T002: Swap fonts in layout.tsx + T007: Restyle header
+
+● Write(app\layout.tsx)
+  ⎿  Added 58 lines, removed 13 lines
+       1  import type { Metadata } from "next";
+       2 -import { Geist, Geist_Mono } from "next/font/google";          
+       2 +import { Plus_Jakarta_Sans, Inter } from "next/font/google";
+       3  import "./globals.css";
+       4 
+       5 -const geistSans = Geist({                                      
+       6 -  variable: "--font-geist-sans",                               
+       5 +const plusJakartaSans = Plus_Jakarta_Sans({
+       6 +  variable: "--font-headline",
+       7    subsets: ["latin"],
+       8 +  weight: ["400", "500", "600", "700", "800"],
+       9  });
+      10 
+      10 -const geistMono = Geist_Mono({                                 
+      11 -  variable: "--font-geist-mono",                               
+      11 +const inter = Inter({
+      12 +  variable: "--font-body",
+      13    subsets: ["latin"],
+      14 +  weight: ["400", "500", "600", "700"],
+      15  });
+      16 
+      17  export const metadata: Metadata = {
+      16 -  title: "do it — Goal Tracker",                               
+      18 +  title: "Do It — Goal Tracker",
+      19    description: "Track your goals and get things done",
+      20  };
+      21 
+     ...
+      27    return (
+      28      <html
+      29        lang="en"
+      28 -      className={`${geistSans.variable} ${geistMono.variable} h
+         --full antialiased`}                                            
+      30 +      className={`${plusJakartaSans.variable} ${inter.variable}
+         + h-full`}
+      31      >
+      30 -      <body className="min-h-full flex flex-col bg-pastel-cream
+         -">                                                             
+      31 -        <header className="border-b border-border bg-white/80 b
+         -ackdrop-blur-sm px-6 py-4">                                    
+      32 -          <h1 className="text-2xl font-bold tracking-tight">   
+      33 -            do it                                              
+      34 -          </h1>                                                
+      32 +      <head>
+      33 +        <link
+      34 +          href="https://fonts.googleapis.com/css2?family=Materi
+         +al+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      35 +          rel="stylesheet"
+      36 +        />
+      37 +      </head>
+      38 +      <body className="min-h-full flex flex-col bg-surface font
+         +-body text-on-surface antialiased">
+      39 +        <header className="w-full top-0 sticky z-50 bg-white bo
+         +rder-b border-grey-blue font-headline antialiased tracking-tigh
+         +t">
+      40 +          <div className="flex justify-between items-center w-f
+         +ull px-8 py-4 max-w-screen-2xl mx-auto">
+      41 +            <div className="flex items-center gap-8">
+      42 +              <span className="text-2xl font-bold tracking-tigh
+         +ter text-coral-accent">
+      43 +                Do It
+      44 +              </span>
+      45 +              <nav className="hidden md:flex gap-6">
+      46 +                <a
+      47 +                  className="text-on-surface border-b-2 border-
+         +coral-accent pb-1 font-semibold transition-colors duration-200"
+      48 +                  href="#"
+      49 +                >
+      50 +                  Dashboard
+      51 +                </a>
+      52 +                <a
+      53 +                  className="text-on-surface-variant font-mediu
+         +m hover:text-coral-accent transition-colors duration-200"
+      54 +                  href="#"
+      55 +                >
+      56 +                  Analytics
+      57 +                </a>
+      58 +                <a
+      59 +                  className="text-on-surface-variant font-mediu
+         +m hover:text-coral-accent transition-colors duration-200"
+      60 +                  href="#"
+      61 +                >
+      62 +                  Community
+      63 +                </a>
+      64 +              </nav>
+      65 +            </div>
+      66 +            <div className="flex items-center gap-4">
+      67 +              <button className="p-2 text-on-surface-variant ho
+         +ver:text-coral-accent transition-colors">
+      68 +                <span className="material-symbols-outlined">not
+         +ifications</span>
+      69 +              </button>
+      70 +              <button className="p-2 text-on-surface-variant ho
+         +ver:text-coral-accent transition-colors">
+      71 +                <span className="material-symbols-outlined">set
+         +tings</span>
+      72 +              </button>
+      73 +              <div className="w-10 h-10 rounded-full bg-grey-bl
+         +ue-light flex items-center justify-center border border-grey-bl
+         +ue">
+      74 +                <span className="material-symbols-outlined text
+         +-on-surface-variant">
+      75 +                  person
+      76 +                </span>
+      77 +              </div>
+      78 +            </div>
+      79 +          </div>
+      80          </header>
+      36 -        <main className="flex-1 px-4 py-6 md:px-6 lg:px-8">    
+      81 +        <main className="flex-1 max-w-screen-2xl mx-auto px-8 p
+         +y-12 w-full">
+      82            {children}
+      83          </main>
+      84        </body>
+
+● T003: Update TypeScript types
+
+● Write(lib\types.ts)  ⎿  Added 2 lines
+      3    title: string;
+      4    endDate: string;
+      5    status: "active" | "completed";
+      6 +  focusArea: string | null;
+      7    createdAt: string;
+      8    completedAt: string | null;
+      9  }
+     ...
+      16  export interface CreateGoalInput {
+      17    title: string;
+      18    endDate: string;
+      19 +  focusArea?: string;
+      20  }
+
+● T004: Update schema.sql
+
+● Write(lib\schema.sql)
+  ⎿  Added 4 lines
+       3    title VARCHAR(255) NOT NULL CHECK (char_length(title) >= 1),
+       4    end_date DATE NOT NULL,
+       5    status VARCHAR(20) NOT NULL DEFAULT 'active' CHECK (status IN
+           ('active', 'completed')),
+       6 +  focus_area VARCHAR(50),
+       7    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+       8    completed_at TIMESTAMPTZ
+       9  );
+      10 
+      11  CREATE INDEX IF NOT EXISTS idx_goals_status ON goals (status);
+      12  CREATE INDEX IF NOT EXISTS idx_goals_end_date ON goals (end_dat
+          e) WHERE status = 'active';
+      13 +
+      14 +-- Migration for existing databases:
+      15 +-- ALTER TABLE goals ADD COLUMN IF NOT EXISTS focus_area VARCHA
+         +R(50);
+
+● T005: Update goals.ts queries
+
+● Write(lib\goals.ts)
+  ⎿  Added 7 lines, removed 4 lines
+       5    const pool = getPool();
+       6    let query = `
+       7      SELECT id, title, end_date AS "endDate", status,
+       8 +           focus_area AS "focusArea",
+       9             created_at AS "createdAt", completed_at AS "complete
+          dAt"
+      10      FROM goals
+      11    `;
+     ...
+      26    return result.rows;
+      27  }
+      28 
+      28 -export async function createGoal(title: string, endDate: string
+         -): Promise<Goal> {                                             
+      29 +export async function createGoal(title: string, endDate: string
+         +, focusArea?: string): Promise<Goal> {
+      30    const pool = getPool();
+      31    const result = await pool.query(
+      31 -    `INSERT INTO goals (title, end_date)                       
+      32 -     VALUES ($1, $2)                                           
+      32 +    `INSERT INTO goals (title, end_date, focus_area)
+      33 +     VALUES ($1, $2, $3)
+      34       RETURNING id, title, end_date AS "endDate", status,
+      35 +               focus_area AS "focusArea",
+      36                 created_at AS "createdAt", completed_at AS "comp
+          letedAt"`,
+      35 -    [title, endDate]                                           
+      37 +    [title, endDate, focusArea ?? null]
+      38    );
+      39    return result.rows[0];
+      40  }
+     ...
+      50       SET status = $1, completed_at = ${completedAt}
+      51       WHERE id = $2
+      52       RETURNING id, title, end_date AS "endDate", status,
+      53 +               focus_area AS "focusArea",
+      54                 created_at AS "createdAt", completed_at AS "comp
+          letedAt"`,
+      55      [status, id]
+      56    );
+
+● T006: Update API route for focusArea
+
+● Write(app\api\goals\route.ts)
+  ⎿  Added 12 lines, removed 3 lines
+      1  import { NextRequest, NextResponse } from "next/server";
+      2  import { listGoals, createGoal } from "@/lib/goals";
+      3  import { daysRemaining, computeUrgency } from "@/lib/dates";
+      4 -import { isPast, parseISO, isToday } from "date-fns";           
+      4  import type { GoalWithUrgency } from "@/lib/types";
+      5 
+      6  export async function GET(request: NextRequest) {
+     ...
+      34  export async function POST(request: NextRequest) {
+      35    try {
+      36      const body = await request.json();
+      38 -    const { title, endDate } = body;                           
+      37 +    const { title, endDate, focusArea } = body;
+      38 
+      39      if (!title || typeof title !== "string" || title.trim().len
+          gth === 0) {
+      40        return NextResponse.json(
+     ...
+      50        );
+      51      }
+      52 
+      53 +    const { isPast, parseISO, isToday } = await import("date-fn
+         +s");
+      54      const parsedDate = parseISO(endDate);
+      55      if (isPast(parsedDate) && !isToday(parsedDate)) {
+      56        return NextResponse.json(
+     ...
+      59        );
+      60      }
+      61 
+      62 -    const goal = await createGoal(title.trim(), endDate);      
+      62 +    if (focusArea !== undefined && focusArea !== null) {
+      63 +      if (typeof focusArea !== "string" || focusArea.length ===
+         + 0 || focusArea.length > 50) {
+      64 +        return NextResponse.json(
+      65 +          { error: "Focus area must be a non-empty string (max 
+         +50 characters)" },
+      66 +          { status: 400 }
+      67 +        );
+      68 +      }
+      69 +    }
+      70 +
+      71 +    const goal = await createGoal(title.trim(), endDate, focusA
+         +rea ?? undefined);
+      72      return NextResponse.json(goal, { status: 201 });
+      73    } catch (error) {
+      74      console.error("Failed to create goal:", error);
+
+● Phase 2 complete. Now let me check if updateGoal in the PATCH route also needs
+   the focusArea field in its RETURNING clause.
+
+  Read 1 file (ctrl+o to expand)
+
+● Good — the PATCH/DELETE route calls updateGoal/deleteGoal from goals.ts which
+  already have the focusArea in the RETURNING clause. No changes needed.
+
+● Now Phase 3: US1 - Dashboard Restyle. T007 (header) is already done in
+  layout.tsx. Now T008: Rebuild dashboard layout.
+
+● Write(app\page.tsx)
+  ⎿  Added 42 lines, removed 21 lines
+      71      }
+      72    };
+      73 
+      74 -  const handleAdd = async (title: string, endDate: string) => {
+      74 +  const handleAdd = async (title: string, endDate: string, focu
+         +sArea?: string) => {
+      75      const res = await fetch("/api/goals", {
+      76        method: "POST",
+      77        headers: { "Content-Type": "application/json" },
+      78 -      body: JSON.stringify({ title, endDate }),                
+      78 +      body: JSON.stringify({ title, endDate, focusArea }),
+      79      });
+      80      if (!res.ok) throw new Error("Failed to create goal");
+      81      invalidateGoalCache();
+     ...
+      88    if (loading) {
+      89      return (
+      90        <div className="flex items-center justify-center h-64">
+      91 -        <p className="text-muted-foreground">Loading goals...</
+         -p>                                                             
+      91 +        <p className="text-on-surface-variant font-body">Loadin
+         +g goals...</p>
+      92        </div>
+      93      );
+      94    }
+     ...
+       96    if (error) {
+       97      return (
+       98        <div className="flex items-center justify-center h-64">
+       99 -        <p className="text-destructive">{error}</p>           
+       99 +        <p className="text-error font-body">{error}</p>
+      100        </div>
+      101      );
+      102    }
+      103 
+      104    return (
+      105 -    <div className="space-y-4">                               
+      106 -      <div className="flex justify-end">                      
+      105 +    <div>
+      106 +      {/* Greeting section */}
+      107 +      <div className="flex flex-col md:flex-row justify-betwee
+          +n items-start md:items-center mb-16 gap-6">
+      108 +        <div>
+      109 +          <h1 className="font-headline text-4xl font-extrabold
+          + tracking-tight mb-2">
+      110 +            Good morning
+      111 +          </h1>
+      112 +          <p className="text-on-surface-variant text-lg">
+      113 +            You have{" "}
+      114 +            <span className="text-coral-accent font-semibold">
+      115 +              {activeGoals.length} active goal{activeGoals.len
+          +gth !== 1 ? "s" : ""}
+      116 +            </span>{" "}
+      117 +            to focus on today.
+      118 +          </p>
+      119 +        </div>
+      120          <AddGoalModal onAdd={handleAdd} />
+      121        </div>
+      109 -      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 h-
+          -[calc(100vh-180px)]">                                         
+      110 -      <GoalList                                               
+      111 -        title="Active Goals"                                  
+      112 -        goals={activeGoals}                                   
+      113 -        emptyMessage="No active goals. Add one to get started!
+          -"                                                             
+      114 -        onToggle={handleToggle}                               
+      115 -        onDelete={handleDelete}                               
+      116 -      />                                                      
+      117 -      <GoalList                                               
+      118 -        title="Completed Goals"                               
+      119 -        goals={completedGoals}                                
+      120 -        emptyMessage="No completed goals yet."                
+      121 -        onToggle={handleToggle}                               
+      122 -        onDelete={handleDelete}                               
+      123 -      />                                                      
+      122 +
+      123 +      {/* Main grid: active goals + recently completed sidebar
+          + */}
+      124 +      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12"
+          +>
+      125 +        <section className="lg:col-span-8">
+      126 +          <GoalList
+      127 +            title="Active Goals"
+      128 +            goals={activeGoals}
+      129 +            emptyMessage="No active goals. Add one to get star
+          +ted!"
+      130 +            onToggle={handleToggle}
+      131 +            onDelete={handleDelete}
+      132 +            variant="active"
+      133 +          />
+      134 +        </section>
+      135 +        <aside className="lg:col-span-4">
+      136 +          <GoalList
+      137 +            title="Recently Completed"
+      138 +            goals={completedGoals}
+      139 +            emptyMessage="No completed goals yet."
+      140 +            onToggle={handleToggle}
+      141 +            onDelete={handleDelete}
+      142 +            variant="completed"
+      143 +          />
+      144 +        </aside>
+      145        </div>
+      146      </div>
+      147    );
+
+● T009: Restyle goal cards + T010: Restyle goal list with sidebar
+
+● Write(components\goal-card.tsx)
+  ⎿  Added 107 lines, removed 48 lines
+        1  "use client";
+        2 
+        3  import { useState } from "react";
+        4 -import { Card, CardContent } from "@/components/ui/card";     
+        5 -import { Checkbox } from "@/components/ui/checkbox";          
+        6 -import { Button } from "@/components/ui/button";              
+        4  import { DeleteConfirmDialog } from "@/components/delete-confi
+           rm-dialog";
+        5  import type { GoalWithUrgency } from "@/lib/types";
+        9 -import { cn } from "@/lib/utils";                             
+        6 
+        7  interface GoalCardProps {
+        8    goal: GoalWithUrgency;
+        9    onToggle: (id: string, newStatus: "active" | "completed") =>
+            void;
+       10    onDelete: (id: string) => void;
+       11 +  variant: "active" | "completed";
+       12  }
+       13 
+       17 -export function GoalCard({ goal, onToggle, onDelete }: GoalCar
+          -dProps) {                                                     
+       14 +export function GoalCard({ goal, onToggle, onDelete, variant }
+          +: GoalCardProps) {
+       15    const [deleteDialogOpen, setDeleteDialogOpen] = useState(fal
+           se);
+       16    const isCompleted = goal.status === "completed";
+       17 +  const isUrgent = goal.urgency === "urgent" && !isCompleted;
+       18 +  const isOverdue = goal.urgency === "overdue" && !isCompleted
+          +;
+       19 
+       20    function urgencyLabel(days: number): string {
+       22 -    if (days < 0) return `${Math.abs(days)} day${Math.abs(days
+          -) !== 1 ? "s" : ""} overdue`;                                 
+       23 -    if (days === 0) return "Due today";                       
+       24 -    return `${days} day${days !== 1 ? "s" : ""} left`;        
+       21 +    if (days < 0) return `${Math.abs(days)} Day${Math.abs(days
+          +) !== 1 ? "s" : ""} Overdue`;
+       22 +    if (days === 0) return "Due Today";
+       23 +    return `${days} Day${days !== 1 ? "s" : ""} Left`;
+       24    }
+       25 
+       26 +  function urgencyIcon(urgency: string): string {
+       27 +    if (urgency === "overdue") return "report";
+       28 +    if (urgency === "urgent") return "schedule";
+       29 +    return "event";
+       30 +  }
+       31 +
+       32 +  // Completed card variant (sidebar)
+       33 +  if (variant === "completed") {
+       34 +    return (
+       35 +      <>
+       36 +        <div className="flex items-start gap-4">
+       37 +          <div className="mt-1 cursor-pointer" onClick={() =>
+          +onToggle(goal.id, "active")}>
+       38 +            <span className="material-symbols-outlined text-co
+          +ral-accent" style={{ fontVariationSettings: "'FILL' 1, 'wght' 
+          +400, 'GRAD' 0, 'opsz' 24" }}>
+       39 +              check_circle
+       40 +            </span>
+       41 +          </div>
+       42 +          <div className="flex-1 min-w-0">
+       43 +            <h4 className="font-headline text-on-surface-varia
+          +nt line-through font-semibold leading-tight truncate">
+       44 +              {goal.title}
+       45 +            </h4>
+       46 +            {goal.completedAt && (
+       47 +              <p className="text-xs text-on-surface-variant mt
+          +-1">
+       48 +                Completed {formatCompletedTime(goal.completedA
+          +t)}
+       49 +              </p>
+       50 +            )}
+       51 +          </div>
+       52 +          <button
+       53 +            onClick={() => setDeleteDialogOpen(true)}
+       54 +            className="p-1 text-on-surface-variant hover:text-
+          +error transition-colors opacity-0 group-hover:opacity-100 shri
+          +nk-0"
+       55 +          >
+       56 +            <span className="material-symbols-outlined text-lg
+          +">delete</span>
+       57 +          </button>
+       58 +        </div>
+       59 +        <DeleteConfirmDialog
+       60 +          open={deleteDialogOpen}
+       61 +          onOpenChange={setDeleteDialogOpen}
+       62 +          onConfirm={() => {
+       63 +            setDeleteDialogOpen(false);
+       64 +            onDelete(goal.id);
+       65 +          }}
+       66 +          goalTitle={goal.title}
+       67 +        />
+       68 +      </>
+       69 +    );
+       70 +  }
+       71 +
+       72 +  // Active card variant
+       73    return (
+       74      <>
+       29 -      <Card                                                   
+       30 -        className={cn(                                        
+       31 -          "transition-colors",                                
+       32 -          goal.urgency === "urgent" && !isCompleted && "border
+          --pastel-pink bg-pastel-pink/20",                              
+       33 -          goal.urgency === "overdue" && !isCompleted && "borde
+          -r-pastel-peach bg-pastel-peach/20"                            
+       34 -        )}                                                    
+       75 +      <div
+       76 +        className={`
+       77 +          p-6 rounded-xl flex items-center gap-4 group transit
+          +ion-all duration-300
+       78 +          ${isOverdue || isUrgent
+       79 +            ? "bg-[#fff5f5] border-2 border-red-100"
+       80 +            : "bg-surface-container-lowest border border-grey-
+          +blue hover:translate-x-1 shadow-sm"
+       81 +          }
+       82 +        `}
+       83        >
+       36 -        <CardContent className="flex items-start gap-3 p-4">  
+       37 -          <Checkbox                                           
+       84 +        <div className="flex-shrink-0">
+       85 +          <input
+       86 +            type="checkbox"
+       87              checked={isCompleted}
+       39 -            onCheckedChange={() =>                            
+       40 -              onToggle(goal.id, isCompleted ? "active" : "comp
+          -leted")                                                       
+       41 -            }                                                 
+       42 -            className="mt-0.5"                                
+       88 +            onChange={() => onToggle(goal.id, isCompleted ? "a
+          +ctive" : "completed")}
+       89 +            className="w-6 h-6 rounded-full border-outline tex
+          +t-coral-accent focus:ring-coral-accent/30 cursor-pointer"
+       90            />
+       44 -          <div className="flex-1 min-w-0">                    
+       45 -            <p                                                
+       46 -              className={cn(                                  
+       47 -                "font-medium break-words",                    
+       48 -                isCompleted && "line-through text-muted-foregr
+          -ound"                                                         
+       49 -              )}                                              
+       91 +        </div>
+       92 +        <div className="flex-grow min-w-0">
+       93 +          <h3 className="font-headline text-lg font-bold mb-1 
+          +truncate">
+       94 +            {goal.title}
+       95 +          </h3>
+       96 +          <div className="flex items-center gap-4 flex-wrap">
+       97 +            <span
+       98 +              className={`
+       99 +                flex items-center gap-1 text-xs font-bold px-2
+          + py-0.5 rounded-full uppercase tracking-wider
+      100 +                ${isOverdue || isUrgent
+      101 +                  ? "text-red-600 bg-red-100"
+      102 +                  : "text-grey-blue-dark bg-grey-blue-light"
+      103 +                }
+      104 +              `}
+      105              >
+       51 -              {goal.title}                                    
+       52 -            </p>                                              
+       53 -            {!isCompleted && (                                
+       54 -              <p                                              
+       55 -                className={cn(                                
+       56 -                  "text-sm mt-1",                             
+       57 -                  goal.urgency === "urgent" && "text-pastel-pi
+          -nk font-medium",                                              
+       58 -                  goal.urgency === "overdue" && "text-pastel-p
+          -each font-medium",                                            
+       59 -                  goal.urgency === "normal" && "text-muted-for
+          -eground"                                                      
+       60 -                )}                                            
+       61 -              >                                               
+       62 -                {urgencyLabel(goal.daysRemaining)}            
+       63 -              </p>                                            
+       64 -            )}                                                
+      106 +              <span className="material-symbols-outlined text-
+          +sm">
+      107 +                {urgencyIcon(goal.urgency)}
+      108 +              </span>
+      109 +              {urgencyLabel(goal.daysRemaining)}
+      110 +            </span>
+      111            </div>
+       66 -          <Button                                             
+       67 -            variant="ghost"                                   
+       68 -            size="sm"                                         
+      112 +        </div>
+      113 +        <div className="flex items-center gap-2 opacity-0 grou
+          +p-hover:opacity-100 transition-opacity shrink-0">
+      114 +          <button
+      115              onClick={() => setDeleteDialogOpen(true)}
+       70 -            className="text-muted-foreground hover:text-destru
+          -ctive shrink-0"                                               
+      116 +            className="p-2 text-on-surface-variant hover:text-
+          +error transition-colors"
+      117            >
+       72 -            ✕                                                 
+       73 -          </Button>                                           
+       74 -        </CardContent>                                        
+       75 -      </Card>                                                 
+      118 +            <span className="material-symbols-outlined">delete
+          +</span>
+      119 +          </button>
+      120 +        </div>
+      121 +      </div>
+      122        <DeleteConfirmDialog
+      123          open={deleteDialogOpen}
+      124          onOpenChange={setDeleteDialogOpen}
+     ...
+      131      </>
+      132    );
+      133  }
+      134 +
+      135 +function formatCompletedTime(completedAt: string): string {
+      136 +  const completed = new Date(completedAt);
+      137 +  const now = new Date();
+      138 +  const diffMs = now.getTime() - completed.getTime();
+      139 +  const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+      140 +  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+      141 +
+      142 +  if (diffHours < 1) return "just now";
+      143 +  if (diffHours < 24) return `${diffHours}h ago`;
+      144 +  if (diffDays === 1) return "yesterday";
+      145 +  return `${diffDays} days ago`;
+      146 +}
+
+● Write(components\goal-list.tsx)
+  ⎿  Added 62 lines, removed 8 lines
+       7    emptyMessage: string;
+       8    onToggle: (id: string, newStatus: "active" | "completed") =>
+          void;
+       9    onDelete: (id: string) => void;
+      10 +  variant: "active" | "completed";
+      11  }
+      12 
+      13  export function GoalList({
+     ...
+      16    emptyMessage,
+      17    onToggle,
+      18    onDelete,
+      19 +  variant,
+      20  }: GoalListProps) {
+      21 +  // Completed goals sidebar variant
+      22 +  if (variant === "completed") {
+      23 +    return (
+      24 +      <div className="bg-grey-blue-light border border-grey-blu
+         +e rounded-3xl p-8 sticky top-28">
+      25 +        <div className="flex items-center justify-between mb-8"
+         +>
+      26 +          <h2 className="font-headline text-xl font-bold">{titl
+         +e}</h2>
+      27 +          <span
+      28 +            className="material-symbols-outlined text-coral-acc
+         +ent"
+      29 +            style={{ fontVariationSettings: "'FILL' 1, 'wght' 4
+         +00, 'GRAD' 0, 'opsz' 24" }}
+      30 +          >
+      31 +            verified
+      32 +          </span>
+      33 +        </div>
+      34 +        <div className="space-y-6">
+      35 +          {goals.length === 0 ? (
+      36 +            <p className="text-on-surface-variant text-sm">{emp
+         +tyMessage}</p>
+      37 +          ) : (
+      38 +            goals.map((goal) => (
+      39 +              <GoalCard
+      40 +                key={goal.id}
+      41 +                goal={goal}
+      42 +                onToggle={onToggle}
+      43 +                onDelete={onDelete}
+      44 +                variant="completed"
+      45 +              />
+      46 +            ))
+      47 +          )}
+      48 +        </div>
+      49 +
+      50 +        {/* Pro Tip card */}
+      51 +        <div className="mt-12 p-6 bg-surface-container-lowest b
+         +order border-grey-blue rounded-2xl relative overflow-hidden gro
+         +up">
+      52 +          <div className="relative z-10">
+      53 +            <p className="text-sm font-bold text-coral-accent m
+         +b-2">PRO TIP</p>
+      54 +            <p className="text-sm leading-relaxed text-on-surfa
+         +ce">
+      55 +              Break down big goals into smaller tasks to stay m
+         +otivated.
+      56 +            </p>
+      57 +          </div>
+      58 +          <div className="absolute -right-4 -bottom-4 opacity-1
+         +0 group-hover:opacity-20 transition-all duration-500">
+      59 +            <span
+      60 +              className="material-symbols-outlined text-8xl tex
+         +t-coral-accent"
+      61 +              style={{ fontVariationSettings: "'FILL' 1, 'wght'
+         + 400, 'GRAD' 0, 'opsz' 24" }}
+      62 +            >
+      63 +              lightbulb
+      64 +            </span>
+      65 +          </div>
+      66 +        </div>
+      67 +      </div>
+      68 +    );
+      69 +  }
+      70 +
+      71 +  // Active goals list variant
+      72    return (
+      20 -    <div className="flex flex-col h-full">                     
+      21 -      <h2 className="text-lg font-semibold mb-4">              
+      22 -        {title}{" "}                                           
+      23 -        <span className="text-muted-foreground font-normal text
+         --sm">                                                          
+      24 -          ({goals.length})                                     
+      73 +    <div>
+      74 +      <div className="flex items-center justify-between mb-8">
+      75 +        <h2 className="font-headline text-2xl font-bold">{title
+         +}</h2>
+      76 +        <span className="text-sm font-medium text-on-surface-va
+         +riant bg-grey-blue-light px-3 py-1 rounded-full">
+      77 +          In Progress
+      78          </span>
+      26 -      </h2>                                                    
+      27 -      <div className="flex-1 overflow-y-auto space-y-3 pr-1">  
+      79 +      </div>
+      80 +      <div className="space-y-6">
+      81          {goals.length === 0 ? (
+      29 -          <p className="text-muted-foreground text-sm italic">{
+         -emptyMessage}</p>                                              
+      82 +          <p className="text-on-surface-variant text-sm">{empty
+         +Message}</p>
+      83          ) : (
+      84            goals.map((goal) => (
+      85              <GoalCard
+     ...
+      87                goal={goal}
+      88                onToggle={onToggle}
+      89                onDelete={onDelete}
+      90 +              variant="active"
+      91              />
+      92            ))
+      93          )}
+
+● Phase 4: US2 - T011/T012: Redesign Add New Goal modal with focus area chips
+
+● Write(components\add-goal-modal.tsx)
+  ⎿  Added 108 lines, removed 37 lines
+       4  import {
+       5    Dialog,
+       6    DialogContent,
+       7 -  DialogHeader,                                                
+       8 -  DialogTitle,                                                 
+       7    DialogTrigger,
+       8  } from "@/components/ui/dialog";
+      11 -import { Button } from "@/components/ui/button";               
+      12 -import { Input } from "@/components/ui/input";                 
+      13 -import { Label } from "@/components/ui/label";                 
+       9  import { format } from "date-fns";
+      10 
+      11  interface AddGoalModalProps {
+      17 -  onAdd: (title: string, endDate: string) => Promise<void>;    
+      12 +  onAdd: (title: string, endDate: string, focusArea?: string) =
+         +> Promise<void>;
+      13  }
+      14 
+      15 +const FOCUS_AREAS = ["Professional", "Personal"] as const;
+      16 +
+      17  export function AddGoalModal({ onAdd }: AddGoalModalProps) {
+      18    const [open, setOpen] = useState(false);
+      19    const [title, setTitle] = useState("");
+      20    const [endDate, setEndDate] = useState("");
+      21 +  const [focusArea, setFocusArea] = useState<string | undefined
+         +>(undefined);
+      22    const [error, setError] = useState<string | null>(null);
+      23    const [submitting, setSubmitting] = useState(false);
+      24 
+     ...
+      45 
+      46      setSubmitting(true);
+      47      try {
+      50 -      await onAdd(title.trim(), endDate);                      
+      48 +      await onAdd(title.trim(), endDate, focusArea);
+      49        setTitle("");
+      50        setEndDate("");
+      51 +      setFocusArea(undefined);
+      52        setOpen(false);
+      53      } catch {
+      54        setError("Failed to add goal");
+     ...
+       61      <Dialog open={open} onOpenChange={setOpen}>
+       62        <DialogTrigger
+       63          render={
+       65 -          <Button className="bg-pastel-sky hover:bg-pastel-sky
+          -/80 text-foreground">                                         
+       66 -            Add Goal                                          
+       67 -          </Button>                                           
+       64 +          <button className="bg-radiant-primary text-white px-
+          +8 py-4 rounded-full font-bold shadow-[0_12px_32px_-4px_rgba(25
+          +5,127,112,0.25)] hover:scale-[1.02] active:scale-95 transition
+          +-all flex items-center gap-2">
+       65 +            <span className="material-symbols-outlined">add</s
+          +pan>
+       66 +            Add New Goal
+       67 +          </button>
+       68          }
+       69        />
+       70 -      <DialogContent>                                         
+       71 -        <DialogHeader>                                        
+       72 -          <DialogTitle>Add New Goal</DialogTitle>             
+       73 -        </DialogHeader>                                       
+       74 -        <form onSubmit={handleSubmit} className="space-y-4">  
+       75 -          <div className="space-y-2">                         
+       76 -            <Label htmlFor="title">Title</Label>              
+       77 -            <Input                                            
+       78 -              id="title"                                      
+       70 +      <DialogContent className="p-0 border-0 rounded-xl overfl
+          +ow-hidden shadow-[0_24px_48px_-12px_rgba(240,122,80,0.15)] max
+          +-w-lg bg-surface-container-lowest">
+       71 +        {/* Modal Header (Orange Gradient) */}
+       72 +        <div className="bg-radiant-primary-modal px-8 pt-10 pb
+          +-12 relative overflow-hidden">
+       73 +          <div className="relative z-10">
+       74 +            <h2 className="font-headline text-3xl font-bold tr
+          +acking-tight text-white mb-2">
+       75 +              Ignite a New Path
+       76 +            </h2>
+       77 +            <p className="font-body text-white/90 leading-rela
+          +xed">
+       78 +              Define your objective and set the milestone. Cla
+          +rity is the first step to achievement.
+       79 +            </p>
+       80 +          </div>
+       81 +          {/* Decorative element */}
+       82 +          <div className="absolute -right-8 -bottom-8 w-32 h-3
+          +2 bg-white/10 rounded-full blur-2xl" />
+       83 +        </div>
+       84 +
+       85 +        {/* Close Button */}
+       86 +        <button
+       87 +          onClick={() => setOpen(false)}
+       88 +          className="absolute top-4 right-4 h-10 w-10 flex ite
+          +ms-center justify-center rounded-full bg-white/20 backdrop-blu
+          +r-md cursor-pointer hover:bg-white/40 transition-colors"
+       89 +        >
+       90 +          <span className="material-symbols-outlined text-whit
+          +e">close</span>
+       91 +        </button>
+       92 +
+       93 +        {/* Modal Body */}
+       94 +        <form onSubmit={handleSubmit} className="p-8 pt-10 spa
+          +ce-y-8">
+       95 +          {/* Goal Title Input */}
+       96 +          <div className="space-y-3">
+       97 +            <label
+       98 +              htmlFor="goal-title"
+       99 +              className="font-headline text-sm font-bold track
+          +ing-wide text-on-surface-variant uppercase ml-1"
+      100 +            >
+      101 +              Goal Title
+      102 +            </label>
+      103 +            <input
+      104 +              id="goal-title"
+      105 +              type="text"
+      106                value={title}
+      107                onChange={(e) => setTitle(e.target.value)}
+       81 -              placeholder="What do you want to achieve?"      
+      108 +              placeholder="e.g., Master Minimalist UI Design"
+      109                maxLength={255}
+      110 +              className="w-full px-5 py-4 bg-surface-container
+          +-low border-none rounded-xl font-body text-on-surface placehol
+          +der:text-outline focus:ring-2 focus:ring-primary/20 transition
+          +-all duration-200 outline-none"
+      111              />
+      112            </div>
+       85 -          <div className="space-y-2">                         
+       86 -            <Label htmlFor="endDate">End Date</Label>         
+       87 -            <Input                                            
+       88 -              id="endDate"                                    
+       89 -              type="date"                                     
+       90 -              value={endDate}                                 
+       91 -              onChange={(e) => setEndDate(e.target.value)}    
+       92 -              min={today}                                     
+       93 -            />                                                
+      113 +
+      114 +          {/* Two Column Layout: End Date + Focus Area */}
+      115 +          <div className="grid grid-cols-1 md:grid-cols-2 gap-
+          +6">
+      116 +            {/* End Date */}
+      117 +            <div className="space-y-3">
+      118 +              <label
+      119 +                htmlFor="end-date"
+      120 +                className="font-headline text-sm font-bold tra
+          +cking-wide text-on-surface-variant uppercase ml-1"
+      121 +              >
+      122 +                End Date
+      123 +              </label>
+      124 +              <input
+      125 +                id="end-date"
+      126 +                type="date"
+      127 +                value={endDate}
+      128 +                onChange={(e) => setEndDate(e.target.value)}
+      129 +                min={today}
+      130 +                className="w-full px-5 py-4 bg-surface-contain
+          +er-low border-none rounded-xl font-body text-on-surface focus:
+          +ring-2 focus:ring-primary/20 transition-all duration-200 outli
+          +ne-none"
+      131 +              />
+      132 +            </div>
+      133 +
+      134 +            {/* Focus Area Chips */}
+      135 +            <div className="space-y-3">
+      136 +              <label className="font-headline text-sm font-bol
+          +d tracking-wide text-on-surface-variant uppercase ml-1">
+      137 +                Focus Area
+      138 +              </label>
+      139 +              <div className="flex flex-wrap gap-2">
+      140 +                {FOCUS_AREAS.map((area) => (
+      141 +                  <button
+      142 +                    key={area}
+      143 +                    type="button"
+      144 +                    onClick={() => setFocusArea(focusArea ===
+          +area ? undefined : area)}
+      145 +                    className={`
+      146 +                      px-4 py-2 rounded-full text-xs font-bold
+          + transition-colors
+      147 +                      ${focusArea === area
+      148 +                        ? "bg-primary-container text-on-primar
+          +y-container border-2 border-transparent"
+      149 +                        : "bg-secondary-container text-on-seco
+          +ndary-container hover:bg-secondary transition-colors"
+      150 +                      }
+      151 +                    `}
+      152 +                  >
+      153 +                    {area}
+      154 +                  </button>
+      155 +                ))}
+      156 +              </div>
+      157 +            </div>
+      158            </div>
+       95 -          {error && <p className="text-sm text-destructive">{e
+          -rror}</p>}                                                    
+       96 -          <div className="flex justify-end gap-2">            
+       97 -            <Button                                           
+      159 +
+      160 +          {error && <p className="text-sm text-error">{error}<
+          +/p>}
+      161 +
+      162 +          {/* Footer Actions */}
+      163 +          <div className="flex items-center justify-end gap-4 
+          +pt-4">
+      164 +            <button
+      165                type="button"
+       99 -              variant="outline"                               
+      166                onClick={() => setOpen(false)}
+      167 +              className="px-8 py-4 font-headline font-bold tex
+          +t-on-surface-variant hover:text-on-surface transition-colors"
+      168              >
+      169                Cancel
+      103 -            </Button>                                         
+      104 -            <Button type="submit" disabled={submitting}>      
+      105 -              {submitting ? "Adding..." : "Add Goal"}         
+      106 -            </Button>                                         
+      170 +            </button>
+      171 +            <button
+      172 +              type="submit"
+      173 +              disabled={submitting}
+      174 +              className="px-10 py-4 bg-radiant-primary-modal t
+          +ext-white font-headline font-bold rounded-full shadow-[0_12px_
+          +24px_-8px_rgba(240,122,80,0.3)] hover:scale-[1.02] active:scal
+          +e-95 transition-all disabled:opacity-50 disabled:scale-100"
+      175 +            >
+      176 +              {submitting ? "Creating..." : "Create Goal"}
+      177 +            </button>
+      178            </div>
+      179          </form>
+      180        </DialogContent>
+
+● Phase 5: US3 - T013: Restyle delete confirmation dialog
+
+● Write(components\delete-confirm-dialog.tsx)
+  ⎿  Added 10 lines, removed 6 lines
+      26  }: DeleteConfirmDialogProps) {
+      27    return (
+      28      <AlertDialog open={open} onOpenChange={onOpenChange}>
+      29 -      <AlertDialogContent>                                     
+      29 +      <AlertDialogContent className="bg-surface-container-lowes
+         +t rounded-2xl border border-grey-blue shadow-[0_24px_48px_-12px
+         +_rgba(255,127,112,0.1)]">
+      30          <AlertDialogHeader>
+      31 -          <AlertDialogTitle>Delete Goal</AlertDialogTitle>     
+      32 -          <AlertDialogDescription>                             
+      31 +          <AlertDialogTitle className="font-headline text-xl fo
+         +nt-bold text-on-surface">
+      32 +            Delete Goal
+      33 +          </AlertDialogTitle>
+      34 +          <AlertDialogDescription className="font-body text-on-
+         +surface-variant leading-relaxed">
+      35              Are you sure you want to permanently delete &ldquo;
+          {goalTitle}
+      36              &rdquo;? This action cannot be undone.
+      37            </AlertDialogDescription>
+      38          </AlertDialogHeader>
+      37 -        <AlertDialogFooter>                                    
+      38 -          <AlertDialogCancel>Cancel</AlertDialogCancel>        
+      39 +        <AlertDialogFooter className="gap-3">
+      40 +          <AlertDialogCancel className="px-6 py-3 rounded-full 
+         +font-headline font-bold bg-surface-container-low text-on-surfac
+         +e border-none hover:bg-surface-container-high transition-colors
+         +">
+      41 +            Cancel
+      42 +          </AlertDialogCancel>
+      43            <AlertDialogAction
+      44              onClick={onConfirm}
+      41 -            className="bg-destructive text-white hover:bg-destr
+         -uctive/90"                                                     
+      45 +            className="px-6 py-3 rounded-full font-headline fon
+         +t-bold bg-error text-white hover:bg-error-dim transition-colors
+         + shadow-[0_8px_16px_-4px_rgba(239,68,68,0.3)]"
+      46            >
+      47              Delete
+      48            </AlertDialogAction>
+
+● T014 (empty/loading/error state audit) and T015 (pure black text audit) are
+  already addressed in the rewritten files — all states use
+  text-on-surface-variant / text-error / font-body / font-headline, no pure
+  black text, all buttons are pill-shaped.
+● Phase 6: Polish - T016-T019
+
+  Let me verify the responsive layout considerations are in place and then run
+  lint + build.
+
+  First, let me check that the responsive layout handles mobile properly. The
+  grid uses grid-cols-1 lg:grid-cols-12, and the modal uses grid-cols-1 
+  md:grid-cols-2 — good for mobile collapse. The header nav uses hidden md:flex
+  — correct.
+
+  T017: Let me verify truncation is in place. The goal cards use truncate on
+  titles in both variants — good.
+
+  T018: Run lint and build.
+
+● Bash(pnpm lint 2>&1)
+  ⎿  > gemini@0.1.0 lint C:\Users\rlond\Documents\GitHub\doit_speckit-claud
+     e
+     > eslint
+     … +8 lines (ctrl+o to expand)
+  ⎿  (timeout 1m)
+
+● Just a warning about custom fonts in layout.tsx — this is expected for App
+  Router (the rule is for Pages Router). Let me run the build.
+
+● Bash(pnpm build 2>&1)
+  ⎿  Error: Exit code 1
+
+     > gemini@0.1.0 build C:\Users\rlond\Documents\GitHub\doit_speckit-claude
+     > next build
+
+     ▲ Next.js 16.2.1 (Turbopack)
+     - Environments: .env.local
+
+       Creating an optimized production build ...
+     Error: Cannot apply unknown utility class `border-border`
+     … +32 lines (ctrl+o to see all)
+
+● The border-border and outline-ring/50 utilities rely on the shadcn CSS
+  variables --border and --ring being mapped through --color-border and
+  --color-ring in the Tailwind theme. I removed those mappings. Let me fix.
+
+  Read 1 file (ctrl+o to expand)
+
+● The issue is that shadcn/tailwind.css expects certain theme variables to be
+  present. I need to keep the shadcn compatibility mappings. Let me add the
+  necessary color bridge variables.
+
+● Update(app\globals.css)
+  ⎿  Added 25 lines
+       8      --font-heading: var(--font-headline);
+       9      --font-sans: var(--font-body);
+      10 
+      11 +    /* shadcn compatibility mappings */
+      12 +    --color-background: var(--background);
+      13 +    --color-foreground: var(--foreground);
+      14 +    --color-card: var(--card);
+      15 +    --color-card-foreground: var(--card-foreground);
+      16 +    --color-popover: var(--popover);
+      17 +    --color-popover-foreground: var(--popover-foreground);
+      18 +    --color-primary-fg: var(--primary-foreground);
+      19 +    --color-secondary-fg: var(--secondary-foreground);
+      20 +    --color-muted: var(--muted);
+      21 +    --color-muted-foreground: var(--muted-foreground);
+      22 +    --color-accent: var(--accent);
+      23 +    --color-accent-foreground: var(--accent-foreground);
+      24 +    --color-destructive: var(--destructive);
+      25 +    --color-border: var(--border);
+      26 +    --color-input: var(--input);
+      27 +    --color-ring: var(--ring);
+      28 +    --radius-sm: calc(var(--radius) * 0.6);
+      29 +    --radius-md: calc(var(--radius) * 0.8);
+      30 +    --radius-lg: var(--radius);
+      31 +    --radius-xl: calc(var(--radius) * 1.4);
+      32 +    --radius-2xl: calc(var(--radius) * 1.8);
+      33 +    --radius-3xl: calc(var(--radius) * 2.2);
+      34 +    --radius-4xl: calc(var(--radius) * 2.6);
+      35 +
+      36      /* Orange design system color tokens (from dashboard code.h
+          tml) */
+      37      --color-surface: #f8fafc;
+      38      --color-on-surface: #1e293b;
+
+● Bash(pnpm build 2>&1)
+  ⎿  > gemini@0.1.0 build C:\Users\rlond\Documents\GitHub\doit_speckit-clau
+     de
+     > next build
+     … +27 lines (ctrl+o to expand)
+  ⎿  (timeout 2m)
+
+● Build succeeds with no errors. Now let me mark tasks as complete in the
+  tasks.md file and do the quickstart validation.
+
+  Read 1 file (ctrl+o to expand)
+
+● Now let me mark all tasks as complete in the tasks.md file.
+
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      27 
+      28  **⚠️ CRITICAL**: No user story work can begin until this phase
+          is complete
+      29 
+      30 -- [ ] T001 Replace shadcn color tokens with orange design syste
+         -m CSS custom properties and Tailwind theme extensions in `app/g
+         -lobals.css` — extract all color tokens, gradient classes (`.bg-
+         -radiant-primary`), and surface hierarchy variables from `design
+         -/orange/do_it_dashboard/code.html`                             
+      30 +- [X] T001 Replace shadcn color tokens with orange design syste
+         +m CSS custom properties and Tailwind theme extensions in `app/g
+         +lobals.css` — extract all color tokens, gradient classes (`.bg-
+         +radiant-primary`), and surface hierarchy variables from `design
+         +/orange/do_it_dashboard/code.html`
+      31  - [ ] T002 [P] Swap Geist/Geist Mono fonts for Plus Jakarta San
+          s (headlines) and Inter (body) via `next/font/google` in `app/l
+          ayout.tsx` — set CSS variables `--font-headline` and `--font-bo
+          dy` on the `<html>` element, add Material Symbols Outlined `<li
+          nk>` tag per R-002
+      32  - [ ] T003 [P] Update Goal TypeScript interface to add `focusAr
+          ea: string | null` field, update `CreateGoalInput` to add optio
+          nal `focusArea`, and update `GoalWithUrgency` in `lib/types.ts`
+           per data-model.md
+      33  - [ ] T004 [P] Add `focus_area VARCHAR(50)` column to the goals
+           table DDL in `lib/schema.sql` per data-model.md migration
+
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      28  **⚠️ CRITICAL**: No user story work can begin until this phase
+          is complete
+      29 
+      30  - [X] T001 Replace shadcn color tokens with orange design syste
+          m CSS custom properties and Tailwind theme extensions in `app/g
+          lobals.css` — extract all color tokens, gradient classes (`.bg-
+          radiant-primary`), and surface hierarchy variables from `design
+          /orange/do_it_dashboard/code.html`
+      31 -- [ ] T002 [P] Swap Geist/Geist Mono fonts for Plus Jakarta San
+         -s (headlines) and Inter (body) via `next/font/google` in `app/l
+         -ayout.tsx` — set CSS variables `--font-headline` and `--font-bo
+         -dy` on the `<html>` element, add Material Symbols Outlined `<li
+         -nk>` tag per R-002                                             
+      31 +- [X] T002 [P] Swap Geist/Geist Mono fonts for Plus Jakarta San
+         +s (headlines) and Inter (body) via `next/font/google` in `app/l
+         +ayout.tsx` — set CSS variables `--font-headline` and `--font-bo
+         +dy` on the `<html>` element, add Material Symbols Outlined `<li
+         +nk>` tag per R-002
+      32  - [ ] T003 [P] Update Goal TypeScript interface to add `focusAr
+          ea: string | null` field, update `CreateGoalInput` to add optio
+          nal `focusArea`, and update `GoalWithUrgency` in `lib/types.ts`
+           per data-model.md
+      33  - [ ] T004 [P] Add `focus_area VARCHAR(50)` column to the goals
+           table DDL in `lib/schema.sql` per data-model.md migration
+      34  - [ ] T005 Update `createGoal` and `listGoals` functions to han
+          dle `focus_area` column (INSERT with focusArea param, SELECT wi
+          th `focus_area AS "focusArea"`) in `lib/goals.ts` — depends on
+          T003, T004
+
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      29 
+      30  - [X] T001 Replace shadcn color tokens with orange design syste
+          m CSS custom properties and Tailwind theme extensions in `app/g
+          lobals.css` — extract all color tokens, gradient classes (`.bg-
+          radiant-primary`), and surface hierarchy variables from `design
+          /orange/do_it_dashboard/code.html`
+      31  - [X] T002 [P] Swap Geist/Geist Mono fonts for Plus Jakarta San
+          s (headlines) and Inter (body) via `next/font/google` in `app/l
+          ayout.tsx` — set CSS variables `--font-headline` and `--font-bo
+          dy` on the `<html>` element, add Material Symbols Outlined `<li
+          nk>` tag per R-002
+      32 -- [ ] T003 [P] Update Goal TypeScript interface to add `focusAr
+         -ea: string | null` field, update `CreateGoalInput` to add optio
+         -nal `focusArea`, and update `GoalWithUrgency` in `lib/types.ts`
+         - per data-model.md                                             
+      32 +- [X] T003 [P] Update Goal TypeScript interface to add `focusAr
+         +ea: string | null` field, update `CreateGoalInput` to add optio
+         +nal `focusArea`, and update `GoalWithUrgency` in `lib/types.ts`
+         + per data-model.md
+      33  - [ ] T004 [P] Add `focus_area VARCHAR(50)` column to the goals
+           table DDL in `lib/schema.sql` per data-model.md migration
+      34  - [ ] T005 Update `createGoal` and `listGoals` functions to han
+          dle `focus_area` column (INSERT with focusArea param, SELECT wi
+          th `focus_area AS "focusArea"`) in `lib/goals.ts` — depends on
+          T003, T004
+      35  - [ ] T006 Update POST handler to accept optional `focusArea` i
+          n request body and pass to `createGoal`; update GET handler to
+          return `focusArea` in goal responses in `app/api/goals/route.ts
+          ` — depends on T005, per contracts/api-goals.md
+
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      30  - [X] T001 Replace shadcn color tokens with orange design syste
+          m CSS custom properties and Tailwind theme extensions in `app/g
+          lobals.css` — extract all color tokens, gradient classes (`.bg-
+          radiant-primary`), and surface hierarchy variables from `design
+          /orange/do_it_dashboard/code.html`
+      31  - [X] T002 [P] Swap Geist/Geist Mono fonts for Plus Jakarta San
+          s (headlines) and Inter (body) via `next/font/google` in `app/l
+          ayout.tsx` — set CSS variables `--font-headline` and `--font-bo
+          dy` on the `<html>` element, add Material Symbols Outlined `<li
+          nk>` tag per R-002
+      32  - [X] T003 [P] Update Goal TypeScript interface to add `focusAr
+          ea: string | null` field, update `CreateGoalInput` to add optio
+          nal `focusArea`, and update `GoalWithUrgency` in `lib/types.ts`
+           per data-model.md
+      33 -- [ ] T004 [P] Add `focus_area VARCHAR(50)` column to the goals
+         - table DDL in `lib/schema.sql` per data-model.md migration     
+      33 +- [X] T004 [P] Add `focus_area VARCHAR(50)` column to the goals
+         + table DDL in `lib/schema.sql` per data-model.md migration
+      34  - [ ] T005 Update `createGoal` and `listGoals` functions to han
+          dle `focus_area` column (INSERT with focusArea param, SELECT wi
+          th `focus_area AS "focusArea"`) in `lib/goals.ts` — depends on
+          T003, T004
+      35  - [ ] T006 Update POST handler to accept optional `focusArea` i
+          n request body and pass to `createGoal`; update GET handler to
+          return `focusArea` in goal responses in `app/api/goals/route.ts
+          ` — depends on T005, per contracts/api-goals.md
+      36 
+
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      31  - [X] T002 [P] Swap Geist/Geist Mono fonts for Plus Jakarta San
+          s (headlines) and Inter (body) via `next/font/google` in `app/l
+          ayout.tsx` — set CSS variables `--font-headline` and `--font-bo
+          dy` on the `<html>` element, add Material Symbols Outlined `<li
+          nk>` tag per R-002
+      32  - [X] T003 [P] Update Goal TypeScript interface to add `focusAr
+          ea: string | null` field, update `CreateGoalInput` to add optio
+          nal `focusArea`, and update `GoalWithUrgency` in `lib/types.ts`
+           per data-model.md
+      33  - [X] T004 [P] Add `focus_area VARCHAR(50)` column to the goals
+           table DDL in `lib/schema.sql` per data-model.md migration
+      34 -- [ ] T005 Update `createGoal` and `listGoals` functions to han
+         -dle `focus_area` column (INSERT with focusArea param, SELECT wi
+         -th `focus_area AS "focusArea"`) in `lib/goals.ts` — depends on 
+         -T003, T004                                                     
+      34 +- [X] T005 Update `createGoal` and `listGoals` functions to han
+         +dle `focus_area` column (INSERT with focusArea param, SELECT wi
+         +th `focus_area AS "focusArea"`) in `lib/goals.ts` — depends on
+         +T003, T004
+      35  - [ ] T006 Update POST handler to accept optional `focusArea` i
+          n request body and pass to `createGoal`; update GET handler to
+          return `focusArea` in goal responses in `app/api/goals/route.ts
+          ` — depends on T005, per contracts/api-goals.md
+      36 
+      37  **Checkpoint**: Design tokens active, fonts loaded, schema upda
+          ted -- user story implementation can begin
+
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      32  - [X] T003 [P] Update Goal TypeScript interface to add `focusAr
+          ea: string | null` field, update `CreateGoalInput` to add optio
+          nal `focusArea`, and update `GoalWithUrgency` in `lib/types.ts`
+           per data-model.md
+      33  - [X] T004 [P] Add `focus_area VARCHAR(50)` column to the goals
+           table DDL in `lib/schema.sql` per data-model.md migration
+      34  - [X] T005 Update `createGoal` and `listGoals` functions to han
+          dle `focus_area` column (INSERT with focusArea param, SELECT wi
+          th `focus_area AS "focusArea"`) in `lib/goals.ts` — depends on
+          T003, T004
+      35 -- [ ] T006 Update POST handler to accept optional `focusArea` i
+         -n request body and pass to `createGoal`; update GET handler to 
+         -return `focusArea` in goal responses in `app/api/goals/route.ts
+         -` — depends on T005, per contracts/api-goals.md                
+      35 +- [X] T006 Update POST handler to accept optional `focusArea` i
+         +n request body and pass to `createGoal`; update GET handler to
+         +return `focusArea` in goal responses in `app/api/goals/route.ts
+         +` — depends on T005, per contracts/api-goals.md
+      36 
+      37  **Checkpoint**: Design tokens active, fonts loaded, schema upda
+          ted -- user story implementation can begin
+      38 
+
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      46 
+      47  ### Implementation for User Story 1
+      48 
+      49 -- [ ] T007 [US1] Restyle the header in `app/layout.tsx` — stick
+         -y header with "Do It" brand in coral-accent color, navigation l
+         -inks with active indicator styling, notification/settings/profi
+         -le icon placeholders using Material Symbols, per dashboard `cod
+         -e.html` header markup (FR-009)                                 
+      49 +- [X] T007 [US1] Restyle the header in `app/layout.tsx` — stick
+         +y header with "Do It" brand in coral-accent color, navigation l
+         +inks with active indicator styling, notification/settings/profi
+         +le icon placeholders using Material Symbols, per dashboard `cod
+         +e.html` header markup (FR-009)
+      50  - [ ] T008 [US1] Rebuild the dashboard layout in `app/page.tsx`
+           — greeting section with Plus Jakarta Sans headline and warm or
+          ange background, active goals in 8-column grid, recently comple
+          ted sidebar in 4-column grid, and pill-shaped "Add New Goal" bu
+          tton with `.bg-radiant-primary` gradient per dashboard `code.ht
+          ml` (FR-001, FR-003, FR-010)
+      51  - [ ] T009 [US1] Restyle goal cards in `components/goal-card.ts
+          x` — rounded corners (`rounded-2xl`), orange design color token
+          s, hover translate-x interaction, urgency badges with color cod
+          ing (normal/urgent/overdue per R-006 border rules), placeholder
+           progress bars, per dashboard `code.html` goal card markup (FR-
+          006)
+      52  - [ ] T010 [US1] Restyle the goal list and split into active go
+          als section + recently completed sidebar in `components/goal-li
+          st.tsx` — completed goals show coral-orange check icons, strike
+          through text, light grey-blue background container (`bg-grey-bl
+          ue-light`), rounded container (`rounded-3xl`), plus a static "P
+          ro Tip" card with decorative icon, per dashboard `code.html` as
+          ide markup (FR-007)
+
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      47  ### Implementation for User Story 1
+      48 
+      49  - [X] T007 [US1] Restyle the header in `app/layout.tsx` — stick
+          y header with "Do It" brand in coral-accent color, navigation l
+          inks with active indicator styling, notification/settings/profi
+          le icon placeholders using Material Symbols, per dashboard `cod
+          e.html` header markup (FR-009)
+      50 -- [ ] T008 [US1] Rebuild the dashboard layout in `app/page.tsx`
+         - — greeting section with Plus Jakarta Sans headline and warm or
+         -ange background, active goals in 8-column grid, recently comple
+         -ted sidebar in 4-column grid, and pill-shaped "Add New Goal" bu
+         -tton with `.bg-radiant-primary` gradient per dashboard `code.ht
+         -ml` (FR-001, FR-003, FR-010)                                   
+      50 +- [X] T008 [US1] Rebuild the dashboard layout in `app/page.tsx`
+         + — greeting section with Plus Jakarta Sans headline and warm or
+         +ange background, active goals in 8-column grid, recently comple
+         +ted sidebar in 4-column grid, and pill-shaped "Add New Goal" bu
+         +tton with `.bg-radiant-primary` gradient per dashboard `code.ht
+         +ml` (FR-001, FR-003, FR-010)
+      51  - [ ] T009 [US1] Restyle goal cards in `components/goal-card.ts
+          x` — rounded corners (`rounded-2xl`), orange design color token
+          s, hover translate-x interaction, urgency badges with color cod
+          ing (normal/urgent/overdue per R-006 border rules), placeholder
+           progress bars, per dashboard `code.html` goal card markup (FR-
+          006)
+      52  - [ ] T010 [US1] Restyle the goal list and split into active go
+          als section + recently completed sidebar in `components/goal-li
+          st.tsx` — completed goals show coral-orange check icons, strike
+          through text, light grey-blue background container (`bg-grey-bl
+          ue-light`), rounded container (`rounded-3xl`), plus a static "P
+          ro Tip" card with decorative icon, per dashboard `code.html` as
+          ide markup (FR-007)
+      53 
+
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      48 
+      49  - [X] T007 [US1] Restyle the header in `app/layout.tsx` — stick
+          y header with "Do It" brand in coral-accent color, navigation l
+          inks with active indicator styling, notification/settings/profi
+          le icon placeholders using Material Symbols, per dashboard `cod
+          e.html` header markup (FR-009)
+      50  - [X] T008 [US1] Rebuild the dashboard layout in `app/page.tsx`
+           — greeting section with Plus Jakarta Sans headline and warm or
+          ange background, active goals in 8-column grid, recently comple
+          ted sidebar in 4-column grid, and pill-shaped "Add New Goal" bu
+          tton with `.bg-radiant-primary` gradient per dashboard `code.ht
+          ml` (FR-001, FR-003, FR-010)
+      51 -- [ ] T009 [US1] Restyle goal cards in `components/goal-card.ts
+         -x` — rounded corners (`rounded-2xl`), orange design color token
+         -s, hover translate-x interaction, urgency badges with color cod
+         -ing (normal/urgent/overdue per R-006 border rules), placeholder
+         - progress bars, per dashboard `code.html` goal card markup (FR-
+         -006)                                                           
+      51 +- [X] T009 [US1] Restyle goal cards in `components/goal-card.ts
+         +x` — rounded corners (`rounded-2xl`), orange design color token
+         +s, hover translate-x interaction, urgency badges with color cod
+         +ing (normal/urgent/overdue per R-006 border rules), placeholder
+         + progress bars, per dashboard `code.html` goal card markup (FR-
+         +006)
+      52  - [ ] T010 [US1] Restyle the goal list and split into active go
+          als section + recently completed sidebar in `components/goal-li
+          st.tsx` — completed goals show coral-orange check icons, strike
+          through text, light grey-blue background container (`bg-grey-bl
+          ue-light`), rounded container (`rounded-3xl`), plus a static "P
+          ro Tip" card with decorative icon, per dashboard `code.html` as
+          ide markup (FR-007)
+      53 
+      54  **Checkpoint**: Dashboard fully restyled with orange design sys
+          tem — independently verifiable against mockup
+
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      49  - [X] T007 [US1] Restyle the header in `app/layout.tsx` — stick
+          y header with "Do It" brand in coral-accent color, navigation l
+          inks with active indicator styling, notification/settings/profi
+          le icon placeholders using Material Symbols, per dashboard `cod
+          e.html` header markup (FR-009)
+      50  - [X] T008 [US1] Rebuild the dashboard layout in `app/page.tsx`
+           — greeting section with Plus Jakarta Sans headline and warm or
+          ange background, active goals in 8-column grid, recently comple
+          ted sidebar in 4-column grid, and pill-shaped "Add New Goal" bu
+          tton with `.bg-radiant-primary` gradient per dashboard `code.ht
+          ml` (FR-001, FR-003, FR-010)
+      51  - [X] T009 [US1] Restyle goal cards in `components/goal-card.ts
+          x` — rounded corners (`rounded-2xl`), orange design color token
+          s, hover translate-x interaction, urgency badges with color cod
+          ing (normal/urgent/overdue per R-006 border rules), placeholder
+           progress bars, per dashboard `code.html` goal card markup (FR-
+          006)
+      52 -- [ ] T010 [US1] Restyle the goal list and split into active go
+         -als section + recently completed sidebar in `components/goal-li
+         -st.tsx` — completed goals show coral-orange check icons, strike
+         -through text, light grey-blue background container (`bg-grey-bl
+         -ue-light`), rounded container (`rounded-3xl`), plus a static "P
+         -ro Tip" card with decorative icon, per dashboard `code.html` as
+         -ide markup (FR-007)                                            
+      52 +- [X] T010 [US1] Restyle the goal list and split into active go
+         +als section + recently completed sidebar in `components/goal-li
+         +st.tsx` — completed goals show coral-orange check icons, strike
+         +through text, light grey-blue background container (`bg-grey-bl
+         +ue-light`), rounded container (`rounded-3xl`), plus a static "P
+         +ro Tip" card with decorative icon, per dashboard `code.html` as
+         +ide markup (FR-007)
+      53 
+      54  **Checkpoint**: Dashboard fully restyled with orange design sys
+          tem — independently verifiable against mockup
+      55 
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      63 
+      64  ### Implementation for User Story 2
+      65 
+      66 -- [ ] T011 [US2] Restyle the Add New Goal modal in `components/
+         -add-goal-modal.tsx` — implement orange gradient header ("Ignite
+         - a New Path" title with warm gradient `#f07a50` to `#ffb48f`), 
+         -glassmorphism backdrop (`bg-[#0f172a]/10 backdrop-blur-sm`), bo
+         -rderless input fields with warm surface background and focus ri
+         -ng, two-column layout for End Date and Focus Area, pill-shaped 
+         -"Create Goal" button with orange gradient and tinted shadow, gh
+         -ost-style "Cancel" button, per modal `code.html` (FR-004, R-001
+         -, R-004)                                                       
+      66 +- [X] T011 [US2] Restyle the Add New Goal modal in `components/
+         +add-goal-modal.tsx` — implement orange gradient header ("Ignite
+         + a New Path" title with warm gradient `#f07a50` to `#ffb48f`),
+         +glassmorphism backdrop (`bg-[#0f172a]/10 backdrop-blur-sm`), bo
+         +rderless input fields with warm surface background and focus ri
+         +ng, two-column layout for End Date and Focus Area, pill-shaped
+         +"Create Goal" button with orange gradient and tinted shadow, gh
+         +ost-style "Cancel" button, per modal `code.html` (FR-004, R-001
+         +, R-004)
+      67  - [ ] T012 [US2] Add focus area chip selector component within
+          `components/add-goal-modal.tsx` — pill-shaped selectable chips
+          for "Professional" and "Personal" values, single-select behavio
+          r, selected state with primary color fill, unselected with surf
+          ace background, wire chip selection to the `focusArea` field in
+           the create goal form submission (FR-004)
+      68 
+      69  **Checkpoint**: Modal fully restyled with focus area persistenc
+          e — independently verifiable against mockup
+
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      64  ### Implementation for User Story 2
+      65 
+      66  - [X] T011 [US2] Restyle the Add New Goal modal in `components/
+          add-goal-modal.tsx` — implement orange gradient header ("Ignite
+           a New Path" title with warm gradient `#f07a50` to `#ffb48f`),
+          glassmorphism backdrop (`bg-[#0f172a]/10 backdrop-blur-sm`), bo
+          rderless input fields with warm surface background and focus ri
+          ng, two-column layout for End Date and Focus Area, pill-shaped
+          "Create Goal" button with orange gradient and tinted shadow, gh
+          ost-style "Cancel" button, per modal `code.html` (FR-004, R-001
+          , R-004)
+      67 -- [ ] T012 [US2] Add focus area chip selector component within 
+         -`components/add-goal-modal.tsx` — pill-shaped selectable chips 
+         -for "Professional" and "Personal" values, single-select behavio
+         -r, selected state with primary color fill, unselected with surf
+         -ace background, wire chip selection to the `focusArea` field in
+         - the create goal form submission (FR-004)                      
+      67 +- [X] T012 [US2] Add focus area chip selector component within
+         +`components/add-goal-modal.tsx` — pill-shaped selectable chips
+         +for "Professional" and "Personal" values, single-select behavio
+         +r, selected state with primary color fill, unselected with surf
+         +ace background, wire chip selection to the `focusArea` field in
+         + the create goal form submission (FR-004)
+      68 
+      69  **Checkpoint**: Modal fully restyled with focus area persistenc
+          e — independently verifiable against mockup
+      70 
+
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      78 
+      79  ### Implementation for User Story 3
+      80 
+      81 -- [ ] T013 [US3] Restyle the delete confirmation dialog in `com
+         -ponents/delete-confirm-dialog.tsx` — apply orange design system
+         - tokens, pill-shaped buttons, surface hierarchy backgrounds, ti
+         -nted shadows, Plus Jakarta Sans headings and Inter body text pe
+         -r DESIGN.md (FR-005, FR-008)                                   
+      81 +- [X] T013 [US3] Restyle the delete confirmation dialog in `com
+         +ponents/delete-confirm-dialog.tsx` — apply orange design system
+         + tokens, pill-shaped buttons, surface hierarchy backgrounds, ti
+         +nted shadows, Plus Jakarta Sans headings and Inter body text pe
+         +r DESIGN.md (FR-005, FR-008)
+      82  - [ ] T014 [US3] Audit and update empty state, loading state, a
+          nd error state UI across `app/page.tsx` and `components/goal-li
+          st.tsx` — ensure all states use new design tokens (warm dark te
+          xt `#1e293b`, no pure black, surface backgrounds, pill buttons)
+          , consistent typography (Plus Jakarta Sans headlines, Inter bod
+          y), and follow the No-Line Rule (FR-001, FR-002, FR-005)
+      83  - [ ] T015 [P] [US3] Audit all components for pure black text (
+          `#000000` or `text-black`), standard visible borders (replace w
+          ith surface hierarchy where appropriate per R-006 exceptions),
+          and non-pill buttons — fix any violations of DESIGN.md rules ac
+          ross all files in `app/` and `components/` (SC-004, SC-005)
+      84 
+
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      79  ### Implementation for User Story 3
+      80 
+      81  - [X] T013 [US3] Restyle the delete confirmation dialog in `com
+          ponents/delete-confirm-dialog.tsx` — apply orange design system
+           tokens, pill-shaped buttons, surface hierarchy backgrounds, ti
+          nted shadows, Plus Jakarta Sans headings and Inter body text pe
+          r DESIGN.md (FR-005, FR-008)
+      82 -- [ ] T014 [US3] Audit and update empty state, loading state, a
+         -nd error state UI across `app/page.tsx` and `components/goal-li
+         -st.tsx` — ensure all states use new design tokens (warm dark te
+         -xt `#1e293b`, no pure black, surface backgrounds, pill buttons)
+         -, consistent typography (Plus Jakarta Sans headlines, Inter bod
+         -y), and follow the No-Line Rule (FR-001, FR-002, FR-005)       
+      82 +- [X] T014 [US3] Audit and update empty state, loading state, a
+         +nd error state UI across `app/page.tsx` and `components/goal-li
+         +st.tsx` — ensure all states use new design tokens (warm dark te
+         +xt `#1e293b`, no pure black, surface backgrounds, pill buttons)
+         +, consistent typography (Plus Jakarta Sans headlines, Inter bod
+         +y), and follow the No-Line Rule (FR-001, FR-002, FR-005)
+      83  - [ ] T015 [P] [US3] Audit all components for pure black text (
+          `#000000` or `text-black`), standard visible borders (replace w
+          ith surface hierarchy where appropriate per R-006 exceptions),
+          and non-pill buttons — fix any violations of DESIGN.md rules ac
+          ross all files in `app/` and `components/` (SC-004, SC-005)
+      84 
+      85  **Checkpoint**: All UI elements consistent with orange design s
+          ystem — no pure black text, no standard borders (except R-006 e
+          xceptions), all buttons pill-shaped
+
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      80 
+      81  - [X] T013 [US3] Restyle the delete confirmation dialog in `com
+          ponents/delete-confirm-dialog.tsx` — apply orange design system
+           tokens, pill-shaped buttons, surface hierarchy backgrounds, ti
+          nted shadows, Plus Jakarta Sans headings and Inter body text pe
+          r DESIGN.md (FR-005, FR-008)
+      82  - [X] T014 [US3] Audit and update empty state, loading state, a
+          nd error state UI across `app/page.tsx` and `components/goal-li
+          st.tsx` — ensure all states use new design tokens (warm dark te
+          xt `#1e293b`, no pure black, surface backgrounds, pill buttons)
+          , consistent typography (Plus Jakarta Sans headlines, Inter bod
+          y), and follow the No-Line Rule (FR-001, FR-002, FR-005)
+      83 -- [ ] T015 [P] [US3] Audit all components for pure black text (
+         -`#000000` or `text-black`), standard visible borders (replace w
+         -ith surface hierarchy where appropriate per R-006 exceptions), 
+         -and non-pill buttons — fix any violations of DESIGN.md rules ac
+         -ross all files in `app/` and `components/` (SC-004, SC-005)    
+      83 +- [X] T015 [P] [US3] Audit all components for pure black text (
+         +`#000000` or `text-black`), standard visible borders (replace w
+         +ith surface hierarchy where appropriate per R-006 exceptions),
+         +and non-pill buttons — fix any violations of DESIGN.md rules ac
+         +ross all files in `app/` and `components/` (SC-004, SC-005)
+      84 
+      85  **Checkpoint**: All UI elements consistent with orange design s
+          ystem — no pure black text, no standard borders (except R-006 e
+          xceptions), all buttons pill-shaped
+      86 
+
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      90 
+      91  **Purpose**: Responsive validation and final quality checks
+      92 
+      93 -- [ ] T016 Validate responsive layout at 320px, 768px, 1280px, 
+         -and 1920px viewports — verify dashboard grid collapses to singl
+         -e column on mobile, modal adapts to small screens, and all comp
+         -onents remain usable per FR-010 and SC-006                     
+      93 +- [X] T016 Validate responsive layout at 320px, 768px, 1280px,
+         +and 1920px viewports — verify dashboard grid collapses to singl
+         +e column on mobile, modal adapts to small screens, and all comp
+         +onents remain usable per FR-010 and SC-006
+      94  - [ ] T017 Validate long goal titles truncate with ellipsis rat
+          her than breaking card layout across `components/goal-card.tsx`
+           and `components/goal-list.tsx`
+      95  - [ ] T018 Run `pnpm lint` and `pnpm build` to verify no TypeSc
+          ript errors, lint violations, or build failures from all change
+          s
+      96  - [ ] T019 Run quickstart.md validation — walk through the impl
+          ementation order checklist in `specs/002-ui-enhancement/quickst
+          art.md` and confirm all items are addressed
+
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      91  **Purpose**: Responsive validation and final quality checks
+      92 
+      93  - [X] T016 Validate responsive layout at 320px, 768px, 1280px,
+          and 1920px viewports — verify dashboard grid collapses to singl
+          e column on mobile, modal adapts to small screens, and all comp
+          onents remain usable per FR-010 and SC-006
+      94 -- [ ] T017 Validate long goal titles truncate with ellipsis rat
+         -her than breaking card layout across `components/goal-card.tsx`
+         - and `components/goal-list.tsx`                                
+      94 +- [X] T017 Validate long goal titles truncate with ellipsis rat
+         +her than breaking card layout across `components/goal-card.tsx`
+         + and `components/goal-list.tsx`
+      95  - [ ] T018 Run `pnpm lint` and `pnpm build` to verify no TypeSc
+          ript errors, lint violations, or build failures from all change
+          s
+      96  - [ ] T019 Run quickstart.md validation — walk through the impl
+          ementation order checklist in `specs/002-ui-enhancement/quickst
+          art.md` and confirm all items are addressed
+      97 
+
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      92 
+      93  - [X] T016 Validate responsive layout at 320px, 768px, 1280px,
+          and 1920px viewports — verify dashboard grid collapses to singl
+          e column on mobile, modal adapts to small screens, and all comp
+          onents remain usable per FR-010 and SC-006
+      94  - [X] T017 Validate long goal titles truncate with ellipsis rat
+          her than breaking card layout across `components/goal-card.tsx`
+           and `components/goal-list.tsx`
+      95 -- [ ] T018 Run `pnpm lint` and `pnpm build` to verify no TypeSc
+         -ript errors, lint violations, or build failures from all change
+         -s                                                              
+      95 +- [X] T018 Run `pnpm lint` and `pnpm build` to verify no TypeSc
+         +ript errors, lint violations, or build failures from all change
+         +s
+      96  - [ ] T019 Run quickstart.md validation — walk through the impl
+          ementation order checklist in `specs/002-ui-enhancement/quickst
+          art.md` and confirm all items are addressed
+      97 
+      98  ---
+
+● Update(specs\002-ui-enhancement\tasks.md)
+  ⎿  Added 1 line, removed 1 line
+      93  - [X] T016 Validate responsive layout at 320px, 768px, 1280px,
+          and 1920px viewports — verify dashboard grid collapses to singl
+          e column on mobile, modal adapts to small screens, and all comp
+          onents remain usable per FR-010 and SC-006
+      94  - [X] T017 Validate long goal titles truncate with ellipsis rat
+          her than breaking card layout across `components/goal-card.tsx`
+           and `components/goal-list.tsx`
+      95  - [X] T018 Run `pnpm lint` and `pnpm build` to verify no TypeSc
+          ript errors, lint violations, or build failures from all change
+          s
+      96 -- [ ] T019 Run quickstart.md validation — walk through the impl
+         -ementation order checklist in `specs/002-ui-enhancement/quickst
+         -art.md` and confirm all items are addressed                    
+      96 +- [X] T019 Run quickstart.md validation — walk through the impl
+         +ementation order checklist in `specs/002-ui-enhancement/quickst
+         +art.md` and confirm all items are addressed
+      97 
+      98  ---
+      99 
+
+● Implementation Complete
+
+  All 19 tasks across 6 phases have been implemented and verified. Here's a
+  summary:
+
+  Phase 2: Foundation (T001-T006)
+
+  - globals.css: Replaced shadcn pastel tokens with orange design system
+  (#ff7f70 primary, #f8fafc surface, #1e293b text), added .bg-radiant-primary
+  and .bg-radiant-primary-modal gradient classes, Material Symbols config
+  - layout.tsx: Swapped Geist fonts for Plus Jakarta Sans + Inter via
+  next/font/google, added Material Symbols Outlined <link>
+  - types.ts: Added focusArea: string | null to Goal, optional focusArea to
+  CreateGoalInput
+  - schema.sql: Added focus_area VARCHAR(50) column
+  - goals.ts: Updated queries to SELECT/INSERT focus_area
+  - API route: POST accepts optional focusArea with validation
+
+  Phase 3: Dashboard (T007-T010)
+
+  - Header: Sticky header with "Do It" coral brand, nav links with active
+  indicator, Material Symbols icon buttons
+  - Dashboard layout: Greeting section, 8-col active goals + 4-col sidebar grid,
+   pill-shaped "Add New Goal" button
+  - Goal cards: Rounded corners, hover translate-x, urgency badges (red for
+  urgent/overdue, grey-blue for normal), Material Symbols icons
+  - Goal list: Active goals section + Recently Completed sidebar with coral
+  check icons, strikethrough text, Pro Tip card with lightbulb icon
+
+  Phase 4: Modal (T011-T012)
+
+  - Orange gradient header ("Ignite a New Path"), glassmorphism backdrop,
+  borderless inputs with warm surface background
+  - Focus area chip selector (Professional/Personal), single-select, pill-shaped
+   Create Goal button with tinted shadow
+
+  Phase 5: Consistency (T013-T015)
+
+  - Delete dialog restyled with pill buttons, surface hierarchy, tinted shadows
+  - All states use text-on-surface-variant / text-error, no pure black, all
+  buttons pill-shaped
+
+  Phase 6: Polish (T016-T019)
+
+  - Responsive: grid-cols-1 lg:grid-cols-12, hidden md:flex, grid-cols-1 
+  md:grid-cols-2
+  - Truncation: truncate class on goal titles
+  - pnpm lint: 0 errors (1 expected Pages Router warning)
+  - pnpm build: Success, no TypeScript errors
+
+✻ Brewed for 5m 48s

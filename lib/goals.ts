@@ -5,6 +5,7 @@ export async function listGoals(status?: "active" | "completed"): Promise<Goal[]
   const pool = getPool();
   let query = `
     SELECT id, title, end_date AS "endDate", status,
+           focus_area AS "focusArea",
            created_at AS "createdAt", completed_at AS "completedAt"
     FROM goals
   `;
@@ -25,14 +26,15 @@ export async function listGoals(status?: "active" | "completed"): Promise<Goal[]
   return result.rows;
 }
 
-export async function createGoal(title: string, endDate: string): Promise<Goal> {
+export async function createGoal(title: string, endDate: string, focusArea?: string): Promise<Goal> {
   const pool = getPool();
   const result = await pool.query(
-    `INSERT INTO goals (title, end_date)
-     VALUES ($1, $2)
+    `INSERT INTO goals (title, end_date, focus_area)
+     VALUES ($1, $2, $3)
      RETURNING id, title, end_date AS "endDate", status,
+               focus_area AS "focusArea",
                created_at AS "createdAt", completed_at AS "completedAt"`,
-    [title, endDate]
+    [title, endDate, focusArea ?? null]
   );
   return result.rows[0];
 }
@@ -48,6 +50,7 @@ export async function updateGoal(
      SET status = $1, completed_at = ${completedAt}
      WHERE id = $2
      RETURNING id, title, end_date AS "endDate", status,
+               focus_area AS "focusArea",
                created_at AS "createdAt", completed_at AS "completedAt"`,
     [status, id]
   );
