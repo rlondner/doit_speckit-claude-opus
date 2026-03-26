@@ -1,5 +1,5 @@
 import { getPool } from "./db";
-import type { Goal } from "./types";
+import type { Goal, EditGoalInput } from "./types";
 
 export async function listGoals(status?: "active" | "completed"): Promise<Goal[]> {
   const pool = getPool();
@@ -53,6 +53,42 @@ export async function updateGoal(
                focus_area AS "focusArea",
                created_at AS "createdAt", completed_at AS "completedAt"`,
     [status, id]
+  );
+  return result.rows[0] ?? null;
+}
+
+export async function editGoal(id: string, input: EditGoalInput): Promise<Goal | null> {
+  const pool = getPool();
+  const setClauses: string[] = [];
+  const params: (string | null)[] = [];
+  let paramIndex = 1;
+
+  if (input.title !== undefined) {
+    setClauses.push(`title = $${paramIndex++}`);
+    params.push(input.title);
+  }
+  if (input.endDate !== undefined) {
+    setClauses.push(`end_date = $${paramIndex++}`);
+    params.push(input.endDate);
+  }
+  if (input.focusArea !== undefined) {
+    setClauses.push(`focus_area = $${paramIndex++}`);
+    params.push(input.focusArea);
+  }
+
+  if (setClauses.length === 0) {
+    return null;
+  }
+
+  params.push(id);
+  const result = await pool.query(
+    `UPDATE goals
+     SET ${setClauses.join(", ")}
+     WHERE id = $${paramIndex}
+     RETURNING id, title, end_date AS "endDate", status,
+               focus_area AS "focusArea",
+               created_at AS "createdAt", completed_at AS "completedAt"`,
+    params
   );
   return result.rows[0] ?? null;
 }

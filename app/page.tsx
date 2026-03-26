@@ -3,13 +3,15 @@
 import { useEffect, useState, useCallback } from "react";
 import { GoalList } from "@/components/goal-list";
 import { AddGoalModal } from "@/components/add-goal-modal";
-import type { GoalWithUrgency } from "@/lib/types";
+import { EditGoalModal } from "@/components/edit-goal-modal";
+import type { GoalWithUrgency, EditGoalInput } from "@/lib/types";
 import { getCachedGoals, setCachedGoals, invalidateGoalCache } from "@/lib/cache";
 
 export default function Home() {
   const [goals, setGoals] = useState<GoalWithUrgency[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [editingGoal, setEditingGoal] = useState<GoalWithUrgency | null>(null);
 
   const fetchGoals = useCallback(async () => {
     try {
@@ -82,6 +84,34 @@ export default function Home() {
     await fetchGoals();
   };
 
+  const handleSaveEdit = async (id: string, input: EditGoalInput) => {
+    setGoals((prev) =>
+      prev.map((g) =>
+        g.id === id
+          ? { ...g, ...input }
+          : g
+      )
+    );
+    invalidateGoalCache();
+
+    const res = await fetch(`/api/goals/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(input),
+    });
+    if (!res.ok) {
+      await fetchGoals();
+      throw new Error("Failed to save changes");
+    }
+    setEditingGoal(null);
+    await fetchGoals();
+  };
+
+  const handleDeleteFromModal = async (id: string) => {
+    setEditingGoal(null);
+    await handleDelete(id);
+  };
+
   const activeGoals = goals.filter((g) => g.status === "active");
   const completedGoals = goals.filter((g) => g.status === "completed");
 
@@ -129,6 +159,7 @@ export default function Home() {
             emptyMessage="No active goals. Add one to get started!"
             onToggle={handleToggle}
             onDelete={handleDelete}
+            onEdit={setEditingGoal}
             variant="active"
           />
         </section>
@@ -143,6 +174,13 @@ export default function Home() {
           />
         </aside>
       </div>
+
+      <EditGoalModal
+        goal={editingGoal}
+        onClose={() => setEditingGoal(null)}
+        onSave={handleSaveEdit}
+        onDelete={handleDeleteFromModal}
+      />
     </div>
   );
 }

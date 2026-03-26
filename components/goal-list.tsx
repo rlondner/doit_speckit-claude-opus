@@ -7,6 +7,7 @@ interface GoalListProps {
   emptyMessage: string;
   onToggle: (id: string, newStatus: "active" | "completed") => void;
   onDelete: (id: string) => void;
+  onEdit?: (goal: GoalWithUrgency) => void;
   variant: "active" | "completed";
 }
 
@@ -16,6 +17,7 @@ export function GoalList({
   emptyMessage,
   onToggle,
   onDelete,
+  onEdit,
   variant,
 }: GoalListProps) {
   // Completed goals sidebar variant
@@ -87,6 +89,7 @@ export function GoalList({
               goal={goal}
               onToggle={onToggle}
               onDelete={onDelete}
+              onEdit={onEdit}
               variant="active"
             />
           ))

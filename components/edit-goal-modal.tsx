@@ -1,35 +1,53 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { format } from "date-fns";
+import type { GoalWithUrgency, EditGoalInput } from "@/lib/types";
 
-interface AddGoalModalProps {
-  onAdd: (title: string, endDate: string, focusArea?: string) => Promise<void>;
+interface EditGoalModalProps {
+  goal: GoalWithUrgency | null;
+  onClose: () => void;
+  onSave: (id: string, input: EditGoalInput) => Promise<void>;
+  onDelete: (id: string) => void;
 }
 
 const FOCUS_AREAS = ["Professional", "Personal"] as const;
 
-export function AddGoalModal({ onAdd }: AddGoalModalProps) {
-  const [open, setOpen] = useState(false);
+export function EditGoalModal({ goal, onClose, onSave, onDelete }: EditGoalModalProps) {
   const [title, setTitle] = useState("");
   const [endDate, setEndDate] = useState("");
   const [focusArea, setFocusArea] = useState<string | undefined>(undefined);
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
-  const today = format(new Date(), "yyyy-MM-dd");
+  useEffect(() => {
+    if (goal) {
+      setTitle(goal.title);
+      setEndDate(goal.endDate ? format(new Date(goal.endDate), "yyyy-MM-dd") : "");
+      setFocusArea(goal.focusArea ?? undefined);
+      setError(null);
+      setSubmitting(false);
+    }
+  }, [goal]);
+
+  const open = goal !== null;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (!goal) return;
     setError(null);
 
     if (!title.trim()) {
       setError("Title is required");
+      return;
+    }
+
+    if (title.length > 255) {
+      setError("Title must not exceed 255 characters");
       return;
     }
 
@@ -38,44 +56,47 @@ export function AddGoalModal({ onAdd }: AddGoalModalProps) {
       return;
     }
 
-    if (endDate < today) {
-      setError("End date must not be in the past");
-      return;
-    }
-
     setSubmitting(true);
     try {
-      await onAdd(title.trim(), endDate, focusArea);
-      setTitle("");
-      setEndDate("");
-      setFocusArea(undefined);
-      setOpen(false);
+      await onSave(goal.id, {
+        title: title.trim(),
+        endDate,
+        focusArea,
+      });
     } catch {
-      setError("Failed to add goal");
+      setError("Failed to save changes");
     } finally {
       setSubmitting(false);
     }
   }
 
+  function handleDelete() {
+    if (!goal) return;
+    const confirmed = window.confirm(`Are you sure you want to delete "${goal.title}"? This action cannot be undone.`);
+    if (confirmed) {
+      onDelete(goal.id);
+    }
+  }
+
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger
-        render={
-          <button className="bg-radiant-primary text-white px-8 py-4 rounded-full font-bold shadow-[0_12px_32px_-4px_rgba(255,127,112,0.25)] hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2">
-            <span className="material-symbols-outlined">add</span>
-            Add New Goal
-          </button>
-        }
-      />
-      <DialogContent showCloseButton={false} className="p-0 border-0 rounded-xl overflow-hidden shadow-[0_24px_48px_-12px_rgba(240,122,80,0.15)] max-w-lg bg-surface-container-lowest">
+    <Dialog
+      open={open}
+      onOpenChange={(isOpen) => {
+        if (!isOpen) onClose();
+      }}
+    >
+      <DialogContent
+        showCloseButton={false}
+        className="p-0 border-0 rounded-xl overflow-hidden shadow-[0_24px_48px_-12px_rgba(240,122,80,0.15)] max-w-lg bg-surface-container-lowest"
+      >
         {/* Modal Header (Orange Gradient) */}
         <div className="bg-radiant-primary-modal px-8 pt-10 pb-12 relative overflow-hidden">
           <div className="relative z-10">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-white mb-2">
-              Ignite a New Path
+              Refine Your Ambition
             </h2>
             <p className="font-body text-white/90 leading-relaxed">
-              Define your objective and set the milestone. Clarity is the first step to achievement.
+              Adjust your goal details. Small refinements lead to big results.
             </p>
           </div>
           {/* Decorative element */}
@@ -84,7 +105,7 @@ export function AddGoalModal({ onAdd }: AddGoalModalProps) {
 
         {/* Close Button */}
         <button
-          onClick={() => setOpen(false)}
+          onClick={onClose}
           className="absolute top-4 right-4 h-10 w-10 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md cursor-pointer hover:bg-white/40 transition-colors"
         >
           <span className="material-symbols-outlined text-white">close</span>
@@ -95,13 +116,13 @@ export function AddGoalModal({ onAdd }: AddGoalModalProps) {
           {/* Goal Title Input */}
           <div className="space-y-3">
             <label
-              htmlFor="goal-title"
+              htmlFor="edit-goal-title"
               className="font-headline text-sm font-bold tracking-wide text-on-surface-variant uppercase ml-1"
             >
               Goal Title
             </label>
             <input
-              id="goal-title"
+              id="edit-goal-title"
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -116,17 +137,16 @@ export function AddGoalModal({ onAdd }: AddGoalModalProps) {
             {/* End Date */}
             <div className="space-y-3">
               <label
-                htmlFor="end-date"
+                htmlFor="edit-end-date"
                 className="font-headline text-sm font-bold tracking-wide text-on-surface-variant uppercase ml-1"
               >
                 End Date
               </label>
               <input
-                id="end-date"
+                id="edit-end-date"
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                min={today}
                 className="w-full px-5 py-4 bg-surface-container-low border-none rounded-xl font-body text-on-surface focus:ring-2 focus:ring-primary/20 transition-all duration-200 outline-none"
               />
             </div>
@@ -160,21 +180,30 @@ export function AddGoalModal({ onAdd }: AddGoalModalProps) {
           {error && <p className="text-sm text-error">{error}</p>}
 
           {/* Footer Actions */}
-          <div className="flex items-center justify-end gap-4 pt-4">
+          <div className="flex items-center justify-between pt-4">
             <button
               type="button"
-              onClick={() => setOpen(false)}
-              className="px-8 py-4 font-headline font-bold text-on-surface-variant hover:text-on-surface transition-colors"
+              onClick={handleDelete}
+              className="text-sm font-bold text-error hover:text-error/80 transition-colors"
             >
-              Cancel
+              Delete Goal
             </button>
-            <button
-              type="submit"
-              disabled={submitting}
-              className="px-10 py-4 bg-radiant-primary-modal text-white font-headline font-bold rounded-full shadow-[0_12px_24px_-8px_rgba(240,122,80,0.3)] hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50 disabled:scale-100"
-            >
-              {submitting ? "Creating..." : "Create Goal"}
-            </button>
+            <div className="flex items-center gap-4">
+              <button
+                type="button"
+                onClick={onClose}
+                className="px-8 py-4 font-headline font-bold text-on-surface-variant hover:text-on-surface transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                disabled={submitting}
+                className="px-10 py-4 bg-radiant-primary-modal text-white font-headline font-bold rounded-full shadow-[0_12px_24px_-8px_rgba(240,122,80,0.3)] hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50 disabled:scale-100"
+              >
+                {submitting ? "Saving..." : "Save Changes"}
+              </button>
+            </div>
           </div>
         </form>
       </DialogContent>

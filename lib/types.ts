@@ -18,3 +18,9 @@ export interface CreateGoalInput {
   endDate: string;
   focusArea?: string;
 }
+
+export interface EditGoalInput {
+  title?: string;
+  endDate?: string;
+  focusArea?: string;
+}

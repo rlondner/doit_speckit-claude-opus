@@ -8,10 +8,11 @@ interface GoalCardProps {
   goal: GoalWithUrgency;
   onToggle: (id: string, newStatus: "active" | "completed") => void;
   onDelete: (id: string) => void;
+  onEdit?: (goal: GoalWithUrgency) => void;
   variant: "active" | "completed";
 }
 
-export function GoalCard({ goal, onToggle, onDelete, variant }: GoalCardProps) {
+export function GoalCard({ goal, onToggle, onDelete, onEdit, variant }: GoalCardProps) {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const isCompleted = goal.status === "completed";
   const isUrgent = goal.urgency === "urgent" && !isCompleted;
@@ -111,6 +112,15 @@ export function GoalCard({ goal, onToggle, onDelete, variant }: GoalCardProps) {
           </div>
         </div>
         <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
+          {onEdit && (
+            <button
+              onClick={() => onEdit(goal)}
+              className="p-2 transition-colors"
+              style={{ color: "#f3683b" }}
+            >
+              <span className="material-symbols-outlined">edit</span>
+            </button>
+          )}
           <button
             onClick={() => setDeleteDialogOpen(true)}
             className="p-2 text-on-surface-variant hover:text-error transition-colors"
