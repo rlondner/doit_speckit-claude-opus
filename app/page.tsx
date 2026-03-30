@@ -4,8 +4,21 @@ import { useEffect, useState, useCallback } from "react";
 import { GoalList } from "@/components/goal-list";
 import { AddGoalModal } from "@/components/add-goal-modal";
 import { EditGoalModal } from "@/components/edit-goal-modal";
+import { DemoBanner } from "@/components/demo-banner";
 import type { GoalWithUrgency, EditGoalInput } from "@/lib/types";
 import { getCachedGoals, setCachedGoals, invalidateGoalCache } from "@/lib/cache";
+import {
+  isDemoMode,
+  isDemoStorageAvailable,
+  initDemoStore,
+  getDemoGoals,
+  createDemoGoal,
+  updateDemoGoal,
+  deleteDemoGoal,
+  resetDemoData,
+} from "@/lib/demo-store";
+
+const DEMO_MODE = isDemoMode();
 
 export default function Home() {
   const [goals, setGoals] = useState<GoalWithUrgency[]>([]);
@@ -14,6 +27,18 @@ export default function Home() {
   const [editingGoal, setEditingGoal] = useState<GoalWithUrgency | null>(null);
 
   const fetchGoals = useCallback(async () => {
+    if (DEMO_MODE) {
+      if (!isDemoStorageAvailable()) {
+        setError("Demo mode requires localStorage, which is unavailable in this browser.");
+        setLoading(false);
+        return;
+      }
+      initDemoStore();
+      setGoals(getDemoGoals());
+      setLoading(false);
+      return;
+    }
+
     try {
       const res = await fetch("/api/goals");
       if (!res.ok) throw new Error("Failed to fetch goals");
@@ -29,6 +54,10 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (DEMO_MODE) {
+      fetchGoals();
+      return;
+    }
     const cached = getCachedGoals<GoalWithUrgency[]>();
     if (cached) {
       setGoals(cached);
@@ -38,6 +67,12 @@ export default function Home() {
   }, [fetchGoals]);
 
   const handleToggle = async (id: string, newStatus: "active" | "completed") => {
+    if (DEMO_MODE) {
+      updateDemoGoal(id, { status: newStatus });
+      setGoals(getDemoGoals());
+      return;
+    }
+
     setGoals((prev) =>
       prev.map((g) =>
         g.id === id
@@ -61,6 +96,12 @@ export default function Home() {
   };
 
   const handleDelete = async (id: string) => {
+    if (DEMO_MODE) {
+      deleteDemoGoal(id);
+      setGoals(getDemoGoals());
+      return;
+    }
+
     setGoals((prev) => prev.filter((g) => g.id !== id));
     invalidateGoalCache();
 
@@ -74,6 +115,12 @@ export default function Home() {
   };
 
   const handleAdd = async (title: string, endDate: string, focusArea?: string) => {
+    if (DEMO_MODE) {
+      createDemoGoal({ title, endDate, focusArea });
+      setGoals(getDemoGoals());
+      return;
+    }
+
     const res = await fetch("/api/goals", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -85,6 +132,13 @@ export default function Home() {
   };
 
   const handleSaveEdit = async (id: string, input: EditGoalInput) => {
+    if (DEMO_MODE) {
+      updateDemoGoal(id, input);
+      setGoals(getDemoGoals());
+      setEditingGoal(null);
+      return;
+    }
+
     setGoals((prev) =>
       prev.map((g) =>
         g.id === id
@@ -112,6 +166,11 @@ export default function Home() {
     await handleDelete(id);
   };
 
+  const handleReset = () => {
+    resetDemoData();
+    setGoals(getDemoGoals());
+  };
+
   const activeGoals = goals.filter((g) => g.status === "active");
   const completedGoals = goals.filter((g) => g.status === "completed");
 
@@ -133,6 +192,8 @@ export default function Home() {
 
   return (
     <div>
+      {DEMO_MODE && <DemoBanner onReset={handleReset} />}
+
       {/* Greeting section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-16 gap-6">
         <div>
