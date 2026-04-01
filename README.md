@@ -79,6 +79,25 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) to use the app.
 
+### 6. Railway CLI quick start (optional)
+
+If you want a local-to-cloud workflow with Railway CLI:
+
+```bash
+pnpm dlx @railway/cli login
+pnpm dlx @railway/cli link
+pnpm dlx @railway/cli variables
+```
+
+Useful follow-up commands:
+
+```bash
+pnpm dlx @railway/cli up
+pnpm dlx @railway/cli open
+```
+
+> On Windows PowerShell, run these from the project root (`doit_speckit-claude`).
+
 ## Usage
 
 ### Adding a goal
@@ -134,12 +153,34 @@ Make sure your `DATABASE_URL` points to the production database and includes SSL
 DATABASE_URL=postgresql://user:pass@host:5432/doit?sslmode=require
 ```
 
+<!-- ...existing code... -->
+
 ### Deploying to Vercel
 
 1. Push your code to GitHub
 2. Import the repo in [Vercel](https://vercel.com)
 3. Add `DATABASE_URL` as an environment variable in the Vercel project settings
 4. Deploy — Vercel auto-detects Next.js and builds it
+
+### Deploying to Railway
+
+1. Push your code to GitHub
+2. Create a new project in [Railway](https://railway.com) and select **Deploy from GitHub repo**
+3. Add a **PostgreSQL** service in Railway (or connect an external PostgreSQL database)
+4. In your app service variables, set:
+
+```env
+DATABASE_URL=${{Postgres.DATABASE_URL}}
+```
+
+5. Railway will install dependencies and run the Next.js build automatically
+6. Run `lib/schema.sql` once against the Railway PostgreSQL database before first use
+
+> If Railway does not auto-detect the start command, set it to:
+>
+> ```bash
+> pnpm start
+> ```
 
 ### Deploying with Docker
 
