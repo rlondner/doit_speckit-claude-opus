@@ -6,7 +6,7 @@ const STORAGE_KEY = "doit_demo_goals";
 
 // T004
 export function isDemoMode(): boolean {
-  return process.env.NEXT_PUBLIC_DEMO_MODE === "true";
+  return process.env.NEXT_PUBLIC_DEMO_MODE !== "false";
 }
 
 // T005 — localStorage availability check (T016 integrated here)
