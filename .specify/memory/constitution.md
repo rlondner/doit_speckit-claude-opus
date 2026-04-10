@@ -28,7 +28,7 @@
   Follow-up TODOs: None
 -->
 
-# Gemini Constitution
+# DO_IT Constitution
 
 ## Core Principles
 
