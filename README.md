@@ -22,9 +22,39 @@ cd doit_speckit-claude
 pnpm install
 ```
 
-### 2. Create the database
+### 2. Demo Mode (localStorage-only)
 
-Connect to your PostgreSQL server and create a database:
+For a quick demo without setting up a database, you can run the app in localStorage-only mode. This stores goals locally in your browser and doesn't persist across devices or sessions.
+
+1. Copy the example environment file:
+
+```bash
+cp .env.local.example .env.local
+```
+
+2. Edit `.env.local` and add:
+
+```env
+NEXT_PUBLIC_DEMO_MODE=true
+```
+
+3. Start the dev server:
+
+```bash
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to use the app. Goals will be stored in localStorage and cleared when you clear browser data.
+
+### 3. Production Mode (with data persistence)
+
+Edit `.env.local` and configure:
+
+```env
+NEXT_PUBLIC_DEMO_MODE=false
+```
+
+Connect to your PostgreSQL server in your favorite Terminal and create a database:
 
 ```bash
 psql -U postgres
@@ -35,7 +65,7 @@ CREATE DATABASE doit;
 \q
 ```
 
-### 3. Run the schema migration
+### 4. Run the schema migration
 
 This creates the `goals` table and its indexes. The script is idempotent — safe to run multiple times.
 
@@ -59,9 +89,9 @@ CREATE INDEX IF NOT EXISTS idx_goals_status ON goals (status);
 CREATE INDEX IF NOT EXISTS idx_goals_end_date ON goals (end_date) WHERE status = 'active';
 ```
 
-### 4. Configure the environment
+### 5. Configure the environment
 
-Copy the example file and fill in your database credentials:
+Copy the example file (if you haven't done so already) and fill in your database credentials:
 
 ```bash
 cp .env.local.example .env.local
@@ -75,7 +105,7 @@ DATABASE_URL=postgresql://postgres:yourpassword@localhost:5432/doit
 
 The connection string format is `postgresql://USER:PASSWORD@HOST:PORT/DATABASE`.
 
-### 5. Start the dev server
+### 6. Start the dev server
 
 ```bash
 pnpm dev
@@ -83,7 +113,7 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) to use the app.
 
-### 6. Railway CLI quick start (optional)
+### 7. Railway CLI quick start (optional)
 
 If you want a local-to-cloud workflow with Railway CLI:
 
