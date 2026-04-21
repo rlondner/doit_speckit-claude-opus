@@ -1,6 +1,10 @@
 # do it — Goal Tracker
 
-A simple two-column goal tracking app. Add goals with deadlines, see how many days you have left, check them off when done, and delete the ones you no longer need. Built with Next.js, PostgreSQL, and a pastel color palette.
+A simple yet beautiful, two-column goal tracking app. Add goals with deadlines, see how many days you have left, check them off when done, and delete the ones you no longer need. Built with Next.js, PostgreSQL, and a pastel color palette.
+
+![Stitch-enhanced DoIT Dashboard](header.png)
+
+
 
 ## Prerequisites
 
