@@ -1,5 +1,5 @@
 {
-  "name": "speckit-claude-opus",
+  "name": "doit_speckit_claude-opus",
   "version": "1.0.0",
   "private": true,
   "scripts": {
